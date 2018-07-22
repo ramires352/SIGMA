@@ -18,11 +18,17 @@ import javax.swing.JOptionPane;
  * @author ramir
  */
 public class ConnectionFactory {
-    
-    private static final String DRIVER = "com.mysql.jdbc.Driver";
+    //BD freemysqlhosting
+    /*private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String URL = "jdbc:mysql://sql10.freemysqlhosting.net:3306/sql10248231";
     private static final String USER = "sql10248231";
-    private static final String PASS = "RdH13MiLTE";
+    private static final String PASS = "RdH13MiLTE";*/
+    
+    //BD Local
+    private static final String DRIVER = "com.mysql.jdbc.Driver";
+    private static final String URL = "jdbc:mysql://localhost:3306/sigmaBD";
+    private static final String USER = "root";
+    private static final String PASS = "ramires2313";
     
     public static Connection getConnection(){
         try {
