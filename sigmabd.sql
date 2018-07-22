@@ -1,10 +1,5 @@
-select * from maquina;
-select * from cliente;
-select * from item;
-select * from manutencao;
-
-create database sigmabd;
-use sigmabd;
+create database sigmaBD;
+use sigmaBD;
 
 create table cliente(
 	login varchar(50) not null,
