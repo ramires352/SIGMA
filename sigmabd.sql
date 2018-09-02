@@ -31,6 +31,67 @@ create table maquina(
     nome varchar(45) not null,
     login varchar(45) not null,
     primary key(idMaquina));
+
+create table produto(
+	idProduto int not null auto_increment,
+	nome varchar(45) not null,
+	tipo varchar(45) not null,
+	preco double not null,
+	login varchar(45) not null,
+	qtde double not null,
+	primary key(idProduto));
+
+create table terreno(
+	idTerreno int not null auto_increment,
+	area double not null,
+	nome varchar(45) not null,
+	login varchar(45) not null,
+	estado varchar(45) not null,
+	primary key(idTerreno));
+
+create table colheita(
+	idColheita int not null auto_increment,
+	idTerreno int not null,
+	data date not null,
+	qtde double not null,
+	primary key(idColheita));
+
+create table plantio(
+	idPlantio int not null auto_increment,
+	idTerreno int not null,
+	data date not null,
+	sementes varchar(45) not null,
+	qtde_sementes double not null,
+	cultura varchar(45) not null,
+	primary key(idPlantio));
+
+create table manut_terreno(
+	idManut_terreno int not null auto_increment,
+	nome varchar(45) not null,
+	defensivo varchar(45) not null,
+	qtde_defensivo double not null,
+	data date not null,
+	idTerreno int not null,
+	primary key(idManut_terreno));
+
+create table graos(
+	idGraos int not null auto_increment,
+	tipo varchar(45) not null,
+	qtde double not null,
+	idTerreno int not null,
+	gastos double not null,
+	primary key(idGraos));
+
+create table vendas(
+	idVendas int not null auto_increment,
+	data date not null,
+	grao varchar(45) not null,
+	qtde double not null,
+	preco double not null,
+	receita double not null,
+	login varchar(45) not null,
+	primary key(idVendas));
+
     
 alter table maquina
 	add foreign key(login) references cliente(login);
@@ -42,3 +103,23 @@ alter table manutencao
 	add foreign key (idItem) references item(idItem),
     add foreign key (idMaquina) references maquina(idMaquina);
 
+alter table produto
+	add foreign key (login) references cliente(login);
+
+alter table vendas
+	add foreign key (login) references cliente(login);
+
+alter table terreno
+	add foreign key (login) references cliente(login);
+
+alter table graos
+	add foreign key (idTerreno) references terreno(idTerreno);	
+
+alter table colheita
+	add foreign key (idTerreno) references terreno(idTerreno);
+
+alter table plantio
+	add foreign key (idTerreno) references terreno(idTerreno);
+
+alter table manut_terreno
+	add foreign key (idTerreno) references terreno(idTerreno);	
