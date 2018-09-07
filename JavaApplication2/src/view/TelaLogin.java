@@ -164,7 +164,7 @@ public class TelaLogin extends javax.swing.JFrame {
         if(dao.checkLogin(txtLogin.getText(), txtSenha.getText())){
             Cliente.setNome(txtLogin.getText());
             JOptionPane.showMessageDialog(null, "Bem Vindo ao SIGMA!");
-            new TelaMain().setVisible(true);
+            new TelaPrincipal().setVisible(true);
             this.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Dados Incorretos!");
