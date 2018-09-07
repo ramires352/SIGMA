@@ -47,6 +47,8 @@ create table terreno(
 	nome varchar(45) not null,
 	login varchar(45) not null,
 	estado varchar(45) not null,
+	gastos double not null,
+	cultura varchar(45) not null,
 	primary key(idTerreno));
 
 create table colheita(
