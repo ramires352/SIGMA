@@ -5,7 +5,9 @@
         <group>
             <file>file:/home/ramires/GIT/SIGMA/JavaApplication2/src/view/TelaMain.java</file>
             <file>file:/home/ramires/GIT/SIGMA/JavaApplication2/src/view/TelaLogin.java</file>
+            <file>file:/home/ramires/GIT/SIGMA/JavaApplication2/src/view/TelaTerreno.java</file>
             <file>file:/home/ramires/GIT/SIGMA/JavaApplication2/src/view/TelaPrincipal.java</file>
+            <file>file:/home/ramires/GIT/SIGMA/JavaApplication2/src/view/TelaAddTerreno.java</file>
             <file>file:/home/ramires/GIT/SIGMA/JavaApplication2/src/connection/ConnectionFactory.java</file>
         </group>
     </open-files>
