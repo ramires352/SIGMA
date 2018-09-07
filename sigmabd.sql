@@ -92,6 +92,18 @@ create table vendas(
 	login varchar(45) not null,
 	primary key(idVendas));
 
+create table movimento(
+	idMov int not null auto_increment,
+	nf varchar(45) not null,
+	nome varchar(45) not null,
+	tipo varchar(45) not null,
+	qtde int not null,
+	descricao varchar(45) not null,
+	preco_un double not null,
+	login varchar(45) not null,
+	data date not null,
+	primary key(idMov));
+
     
 alter table maquina
 	add foreign key(login) references cliente(login);
@@ -112,6 +124,9 @@ alter table vendas
 alter table terreno
 	add foreign key (login) references cliente(login);
 
+alter table movimento
+	add foreign key (login) references cliente(login);
+
 alter table graos
 	add foreign key (idTerreno) references terreno(idTerreno);	
 
@@ -123,3 +138,4 @@ alter table plantio
 
 alter table manut_terreno
 	add foreign key (idTerreno) references terreno(idTerreno);	
+
