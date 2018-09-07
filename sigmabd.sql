@@ -141,3 +141,4 @@ alter table plantio
 alter table manut_terreno
 	add foreign key (idTerreno) references terreno(idTerreno);	
 
+#teste
