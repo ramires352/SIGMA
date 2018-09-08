@@ -8,6 +8,7 @@ package view;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import model.bean.Terreno;
@@ -30,7 +31,8 @@ public class TelaTerreno extends javax.swing.JFrame {
                 t.getNome(),
                 t.getArea(),
                 t.getEstado(),
-                t.getCultura(),    
+                t.getCultura(),
+                t.getGastos()
             });
         }
     }
@@ -71,6 +73,7 @@ public class TelaTerreno extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         botaoAdd = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        botaoColheita = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Terrenos");
@@ -83,7 +86,7 @@ public class TelaTerreno extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nome", "Área", "Estado", "Cultura"
+                "ID", "Nome", "Área", "Estado", "Cultura", "Gastos"
             }
         ));
         jScrollPane1.setViewportView(tabelaTerreno);
@@ -125,6 +128,14 @@ public class TelaTerreno extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Chilanka", 1, 48)); // NOI18N
         jLabel1.setText("Terrenos");
 
+        botaoColheita.setBackground(new java.awt.Color(51, 153, 255));
+        botaoColheita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/combine-harvester.png"))); // NOI18N
+        botaoColheita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoColheitaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -140,7 +151,8 @@ public class TelaTerreno extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(botaoEditar))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(botaoColheita)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -152,7 +164,9 @@ public class TelaTerreno extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addComponent(botaoColheita))
                 .addGap(58, 58, 58)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
@@ -193,6 +207,23 @@ public class TelaTerreno extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botaoAddActionPerformed
 
+    private void botaoColheitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoColheitaActionPerformed
+        // TODO add your handling code here:
+        if(tabelaTerreno.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(null, "Selecione um Terreno!");
+        }
+        else{
+            if("Limpo".equals(tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 3))){
+                JOptionPane.showMessageDialog(null, "O Terreno Está Limpo! Não é Possível Colher!");
+            }
+        }
+        TelaRegistrarColheita.tTerreno = this;
+        TelaRegistrarColheita.idTerreno = (int) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 0);
+        TelaRegistrarColheita.nomeT = (String) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 1);
+        TelaRegistrarColheita.cultura = (String) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 4);
+        new TelaRegistrarColheita().setVisible(true);
+    }//GEN-LAST:event_botaoColheitaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -230,6 +261,7 @@ public class TelaTerreno extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoAdd;
+    private javax.swing.JButton botaoColheita;
     private javax.swing.JButton botaoEditar;
     private javax.swing.JButton botaoVoltar;
     private javax.swing.JButton jButton1;

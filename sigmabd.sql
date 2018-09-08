@@ -56,6 +56,8 @@ create table colheita(
 	idTerreno int not null,
 	data date not null,
 	qtde double not null,
+	nomeTerreno varchar(45) not null,
+	cultura varchar(45) not null,
 	primary key(idColheita));
 
 create table plantio(
@@ -141,3 +143,4 @@ alter table plantio
 alter table manut_terreno
 	add foreign key (idTerreno) references terreno(idTerreno);	
 
+#teste

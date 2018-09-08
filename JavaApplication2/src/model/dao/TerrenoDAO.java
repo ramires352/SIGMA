@@ -83,4 +83,38 @@ public class TerrenoDAO {
         return terrenos;
     }
     
+    public void colher(int id, double q, String nomeT, String cultura){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stnt = null;
+        PreparedStatement stnt2 = null;
+        
+        //AINDA FALTA INSERIR NO ESTOQUE
+        try{
+            stnt = con.prepareStatement("UPDATE terreno SET estado = 'Limpo', cultura = 'Nenhum' WHERE idTerreno = ?");
+            stnt.setInt(1, id);
+            
+            java.util.Date dia = new java.util.Date();
+            java.sql.Date dataSql = new java.sql.Date(dia.getTime());
+            
+            stnt2 = con.prepareStatement("INSERT INTO colheita (idTerreno, data, qtde, nomeTerreno, cultura) VALUES (?,?,?,?,?)");
+            stnt2.setInt(1,id);
+            stnt2.setDate(2, dataSql);
+            stnt2.setDouble(3, q);
+            stnt2.setString(4, nomeT);
+            stnt2.setString(5, cultura);
+            
+            stnt.executeUpdate();
+            stnt2.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Colheita Registrada!");
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Falha no Registro da Colheita! "+ ex);
+        }
+        finally{
+            ConnectionFactory.closeConnection(con, stnt);
+            ConnectionFactory.closeConnection(con, stnt2);
+        }
+    }
+    
 }
