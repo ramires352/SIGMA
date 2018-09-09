@@ -58,7 +58,10 @@ public class TelaTerreno extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel(){
             public void paintComponent(Graphics g){
-                ImageIcon im = new ImageIcon("images/bg.jpg");
+
+                ClassLoader cl = this.getClass().getClassLoader();
+
+                ImageIcon im = new ImageIcon(cl.getResource("images/bg.jpg"));
                 Image i = im.getImage();
 
                 g.drawImage(i,0,0,this.getSize().width,this.getSize().height,this);
@@ -216,12 +219,15 @@ public class TelaTerreno extends javax.swing.JFrame {
             if("Limpo".equals(tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 3))){
                 JOptionPane.showMessageDialog(null, "O Terreno Está Limpo! Não é Possível Colher!");
             }
+            else{
+                TelaRegistrarColheita.tTerreno = this;
+                TelaRegistrarColheita.idTerreno = (int) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 0);
+                TelaRegistrarColheita.nomeT = (String) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 1);
+                TelaRegistrarColheita.cultura = (String) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 4);
+                new TelaRegistrarColheita().setVisible(true);
+            }
         }
-        TelaRegistrarColheita.tTerreno = this;
-        TelaRegistrarColheita.idTerreno = (int) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 0);
-        TelaRegistrarColheita.nomeT = (String) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 1);
-        TelaRegistrarColheita.cultura = (String) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 4);
-        new TelaRegistrarColheita().setVisible(true);
+        
     }//GEN-LAST:event_botaoColheitaActionPerformed
 
     /**

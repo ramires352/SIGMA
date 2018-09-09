@@ -54,12 +54,17 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel(){&#xa;    public void paintComponent(Graphics g){&#xa;        ImageIcon im = new ImageIcon(&quot;images/bg.jpg&quot;);&#xa;        Image i = im.getImage();&#xa;&#xa;        g.drawImage(i,0,0,this.getSize().width,this.getSize().height,this);&#xa;&#xa;    }&#xa;}&#xa;"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel(){&#xa;    public void paintComponent(Graphics g){&#xa;&#xa;        ClassLoader cl = this.getClass().getClassLoader();&#xa;&#xa;        ImageIcon im = new ImageIcon(cl.getResource(&quot;images/bg.jpg&quot;));&#xa;        Image i = im.getImage();&#xa;&#xa;        g.drawImage(i,0,0,this.getSize().width,this.getSize().height,this);&#xa;&#xa;    }&#xa;}&#xa;"/>
       </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="362" max="32767" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="319" max="-2" attributes="0"/>
+              </Group>
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
@@ -79,11 +84,6 @@
                       </Group>
                   </Group>
                   <EmptySpace pref="268" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="319" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

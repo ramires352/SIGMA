@@ -42,7 +42,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel(){&#xa;    public void paintComponent(Graphics g){&#xa;        ImageIcon im = new ImageIcon(&quot;images/bg.jpg&quot;);&#xa;        Image i = im.getImage();&#xa;&#xa;        g.drawImage(i,0,0,this.getSize().width,this.getSize().height,this);&#xa;&#xa;    }&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel(){&#xa;    public void paintComponent(Graphics g){&#xa;&#xa;        ClassLoader cl = this.getClass().getClassLoader();&#xa;&#xa;        ImageIcon im = new ImageIcon(cl.getResource(&quot;images/bg.jpg&quot;));&#xa;        Image i = im.getImage();&#xa;&#xa;        g.drawImage(i,0,0,this.getSize().width,this.getSize().height,this);&#xa;&#xa;    }&#xa;}"/>
       </AuxValues>
 
       <Layout>
