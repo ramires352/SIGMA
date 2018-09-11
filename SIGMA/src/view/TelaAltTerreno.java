@@ -8,6 +8,7 @@ package view;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import model.bean.Cliente;
 import model.bean.Terreno;
 import model.dao.TerrenoDAO;
@@ -16,15 +17,26 @@ import model.dao.TerrenoDAO;
  *
  * @author ramires
  */
-public class TelaAddTerreno extends javax.swing.JFrame {
+public class TelaAltTerreno extends javax.swing.JFrame {
     
     public static TelaTerreno telaTerreno;
 
     /**
      * Creates new form TelaAddTerreno
      */
-    public TelaAddTerreno() {
+    
+    Terreno t = new Terreno();
+    
+    public TelaAltTerreno() {
         initComponents();
+        
+        //Mostra atributos antigos
+        textNome.setText(t.getNome());
+        textArea.setText(String.valueOf(t.getArea()));
+        textGastos.setText(String.valueOf(t.getGastos()));
+        estado.setToolTipText(t.getEstado());
+        cultura.setToolTipText(t.getCultura());
+        
     }
 
     /**
@@ -53,10 +65,12 @@ public class TelaAddTerreno extends javax.swing.JFrame {
         textNome = new javax.swing.JTextField();
         textArea = new javax.swing.JTextField();
         estado = new javax.swing.JComboBox<>();
-        botaoAdd = new javax.swing.JButton();
+        botaoAlt = new javax.swing.JButton();
         botaoVoltar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         cultura = new javax.swing.JComboBox<>();
+        textGastos = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Adicionar Terreno");
@@ -65,7 +79,7 @@ public class TelaAddTerreno extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 102, 0));
 
         jLabel1.setFont(new java.awt.Font("Chilanka", 1, 48)); // NOI18N
-        jLabel1.setText("Adicionar Terreno");
+        jLabel1.setText("    Alterar Terreno");
 
         jLabel2.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel2.setText("Nome");
@@ -78,11 +92,11 @@ public class TelaAddTerreno extends javax.swing.JFrame {
 
         estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Limpo", "Plantado" }));
 
-        botaoAdd.setBackground(new java.awt.Color(51, 153, 255));
-        botaoAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/check.png"))); // NOI18N
-        botaoAdd.addActionListener(new java.awt.event.ActionListener() {
+        botaoAlt.setBackground(new java.awt.Color(51, 153, 255));
+        botaoAlt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/check.png"))); // NOI18N
+        botaoAlt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoAddActionPerformed(evt);
+                botaoAltActionPerformed(evt);
             }
         });
 
@@ -99,48 +113,59 @@ public class TelaAddTerreno extends javax.swing.JFrame {
 
         cultura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nenhum", "Soja", "Milho", "Aveia", "Trigo" }));
 
+        jLabel6.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
+        jLabel6.setText("Gastos");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(177, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(147, 147, 147)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(14, 14, 14)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(botaoVoltar)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(botaoAdd))
-                            .addComponent(estado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(textNome)
-                            .addComponent(textArea)
-                            .addComponent(cultura, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(168, 168, 168))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(botaoVoltar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(botaoAlt))
+                                    .addComponent(estado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(textArea)
+                                    .addComponent(cultura, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(textNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(textGastos)))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(152, 152, 152))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
+                .addGap(102, 102, 102)
                 .addComponent(jLabel1)
-                .addGap(47, 47, 47)
+                .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(textArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textGastos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -150,9 +175,9 @@ public class TelaAddTerreno extends javax.swing.JFrame {
                     .addComponent(cultura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botaoAdd)
+                    .addComponent(botaoAlt)
                     .addComponent(botaoVoltar))
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -176,27 +201,32 @@ public class TelaAddTerreno extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botaoVoltarActionPerformed
 
-    private void botaoAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAddActionPerformed
+    private void botaoAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAltActionPerformed
         // TODO add your handling code here:
-        Terreno t = new Terreno();
-        t.setLogin(Cliente.getNome());
         
-        t.setArea(Double.parseDouble(textArea.getText()));
-        t.setNome(textNome.getText());
-        t.setEstado(estado.getSelectedItem().toString());
-        t.setCultura(cultura.getSelectedItem().toString());
+        int confirmacao = JOptionPane.showConfirmDialog(this, "Deseja realmente alterar os dados?");
         
-        t.setGastos(0);
+        if(confirmacao == JOptionPane.YES_OPTION) {
+            t.setLogin(Cliente.getNome());
         
+            t.setArea(Double.parseDouble(textArea.getText()));
+            t.setNome(textNome.getText());
+            t.setEstado(estado.getSelectedItem().toString());
+            t.setCultura(cultura.getSelectedItem().toString());
+
+            t.setGastos(0);
+
+
+            TerrenoDAO tDAO = new TerrenoDAO();
+            tDAO.update(t);
+
+            new TelaTerreno().setVisible(true);
+            this.dispose();
+
+            TelaAltTerreno.telaTerreno.readJTable();
+        }
         
-        TerrenoDAO tDAO = new TerrenoDAO();
-        tDAO.create(t);
-        
-        new TelaTerreno().setVisible(true);
-        this.dispose();
-        
-        TelaAddTerreno.telaTerreno.readJTable();
-    }//GEN-LAST:event_botaoAddActionPerformed
+    }//GEN-LAST:event_botaoAltActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,26 +245,27 @@ public class TelaAddTerreno extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaAddTerreno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAltTerreno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaAddTerreno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAltTerreno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaAddTerreno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAltTerreno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaAddTerreno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAltTerreno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaAddTerreno().setVisible(true);
+                new TelaAltTerreno().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoAdd;
+    private javax.swing.JButton botaoAlt;
     private javax.swing.JButton botaoVoltar;
     private javax.swing.JComboBox<String> cultura;
     private javax.swing.JComboBox<String> estado;
@@ -243,8 +274,10 @@ public class TelaAddTerreno extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField textArea;
+    private javax.swing.JTextField textGastos;
     private javax.swing.JTextField textNome;
     // End of variables declaration//GEN-END:variables
 }
