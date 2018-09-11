@@ -11,9 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import model.bean.Produto;
-import model.bean.Terreno;
 import model.dao.ProdutoDAO;
-import model.dao.TerrenoDAO;
 /**
  *
  * @author marlene
