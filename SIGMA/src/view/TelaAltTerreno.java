@@ -7,6 +7,8 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.bean.Cliente;
@@ -20,12 +22,13 @@ import model.dao.TerrenoDAO;
 public class TelaAltTerreno extends javax.swing.JFrame {
     
     public static TelaTerreno telaTerreno;
+    public static int idTerrenoAux;
 
     /**
      * Creates new form TelaAddTerreno
      */
     
-    Terreno t = new Terreno();
+    Terreno t = new TerrenoDAO().readOne(idTerrenoAux);
     
     public TelaAltTerreno() {
         initComponents();

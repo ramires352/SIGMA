@@ -242,6 +242,7 @@ public class TelaTerreno extends javax.swing.JFrame {
         }
         else {
             TelaAltTerreno.telaTerreno = this;
+            TelaAltTerreno.idTerrenoAux = (int) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 0);
             
             new TelaAltTerreno().setVisible(true);
             this.dispose();
