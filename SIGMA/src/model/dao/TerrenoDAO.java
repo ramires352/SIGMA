@@ -55,7 +55,7 @@ public class TerrenoDAO {
         PreparedStatement stnt = null;
         
         try{
-            stnt = con.prepareStatement("UPDATE terreno (area,nome,estado,cultura,gastos) VALUES (?,?,?,?,?) WHERE idTerreno=?");
+            stnt = con.prepareStatement("UPDATE terreno SET area=?,nome=?,estado=?,cultura=?,gastos=? WHERE idTerreno=?");
             stnt.setDouble(1,t.getArea());
             stnt.setString(2,t.getNome());
             stnt.setString(3,t.getEstado());
@@ -108,6 +108,35 @@ public class TerrenoDAO {
             ConnectionFactory.closeConnection(con, stnt, rs);
         }
         return terrenos;
+    }
+    
+    public Terreno readOne(int ID){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stnt = null;
+        ResultSet rs = null;
+        Terreno t = new Terreno();
+        
+        try{
+            stnt = con.prepareStatement("SELECT * FROM terreno WHERE login = ?");
+            stnt.setInt(1, ID);
+            rs = stnt.executeQuery();
+                
+            t.setIdTerreno(rs.getInt("idTerreno"));
+            t.setArea(rs.getDouble("area"));
+            t.setNome(rs.getString("nome"));
+            t.setLogin(rs.getString("nome"));
+            t.setEstado(rs.getString("estado"));
+            t.setGastos(rs.getDouble("gastos"));
+            t.setCultura(rs.getString("cultura"));
+                            
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Erro na Leitura! "+ex);
+        }
+        finally{
+            ConnectionFactory.closeConnection(con, stnt, rs);
+        }
+        return t;
     }
     
     public void colher(int id, double q, String nomeT, String cultura){
