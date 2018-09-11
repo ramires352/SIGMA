@@ -28,17 +28,18 @@ public class TelaAltTerreno extends javax.swing.JFrame {
      * Creates new form TelaAddTerreno
      */
     
-    Terreno t = new TerrenoDAO().readOne(idTerrenoAux);
+    List<Terreno> t = new TerrenoDAO().readOne(idTerrenoAux);
     
     public TelaAltTerreno() {
         initComponents();
         
+        
         //Mostra atributos antigos
-        textNome.setText(t.getNome());
-        textArea.setText(String.valueOf(t.getArea()));
-        textGastos.setText(String.valueOf(t.getGastos()));
-        estado.setToolTipText(t.getEstado());
-        cultura.setToolTipText(t.getCultura());
+        textNome.setText(t.get(0).getNome());
+        textArea.setText(String.valueOf(t.get(0).getArea()));
+        textGastos.setText(String.valueOf(t.get(0).getGastos()));
+        estado.setToolTipText(t.get(0).getEstado());
+        cultura.setToolTipText(t.get(0).getCultura());
         
     }
 
@@ -210,18 +211,18 @@ public class TelaAltTerreno extends javax.swing.JFrame {
         int confirmacao = JOptionPane.showConfirmDialog(this, "Deseja realmente alterar os dados?");
         
         if(confirmacao == JOptionPane.YES_OPTION) {
-            t.setLogin(Cliente.getNome());
+            t.get(0).setLogin(Cliente.getNome());
         
-            t.setArea(Double.parseDouble(textArea.getText()));
-            t.setNome(textNome.getText());
-            t.setEstado(estado.getSelectedItem().toString());
-            t.setCultura(cultura.getSelectedItem().toString());
+            t.get(0).setArea(Double.parseDouble(textArea.getText()));
+            t.get(0).setNome(textNome.getText());
+            t.get(0).setEstado(estado.getSelectedItem().toString());
+            t.get(0).setCultura(cultura.getSelectedItem().toString());
 
-            t.setGastos(0);
+            t.get(0).setGastos(Double.parseDouble(textGastos.getText()));
 
 
             TerrenoDAO tDAO = new TerrenoDAO();
-            tDAO.update(t);
+            tDAO.update(t.get(0));
 
             new TelaTerreno().setVisible(true);
             this.dispose();
