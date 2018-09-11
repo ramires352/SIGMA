@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.bean.Cliente;
+import model.bean.Item;
 import model.bean.Terreno;
 
 /**
@@ -32,7 +33,7 @@ public class TerrenoDAO {
             stnt.setString(2,t.getNome());
             stnt.setString(3,t.getLogin());
             stnt.setString(4,t.getEstado());
-            stnt.setString(5, t.getCultura());
+            stnt.setString(5,t.getCultura());
             stnt.setDouble(6,t.getGastos());
             
             stnt.executeUpdate();
@@ -46,6 +47,32 @@ public class TerrenoDAO {
             ConnectionFactory.closeConnection(con, stnt);
         }
     
+    }
+    
+    public void update(Terreno t) {
+        
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stnt = null;
+        
+        try{
+            stnt = con.prepareStatement("UPDATE terreno (area,nome,estado,cultura,gastos) VALUES (?,?,?,?,?) WHERE idTerreno=?");
+            stnt.setDouble(1,t.getArea());
+            stnt.setString(2,t.getNome());
+            stnt.setString(3,t.getEstado());
+            stnt.setString(4, t.getCultura());
+            stnt.setDouble(5,t.getGastos());
+            stnt.setInt(6, t.getIdTerreno());
+            
+            
+            stnt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Alterado com Sucesso!");
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Erro ao Alterar! "+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stnt);
+        }
+        
     }
     
     

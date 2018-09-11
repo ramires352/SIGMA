@@ -116,6 +116,11 @@ public class TelaTerreno extends javax.swing.JFrame {
 
         botaoEditar.setBackground(new java.awt.Color(51, 153, 255));
         botaoEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/edit.png"))); // NOI18N
+        botaoEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEditarActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/rubbish.png"))); // NOI18N
@@ -229,6 +234,19 @@ public class TelaTerreno extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_botaoColheitaActionPerformed
+
+    private void botaoEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEditarActionPerformed
+        // TODO add your handling code here:
+        if(tabelaTerreno.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(null, "Selecione um Terreno!");
+        }
+        else {
+            TelaAltTerreno.telaTerreno = this;
+            
+            new TelaAltTerreno().setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_botaoEditarActionPerformed
 
     /**
      * @param args the command line arguments
