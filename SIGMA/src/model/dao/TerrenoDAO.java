@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.bean.Cliente;
-import model.bean.Item;
 import model.bean.Terreno;
 
 /**
@@ -110,16 +109,20 @@ public class TerrenoDAO {
         return terrenos;
     }
     
-    public Terreno readOne(int ID){
+    public List<Terreno> readOne(int ID){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stnt = null;
         ResultSet rs = null;
         Terreno t = new Terreno();
+       
+        List<Terreno> retorno = new ArrayList<>();
         
         try{
-            stnt = con.prepareStatement("SELECT * FROM terreno WHERE login = ?");
+            stnt = con.prepareStatement("SELECT * FROM terreno WHERE idTerreno = ?");
             stnt.setInt(1, ID);
             rs = stnt.executeQuery();
+            
+            rs.next();
                 
             t.setIdTerreno(rs.getInt("idTerreno"));
             t.setArea(rs.getDouble("area"));
@@ -128,6 +131,8 @@ public class TerrenoDAO {
             t.setEstado(rs.getString("estado"));
             t.setGastos(rs.getDouble("gastos"));
             t.setCultura(rs.getString("cultura"));
+            
+            retorno.add(t);
                             
         }
         catch(SQLException ex){
@@ -136,7 +141,7 @@ public class TerrenoDAO {
         finally{
             ConnectionFactory.closeConnection(con, stnt, rs);
         }
-        return t;
+        return retorno;
     }
     
     public void colher(int id, double q, String nomeT, String cultura){
