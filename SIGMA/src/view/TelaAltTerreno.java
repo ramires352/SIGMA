@@ -38,8 +38,10 @@ public class TelaAltTerreno extends javax.swing.JFrame {
         textNome.setText(t.get(0).getNome());
         textArea.setText(String.valueOf(t.get(0).getArea()));
         textGastos.setText(String.valueOf(t.get(0).getGastos()));
-        estado.setToolTipText(t.get(0).getEstado());
-        cultura.setToolTipText(t.get(0).getCultura());
+        //estado.setToolTipText(t.get(0).getEstado());
+        //cultura.setToolTipText(t.get(0).getCultura());
+        estado.setSelectedItem(t.get(0).getEstado());
+        cultura.setSelectedItem(t.get(0).getCultura());
         
     }
 

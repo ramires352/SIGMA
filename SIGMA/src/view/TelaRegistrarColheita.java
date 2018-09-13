@@ -140,6 +140,7 @@ public class TelaRegistrarColheita extends javax.swing.JFrame {
     private void botaoOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoOKActionPerformed
         // TODO add your handling code here:
         TerrenoDAO tDAO = new TerrenoDAO();
+        
         tDAO.colher(idTerreno, Double.parseDouble(textQtd.getText()), nomeT, cultura);
         
         

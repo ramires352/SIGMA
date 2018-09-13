@@ -8,6 +8,7 @@ package view;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import model.bean.Cliente;
 import model.bean.Terreno;
 import model.dao.TerrenoDAO;
@@ -188,14 +189,20 @@ public class TelaAddTerreno extends javax.swing.JFrame {
         
         t.setGastos(0);
         
+        if(estado.getSelectedItem().toString().equals("Limpo") && !cultura.getSelectedItem().toString().equals("Nenhum")){
+            JOptionPane.showMessageDialog(null, "Não é possivel selecionar 'Limpo' e uma cultura diferente de 'Nenhum'");
+        }
+        else{
+            TerrenoDAO tDAO = new TerrenoDAO();
+            tDAO.create(t);
+
+            new TelaTerreno().setVisible(true);
+            this.dispose();
+
+            TelaAddTerreno.telaTerreno.readJTable(); 
+        }
         
-        TerrenoDAO tDAO = new TerrenoDAO();
-        tDAO.create(t);
         
-        new TelaTerreno().setVisible(true);
-        this.dispose();
-        
-        TelaAddTerreno.telaTerreno.readJTable();
     }//GEN-LAST:event_botaoAddActionPerformed
 
     /**
