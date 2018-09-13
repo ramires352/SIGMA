@@ -1,6 +1,8 @@
 # Compiled class file
 *.class
 
+SIGMA/build
+
 # Log file
 *.log
 
