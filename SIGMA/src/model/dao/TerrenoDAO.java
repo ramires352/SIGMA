@@ -148,9 +148,47 @@ public class TerrenoDAO {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stnt = null;
         PreparedStatement stnt2 = null;
+        PreparedStatement stnt3 = null;
+        ResultSet rs = null;
         
         //AINDA FALTA INSERIR NO ESTOQUE
         try{
+            
+            //Verifica se ja existe esse grao no estoque, se existir aumenta a quantidade
+            //Se nao existir, insere no estoque
+            
+            stnt3 = con.prepareStatement("select if((select cultura from terreno where idTerreno = ?) in (select tipo from produto where login = ?),'TRUE','FALSE')");
+            stnt3.setInt(1, id);
+            stnt3.setString(2, Cliente.getNome());
+            
+            rs = stnt3.executeQuery();
+            rs.next();
+            
+            String resposta = rs.getString(1);
+            
+            System.out.println("RESPOSTA -> "+resposta);
+            
+            //Se já existe esse tipo de grao no estoque
+            if(resposta.equals("TRUE")){
+                stnt3 = con.prepareStatement("UPDATE produto set qtde = qtde + ? where tipo = ? and login = ?");
+                stnt3.setDouble(1, q);
+                stnt3.setString(2, cultura);
+                stnt3.setString(3, Cliente.getNome());
+                
+                stnt3.executeUpdate();
+            }
+            //Se ainda nao existe esse grao no estoque
+            else{
+                stnt3 = con.prepareStatement("INSERT INTO produto (nome, tipo, preco, login, qtde) VALUES (?,?,?,?,?)");
+                stnt3.setString(1, cultura);
+                stnt3.setString(2, cultura);
+                stnt3.setDouble(3,0);
+                stnt3.setString(4, Cliente.getNome());
+                stnt3.setDouble(5, q);
+                
+                stnt3.executeUpdate();
+            }
+            
             stnt = con.prepareStatement("UPDATE terreno SET estado = 'Limpo', cultura = 'Nenhum' WHERE idTerreno = ?");
             stnt.setInt(1, id);
             
@@ -167,6 +205,8 @@ public class TerrenoDAO {
             stnt.executeUpdate();
             stnt2.executeUpdate();
             
+            
+            
             JOptionPane.showMessageDialog(null, "Colheita Registrada!");
         }
         catch(SQLException ex){
@@ -175,6 +215,7 @@ public class TerrenoDAO {
         finally{
             ConnectionFactory.closeConnection(con, stnt);
             ConnectionFactory.closeConnection(con, stnt2);
+            ConnectionFactory.closeConnection(con, stnt3, rs);
         }
     }
     

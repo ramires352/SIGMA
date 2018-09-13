@@ -59,6 +59,8 @@ public class TelaAddProd extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Adicionar Produto no Estoque");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 255, 5));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 600));
@@ -66,20 +68,26 @@ public class TelaAddProd extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Chilanka", 0, 48)); // NOI18N
         jLabel1.setText("Adicionar Produto");
 
-        jLabel2.setFont(new java.awt.Font("Chilanka", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel2.setText("Nome");
 
-        jLabel3.setFont(new java.awt.Font("Chilanka", 0, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel3.setText("Tipo");
 
-        jLabel4.setFont(new java.awt.Font("Chilanka", 0, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel4.setText("Preço");
 
-        jLabel5.setFont(new java.awt.Font("Chilanka", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel5.setText("Quantidade");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semente", "Defensivo", "Soja", "Milho", "Aveia", "Trigo" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
+        jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow(1).png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +95,7 @@ public class TelaAddProd extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(51, 153, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/check.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,7 +132,7 @@ public class TelaAddProd extends javax.swing.JFrame {
                             .addComponent(jTextqtde, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
                             .addComponent(jTextnome)
                             .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +159,7 @@ public class TelaAddProd extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -169,6 +178,7 @@ public class TelaAddProd extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -186,7 +196,14 @@ public class TelaAddProd extends javax.swing.JFrame {
         
         ProdutoDAO pdao = new ProdutoDAO();
         pdao.create(p);
+        
+        new TelaEstoque().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
