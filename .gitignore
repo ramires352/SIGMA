@@ -1,7 +1,7 @@
 # Compiled class file
 *.class
 
-SIGMA/build
+SIGMA/build/*
 
 # Log file
 *.log
