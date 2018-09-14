@@ -151,7 +151,7 @@ public class TerrenoDAO {
         PreparedStatement stnt3 = null;
         ResultSet rs = null;
         
-        //AINDA FALTA INSERIR NO ESTOQUE
+        
         try{
             
             //Verifica se ja existe esse grao no estoque, se existir aumenta a quantidade
@@ -166,7 +166,7 @@ public class TerrenoDAO {
             
             String resposta = rs.getString(1);
             
-            System.out.println("RESPOSTA -> "+resposta);
+            //System.out.println("RESPOSTA -> "+resposta);
             
             //Se já existe esse tipo de grao no estoque
             if(resposta.equals("TRUE")){
