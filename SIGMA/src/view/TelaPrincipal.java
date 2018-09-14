@@ -72,6 +72,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         botaoLogOff = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SIGMA");
@@ -167,7 +168,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton4)
-                .addContainerGap(486, Short.MAX_VALUE))
+                .addContainerGap(485, Short.MAX_VALUE))
         );
 
         botaoLogOff.setBackground(new java.awt.Color(51, 153, 255));
@@ -180,6 +181,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(51, 153, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/coins.png"))); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Chilanka", 1, 24)); // NOI18N
+        jLabel1.setText("SIGMA");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -196,6 +200,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(botaoLogOff)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(272, 272, 272)
                 .addComponent(jButton2)
                 .addContainerGap())
         );
@@ -209,8 +215,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(botaoLogOff)
-                    .addComponent(jButton2))
-                .addContainerGap())
+                    .addComponent(jButton2)
+                    .addComponent(jLabel1))
+                .addGap(13, 13, 13))
         );
 
         pack();
@@ -293,6 +300,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
