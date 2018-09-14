@@ -92,6 +92,8 @@ public class TelaTerreno extends javax.swing.JFrame {
                 "ID", "Nome", "Área", "Estado", "Cultura", "Gastos"
             }
         ));
+        tabelaTerreno.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tabelaTerreno.setOpaque(false);
         jScrollPane1.setViewportView(tabelaTerreno);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -243,6 +245,7 @@ public class TelaTerreno extends javax.swing.JFrame {
         else {
             TelaAltTerreno.telaTerreno = this;
             TelaAltTerreno.idTerrenoAux = (int) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 0);
+            TelaAltTerreno.nomeT = (String) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 1);
             
             new TelaAltTerreno().setVisible(true);
             this.dispose();

@@ -23,6 +23,7 @@ public class TelaAltTerreno extends javax.swing.JFrame {
     
     public static TelaTerreno telaTerreno;
     public static int idTerrenoAux;
+    public static String nomeT;
 
     /**
      * Creates new form TelaAddTerreno
@@ -42,6 +43,7 @@ public class TelaAltTerreno extends javax.swing.JFrame {
         //cultura.setToolTipText(t.get(0).getCultura());
         estado.setSelectedItem(t.get(0).getEstado());
         cultura.setSelectedItem(t.get(0).getCultura());
+        titulo2.setText(nomeT);
         
     }
 
@@ -64,7 +66,7 @@ public class TelaAltTerreno extends javax.swing.JFrame {
 
             }
         };
-        jLabel1 = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -77,15 +79,16 @@ public class TelaAltTerreno extends javax.swing.JFrame {
         cultura = new javax.swing.JComboBox<>();
         textGastos = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        titulo2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Adicionar Terreno");
+        setTitle("Alteração de Terreno");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 0));
 
-        jLabel1.setFont(new java.awt.Font("Chilanka", 1, 48)); // NOI18N
-        jLabel1.setText("    Alterar Terreno");
+        titulo.setFont(new java.awt.Font("Chilanka", 1, 48)); // NOI18N
+        titulo.setText("Alterar Terreno");
 
         jLabel2.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel2.setText("Nome");
@@ -122,6 +125,9 @@ public class TelaAltTerreno extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel6.setText("Gastos");
 
+        titulo2.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
+        titulo2.setText("Nome do Terreno");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -132,15 +138,18 @@ public class TelaAltTerreno extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(titulo))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(botaoVoltar)
@@ -150,16 +159,21 @@ public class TelaAltTerreno extends javax.swing.JFrame {
                                     .addComponent(textArea)
                                     .addComponent(cultura, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(textNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textGastos)))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(textGastos))))
                         .addGap(152, 152, 152))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(titulo2)
+                .addGap(287, 287, 287))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addComponent(jLabel1)
-                .addGap(48, 48, 48)
+                .addGap(63, 63, 63)
+                .addComponent(titulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(titulo2)
+                .addGap(66, 66, 66)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -183,7 +197,7 @@ public class TelaAltTerreno extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botaoAlt)
                     .addComponent(botaoVoltar))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -275,7 +289,6 @@ public class TelaAltTerreno extends javax.swing.JFrame {
     private javax.swing.JButton botaoVoltar;
     private javax.swing.JComboBox<String> cultura;
     private javax.swing.JComboBox<String> estado;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -285,5 +298,7 @@ public class TelaAltTerreno extends javax.swing.JFrame {
     private javax.swing.JTextField textArea;
     private javax.swing.JTextField textGastos;
     private javax.swing.JTextField textNome;
+    private javax.swing.JLabel titulo;
+    private javax.swing.JLabel titulo2;
     // End of variables declaration//GEN-END:variables
 }

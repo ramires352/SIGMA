@@ -30,7 +30,7 @@ public class TelaAltProduto extends javax.swing.JFrame {
         titulo.setText("Alteração do Produto "+p.getNome());
         
         id = p.getIdProduto();
-        System.out.println("ID -> "+id);
+        //System.out.println("ID -> "+id);
         
         textNome.setText(p.getNome());
         textPreco.setText(String.valueOf(p.getPreco()));
