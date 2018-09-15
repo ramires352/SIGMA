@@ -78,14 +78,6 @@ create table manut_terreno(
 	idTerreno int not null,
 	primary key(idManut_terreno));
 
-create table graos(
-	idGraos int not null auto_increment,
-	tipo varchar(45) not null,
-	qtde double not null,
-	idTerreno int not null,
-	gastos double not null,
-	primary key(idGraos));
-
 create table vendas(
 	idVendas int not null auto_increment,
 	data date not null,
@@ -106,6 +98,7 @@ create table movimento(
 	preco_un double not null,
 	login varchar(45) not null,
 	data date not null,
+	idTerreno int,
 	primary key(idMov));
 
     
@@ -130,9 +123,7 @@ alter table terreno
 
 alter table movimento
 	add foreign key (login) references cliente(login);
-
-alter table graos
-	add foreign key (idTerreno) references terreno(idTerreno);	
+	add foreign key (idTerreno) references terreno(idTerreno);
 
 alter table colheita
 	add foreign key (idTerreno) references terreno(idTerreno);
