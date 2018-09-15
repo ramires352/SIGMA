@@ -122,7 +122,7 @@ alter table terreno
 	add foreign key (login) references cliente(login);
 
 alter table movimento
-	add foreign key (login) references cliente(login);
+	add foreign key (login) references cliente(login),
 	add foreign key (idTerreno) references terreno(idTerreno);
 
 alter table colheita
