@@ -231,34 +231,32 @@ public class TerrenoDAO {
         List<Plantio> plantios = new ArrayList<>();
         List<ManutTerreno> manutencoes = new ArrayList<>();
         List<Movimento> movimentos = new ArrayList<>();
+        String msg = "Não é possivel excluir este terreno! \nHá dados relacionados com este terreno!"
+                                    + "\nApague todos os dados relacionados a esse terreno e tente novamente.";
         
         try{
             ColheitaDAO cDAO = new ColheitaDAO();
             colheitas = cDAO.readTerreno(id);
             if (!colheitas.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Não é possivel excluir este terreno! \nHá dados relacionados com este terreno!"
-                                    + "\nApague todos os dados relacionados a esse terreno e tente novamente.");
+                JOptionPane.showMessageDialog(null, msg);
             }
             else{
                 PlantioDAO pDAO = new PlantioDAO();
                 plantios = pDAO.readTerreno(id);
                 if(!plantios.isEmpty()){
-                    JOptionPane.showMessageDialog(null, "Não é possivel excluir este terreno! \nHá dados relacionados com este terreno!"
-                                    + "\nApague todos os dados relacionados a esse terreno e tente novamente.");
+                    JOptionPane.showMessageDialog(null, msg);
                 }
                 else{
                     ManutTerrenoDAO mDAO = new ManutTerrenoDAO();
                     manutencoes = mDAO.readTerreno(id);
                     if(!manutencoes.isEmpty()){
-                        JOptionPane.showMessageDialog(null, "Não é possivel excluir este terreno! \nHá dados relacionados com este terreno!"
-                                    + "\nApague todos os dados relacionados a esse terreno e tente novamente.");
+                        JOptionPane.showMessageDialog(null, msg);
                     }
                     else{
                         MovimentoDAO movDAO = new MovimentoDAO();
                         movimentos = movDAO.readTerreno(id);
                         if (!movimentos.isEmpty()){
-                            JOptionPane.showMessageDialog(null, "Não é possivel excluir este terreno! \nHá dados relacionados com este terreno!"
-                                    + "\nApague todos os dados relacionados a esse terreno e tente novamente.");
+                            JOptionPane.showMessageDialog(null, msg);
                         }
                         else{
                             stnt = con.prepareStatement("DELETE FROM terreno WHERE idTerreno = ?");
