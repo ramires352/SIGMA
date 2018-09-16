@@ -126,6 +126,11 @@ public class TelaTerreno extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/rubbish.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         botaoAdd.setBackground(new java.awt.Color(51, 153, 255));
         botaoAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
@@ -251,6 +256,26 @@ public class TelaTerreno extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_botaoEditarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if(tabelaTerreno.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(null, "Selecione um Terreno!");
+        }
+        else{
+            int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja realmente remover o terreno?");
+            
+            int id = (int) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 0);
+            
+            if(confirmacao == JOptionPane.YES_OPTION){
+                TerrenoDAO tDAO = new TerrenoDAO();
+                tDAO.remover(id);
+                
+                readJTable();
+            }
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
