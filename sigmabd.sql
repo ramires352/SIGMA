@@ -90,7 +90,7 @@ create table vendas(
 
 create table movimento(
 	idMov int not null auto_increment,
-	nf varchar(45) not null,
+	nf varchar(45),
 	nome varchar(45) not null,
 	tipo varchar(45) not null,
 	qtde int not null,
