@@ -84,7 +84,7 @@ public class MovimentoDAO {
                 m.setQtde(rs.getDouble("qtde"));
                 m.setDescricao(rs.getString("descricao"));
                 m.setPreco_un(rs.getDouble("preco_un"));
-                m.setLogin(rs.getString(Cliente.getNome()));
+                m.setLogin(rs.getString("login"));
                 m.setData(rs.getDate("data"));
                 
                 m.setIdTerreno(rs.getInt("idTerreno"));

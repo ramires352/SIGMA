@@ -28,9 +28,16 @@ public class TelaMovimento extends javax.swing.JFrame {
         
         for(Movimento mov: movDAO.read()){
             modelo.addRow(new Object[]{
-                mov.getIdTerreno(),
+                mov.getIdMov(),
+                mov.getNf(),
                 mov.getNome(),
-     
+                mov.getTipo(),
+                mov.getDescricao(),
+                mov.getData(),
+                mov.getIdTerreno(),
+                mov.getQtde(),
+                mov.getPreco_un(),
+                mov.getPreco_un() * mov.getQtde()
             });
         }
     }
