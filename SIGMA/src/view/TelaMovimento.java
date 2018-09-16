@@ -8,6 +8,10 @@ package view;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import model.bean.Movimento;
+import model.dao.MovimentoDAO;
 /**
  *
  * @author ramires
@@ -17,8 +21,31 @@ public class TelaMovimento extends javax.swing.JFrame {
     /**
      * Creates new form TelaMovimento
      */
+    public void readJTable(){
+        DefaultTableModel modelo = (DefaultTableModel) tabelaMovimento.getModel();
+        modelo.setNumRows(0);
+        MovimentoDAO movDAO = new MovimentoDAO();
+        
+        for(Movimento mov: movDAO.read()){
+            modelo.addRow(new Object[]{
+                mov.getIdTerreno(),
+                mov.getNome(),
+     
+            });
+        }
+    }
+    
+    
+    
     public TelaMovimento() {
         initComponents();
+        DefaultTableModel modelo = (DefaultTableModel) tabelaMovimento.getModel();
+        modelo.setNumRows(0);
+        tabelaMovimento.setRowSorter(new TableRowSorter(modelo));
+        
+        readJTable();
+        
+        
     }
 
     /**
@@ -42,7 +69,7 @@ public class TelaMovimento extends javax.swing.JFrame {
         };
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaMovimento = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -54,15 +81,15 @@ public class TelaMovimento extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(51, 153, 0));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaMovimento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "NF", "Nome", "Tipo", "Quantidade", "Descrição", "Preço (un)", "Data", "Terreno"
+                "ID", "NF", "Nome", "Tipo", "Descrição", "Data", "Terreno", "Quantidade", "Preço (un)", "Preço"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelaMovimento);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -194,6 +221,6 @@ public class TelaMovimento extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelaMovimento;
     // End of variables declaration//GEN-END:variables
 }
