@@ -96,7 +96,7 @@ public class TerrenoDAO {
                 t.setIdTerreno(rs.getInt("idTerreno"));
                 t.setArea(rs.getDouble("area"));
                 t.setNome(rs.getString("nome"));
-                t.setLogin(rs.getString("nome"));
+                t.setLogin(rs.getString(Cliente.getNome()));
                 t.setEstado(rs.getString("estado"));
                 t.setGastos(rs.getDouble("gastos"));
                 t.setCultura(rs.getString("cultura"));

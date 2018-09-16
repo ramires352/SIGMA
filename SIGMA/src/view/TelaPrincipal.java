@@ -57,6 +57,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         };
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        botaoPlantacoes = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel(){
             public void paintComponent(Graphics g){
 
@@ -70,8 +71,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         };
         jButton4 = new javax.swing.JButton();
-        botaoLogOff = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        botaoLogOff = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -123,6 +124,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        botaoPlantacoes.setBackground(new java.awt.Color(51, 153, 255));
+        botaoPlantacoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/planting.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -130,6 +134,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(100, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botaoPlantacoes)
                     .addComponent(jButton1)
                     .addComponent(jButton3))
                 .addGap(96, 96, 96))
@@ -141,7 +146,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jButton3)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(425, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(botaoPlantacoes)
+                .addContainerGap(365, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(153, 255, 153));
@@ -154,13 +161,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(51, 153, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/coins.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(120, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton2)
+                    .addComponent(jButton4))
                 .addGap(75, 75, 75))
         );
         jPanel3Layout.setVerticalGroup(
@@ -168,6 +185,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton4)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -178,9 +197,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 botaoLogOffActionPerformed(evt);
             }
         });
-
-        jButton2.setBackground(new java.awt.Color(51, 153, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/coins.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Chilanka", 1, 24)); // NOI18N
         jLabel1.setText("SIGMA");
@@ -201,9 +217,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(botaoLogOff)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(272, 272, 272)
-                .addComponent(jButton2)
-                .addContainerGap())
+                .addGap(350, 350, 350))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,7 +229,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(botaoLogOff)
-                    .addComponent(jButton2)
                     .addComponent(jLabel1))
                 .addGap(13, 13, 13))
         );
@@ -226,7 +239,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void botaoMaqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoMaqActionPerformed
         // TODO add your handling code here:
-        TelaMain tm = new TelaMain();
+        TelaListaMaquinas tm = new TelaListaMaquinas();
         tm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botaoMaqActionPerformed
@@ -257,6 +270,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
        new TelaEstoque().setVisible(true);
        this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        new TelaMovimento().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -296,6 +315,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoLogOff;
     private javax.swing.JButton botaoMaq;
+    private javax.swing.JButton botaoPlantacoes;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
