@@ -15,6 +15,9 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import model.bean.Cliente;
 import model.bean.Colheita;
+import model.bean.ManutTerreno;
+import model.bean.Movimento;
+import model.bean.Plantio;
 import model.bean.Terreno;
 
 /**
@@ -233,28 +236,32 @@ public class TerrenoDAO {
             ColheitaDAO cDAO = new ColheitaDAO();
             colheitas = cDAO.readTerreno(id);
             if (!colheitas.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Não é possivel excluir este terreno! \n Há dados relacionados com este terreno.");
+                JOptionPane.showMessageDialog(null, "Não é possivel excluir este terreno! \nHá dados relacionados com este terreno!"
+                                    + "\nApague todos os dados relacionados a esse terreno e tente novamente.");
             }
             else{
                 PlantioDAO pDAO = new PlantioDAO();
-                plantios = cDAO.readTerreno(id);
+                plantios = pDAO.readTerreno(id);
                 if(!plantios.isEmpty()){
-                    JOptionPane.showMessageDialog(null, "Não é possivel excluir este terreno! \n Há dados relacionados com este terreno.");
+                    JOptionPane.showMessageDialog(null, "Não é possivel excluir este terreno! \nHá dados relacionados com este terreno!"
+                                    + "\nApague todos os dados relacionados a esse terreno e tente novamente.");
                 }
                 else{
                     ManutTerrenoDAO mDAO = new ManutTerrenoDAO();
                     manutencoes = mDAO.readTerreno(id);
                     if(!manutencoes.isEmpty()){
-                        JOptionPane.showMessageDialog(null, "Não é possivel excluir este terreno! \n Há dados relacionados com este terreno.");
+                        JOptionPane.showMessageDialog(null, "Não é possivel excluir este terreno! \nHá dados relacionados com este terreno!"
+                                    + "\nApague todos os dados relacionados a esse terreno e tente novamente.");
                     }
                     else{
                         MovimentoDAO movDAO = new MovimentoDAO();
                         movimentos = movDAO.readTerreno(id);
                         if (!movimentos.isEmpty()){
-                            JOptionPane.showMessageDialog(null, "Não é possivel excluir este terreno! \n Há dados relacionados com este terreno.");
+                            JOptionPane.showMessageDialog(null, "Não é possivel excluir este terreno! \nHá dados relacionados com este terreno!"
+                                    + "\nApague todos os dados relacionados a esse terreno e tente novamente.");
                         }
                         else{
-                            stnt = con.prepareStatement("DELETE * FROM terreno WHERE idTerreno = ?");
+                            stnt = con.prepareStatement("DELETE FROM terreno WHERE idTerreno = ?");
                             stnt.setInt(1, id);
                             stnt.executeUpdate();
                             JOptionPane.showMessageDialog(null, "Removido com Sucesso!");
