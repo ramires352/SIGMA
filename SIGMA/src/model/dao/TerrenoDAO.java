@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.bean.Cliente;
+import model.bean.Colheita;
 import model.bean.Terreno;
 
 /**
@@ -168,7 +169,7 @@ public class TerrenoDAO {
             
             //System.out.println("RESPOSTA -> "+resposta);
             
-            //Se já existe esse tipo de grao no estoque
+            //Se jÃ¡ existe esse tipo de grao no estoque
             if(resposta.equals("TRUE")){
                 stnt3 = con.prepareStatement("UPDATE produto set qtde = qtde + ? where tipo = ? and login = ?");
                 stnt3.setDouble(1, q);
@@ -216,6 +217,55 @@ public class TerrenoDAO {
             ConnectionFactory.closeConnection(con, stnt);
             ConnectionFactory.closeConnection(con, stnt2);
             ConnectionFactory.closeConnection(con, stnt3, rs);
+        }
+    }
+    
+        public void remover(int id) {
+        
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stnt = null;
+        List<Colheita> colheitas = new ArrayList<>();
+        List<Plantio> plantios = new ArrayList<>();
+        List<ManutTerreno> manutencoes = new ArrayList<>();
+        List<Movimento> movimentos = new ArrayList<>();
+        
+        try{
+            ColheitaDAO cDAO = new ColheitaDAO();
+            colheitas = cDAO.readTerreno(id);
+            if (!colheitas.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Não é possivel excluir este terreno! \n Há dados relacionados com este terreno.");
+            }
+            else{
+                PlantioDAO pDAO = new PlantioDAO();
+                plantios = cDAO.readTerreno(id);
+                if(!plantios.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Não é possivel excluir este terreno! \n Há dados relacionados com este terreno.");
+                }
+                else{
+                    ManutTerrenoDAO mDAO = new ManutTerrenoDAO();
+                    manutencoes = mDAO.readTerreno(id);
+                    if(!manutencoes.isEmpty()){
+                        JOptionPane.showMessageDialog(null, "Não é possivel excluir este terreno! \n Há dados relacionados com este terreno.");
+                    }
+                    else{
+                        MovimentoDAO movDAO = new MovimentoDAO();
+                        movimentos = movDAO.readTerreno(id);
+                        if (!movimentos.isEmpty()){
+                            JOptionPane.showMessageDialog(null, "Não é possivel excluir este terreno! \n Há dados relacionados com este terreno.");
+                        }
+                        else{
+                            stnt = con.prepareStatement("DELETE * FROM terreno WHERE idTerreno = ?");
+                            stnt.setInt(1, id);
+                            stnt.executeUpdate();
+                            JOptionPane.showMessageDialog(null, "Removido com Sucesso!");
+                        }
+                    }
+                }
+            }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Erro ao Remover! "+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stnt);
         }
     }
     
