@@ -57,4 +57,40 @@ public class ColheitaDAO {
         return colheitas;
     }
     
+    public List<Colheita> readTerreno(int id){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stnt = null;
+        ResultSet rs = null;
+        List<Colheita> colheitas = new ArrayList<>();
+        
+        try{
+            stnt = con.prepareStatement("SELECT * FROM colheita WHERE idTerreno = ?");
+            stnt.setInt(1, id);
+            
+            rs = stnt.executeQuery();
+            
+            while(rs.next()){
+                Colheita c = new Colheita();
+                
+                c.setData(rs.getDate("data"));
+                c.setIdColheita(rs.getInt("idColheita"));
+                c.setIdTerreno(rs.getInt("idTerreno"));
+                c.setNomeTerreno(rs.getString("nomeTerreno"));
+                c.setQtde(rs.getDouble("qtde"));
+                c.setCultura(rs.getString("cultura"));
+                
+                colheitas.add(c);
+            }
+            
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Erro na Leitura! "+ ex);
+        }
+        finally{
+            ConnectionFactory.closeConnection(con, stnt, rs);
+        }
+        return colheitas;
+            
+    }
+    
 }
