@@ -105,12 +105,12 @@ public class TelaMaquina extends javax.swing.JFrame {
         
         dao.create(m);
         //nome.setText("");
-        new TelaMain().setVisible(true);
+        new TelaListaMaquinas().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new TelaMain().setVisible(true);
+        new TelaListaMaquinas().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 

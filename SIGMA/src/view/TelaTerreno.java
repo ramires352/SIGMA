@@ -77,6 +77,7 @@ public class TelaTerreno extends javax.swing.JFrame {
         botaoAdd = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         botaoColheita = new javax.swing.JButton();
+        botaoVeneno = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Terrenos");
@@ -151,6 +152,9 @@ public class TelaTerreno extends javax.swing.JFrame {
             }
         });
 
+        botaoVeneno.setBackground(new java.awt.Color(51, 153, 255));
+        botaoVeneno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/passarVeneno.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -167,6 +171,8 @@ public class TelaTerreno extends javax.swing.JFrame {
                         .addComponent(botaoEditar))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(botaoColheita)
+                        .addGap(18, 18, 18)
+                        .addComponent(botaoVeneno)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)))
                 .addContainerGap())
@@ -179,9 +185,11 @@ public class TelaTerreno extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addComponent(botaoColheita))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton1)
+                        .addComponent(botaoColheita))
+                    .addComponent(botaoVeneno))
                 .addGap(58, 58, 58)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
@@ -316,6 +324,7 @@ public class TelaTerreno extends javax.swing.JFrame {
     private javax.swing.JButton botaoAdd;
     private javax.swing.JButton botaoColheita;
     private javax.swing.JButton botaoEditar;
+    private javax.swing.JButton botaoVeneno;
     private javax.swing.JButton botaoVoltar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
