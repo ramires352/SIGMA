@@ -5,6 +5,11 @@
         <group>
             <file>file:/home/ramires/GIT/SIGMA/SIGMA/src/model/dao/MovimentoDAO.java</file>
             <file>file:/home/ramires/GIT/SIGMA/SIGMA/src/model/dao/TerrenoDAO.java</file>
+<<<<<<< HEAD
+=======
+            <file>file:/home/ramires/GIT/SIGMA/SIGMA/src/view/TelaEstoque.java</file>
+            <file>file:/home/ramires/GIT/SIGMA/SIGMA/src/model/dao/ProdutoDAO.java</file>
+>>>>>>> Rafael
             <file>file:/home/ramires/GIT/SIGMA/SIGMA/src/view/TelaTerreno.java</file>
             <file>file:/home/ramires/GIT/SIGMA/SIGMA/src/view/TelaPrincipal.java</file>
         </group>

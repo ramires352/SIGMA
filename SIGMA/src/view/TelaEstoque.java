@@ -79,7 +79,7 @@ public class TelaEstoque extends javax.swing.JFrame {
         jButtonAdd = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        botaoDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -136,8 +136,13 @@ public class TelaEstoque extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(51, 153, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/rubbish.png"))); // NOI18N
+        botaoDelete.setBackground(new java.awt.Color(51, 153, 255));
+        botaoDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/rubbish.png"))); // NOI18N
+        botaoDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -159,14 +164,14 @@ public class TelaEstoque extends javax.swing.JFrame {
                         .addComponent(jButton2))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3)))
+                        .addComponent(botaoDelete)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton3)
+                .addComponent(botaoDelete)
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
@@ -230,6 +235,32 @@ public class TelaEstoque extends javax.swing.JFrame {
          
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void botaoDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDeleteActionPerformed
+        // TODO add your handling code here:
+        
+        if(jTable1.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(null, "Selecione um Produto!");
+        }
+        else {
+            
+            int confirmacao = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir o produto?");
+            int id;
+            
+            if(confirmacao == JOptionPane.YES_OPTION) {
+                
+                id = (int) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+                
+                ProdutoDAO pDAO = new ProdutoDAO();
+                pDAO.delete(id);
+                
+                readJTable();   
+                
+            }
+            
+        }
+        
+    }//GEN-LAST:event_botaoDeleteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -269,9 +300,9 @@ public class TelaEstoque extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoDelete;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonAdd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
