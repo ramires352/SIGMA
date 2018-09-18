@@ -108,7 +108,7 @@ public class ProdutoDAO {
         PreparedStatement stnt = null;
         
         try{
-            stnt = con.prepareStatement("DELETE FROM produto WHERE idItem = ?");
+            stnt = con.prepareStatement("DELETE FROM produto WHERE idProduto = ?");
             stnt.setInt(1,id);
             
             stnt.executeUpdate();

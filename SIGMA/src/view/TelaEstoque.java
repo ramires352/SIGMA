@@ -253,6 +253,8 @@ public class TelaEstoque extends javax.swing.JFrame {
                 ProdutoDAO pDAO = new ProdutoDAO();
                 pDAO.delete(id);
                 
+                readJTable();   
+                
             }
             
         }
