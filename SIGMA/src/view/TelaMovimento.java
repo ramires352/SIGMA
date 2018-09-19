@@ -36,8 +36,8 @@ public class TelaMovimento extends javax.swing.JFrame {
                 mov.getData(),
                 mov.getIdTerreno(),
                 mov.getQtde(),
-                mov.getPreco_un(),
-                mov.getPreco_un() * mov.getQtde()
+                String.format("%.2f", mov.getPreco_un()),
+                String.format("%.2f",mov.getPreco_un() * mov.getQtde())
             });
         }
     }
@@ -122,6 +122,11 @@ public class TelaMovimento extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(51, 153, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Chilanka", 1, 48)); // NOI18N
         jLabel1.setText("Movimentações Financeiras");
@@ -157,9 +162,9 @@ public class TelaMovimento extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -184,6 +189,13 @@ public class TelaMovimento extends javax.swing.JFrame {
         new TelaPrincipal().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        System.out.println(tabelaMovimento.getValueAt(tabelaMovimento.getSelectedRow(), 8));
+        System.out.println(tabelaMovimento.getValueAt(tabelaMovimento.getSelectedRow(), 8).getClass());
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
