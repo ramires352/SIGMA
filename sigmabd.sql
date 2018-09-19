@@ -90,15 +90,15 @@ create table vendas(
 
 create table movimento(
 	idMov int not null auto_increment,
-	nf varchar(45),
+	nf varchar(45) default '-',
 	nome varchar(45) not null,
 	tipo varchar(45) not null,
 	qtde int not null,
-	descricao varchar(45),
+	descricao varchar(45) default '-',
 	preco_un double not null,
 	login varchar(45) not null,
 	data date not null,
-	idTerreno int,
+	idTerreno int default 0,
 	primary key(idMov));
 
     
