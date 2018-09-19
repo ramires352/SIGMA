@@ -33,6 +33,22 @@ public class TelaColheitas extends javax.swing.JFrame {
             });
         }
     }
+    
+    public void readJTableFiltro(String de, String ate){
+        DefaultTableModel modelo = (DefaultTableModel) tabelaColheitas.getModel();
+        modelo.setNumRows(0);
+        ColheitaDAO cDAO = new ColheitaDAO();
+        
+        for(Colheita c: cDAO.readFiltro(de, ate)){
+            modelo.addRow(new Object[]{
+                c.getData(),
+                c.getNomeTerreno(),
+                c.getQtde(),
+                c.getCultura()
+                    
+            });
+        }
+    }
 
 
     /**
@@ -70,6 +86,7 @@ public class TelaColheitas extends javax.swing.JFrame {
         tabelaColheitas = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        botaoFiltro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Colheitas");
@@ -98,6 +115,14 @@ public class TelaColheitas extends javax.swing.JFrame {
             }
         });
 
+        botaoFiltro.setBackground(new java.awt.Color(51, 153, 255));
+        botaoFiltro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/filter.png"))); // NOI18N
+        botaoFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoFiltroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -110,7 +135,9 @@ public class TelaColheitas extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botaoFiltro)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +145,9 @@ public class TelaColheitas extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botaoFiltro, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -143,6 +172,12 @@ public class TelaColheitas extends javax.swing.JFrame {
         new TelaPrincipal().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void botaoFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFiltroActionPerformed
+        // TODO add your handling code here:
+        new TelaFiltrarColheita().setVisible(true);
+        TelaFiltrarColheita.telaC = this;
+    }//GEN-LAST:event_botaoFiltroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,6 +215,7 @@ public class TelaColheitas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoFiltro;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
