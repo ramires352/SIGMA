@@ -95,7 +95,7 @@ create table movimento(
 	tipo varchar(45) not null,
 	qtde int not null,
 	descricao varchar(45) default '-',
-	preco_un double not null,
+	preco_un double default 0,
 	login varchar(45) not null,
 	data date not null,
 	idTerreno int default 0,
