@@ -148,7 +148,7 @@ public class TerrenoDAO {
         return retorno;
     }
     
-    public void colher(int id, double q, String nomeT, String cultura){
+    public void colher(int id, double q, String nomeT, String cultura, double custo){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stnt = null;
         PreparedStatement stnt2 = null;
@@ -193,7 +193,7 @@ public class TerrenoDAO {
                 stnt3.executeUpdate();
             }
             
-            stnt = con.prepareStatement("UPDATE terreno SET estado = 'Limpo', cultura = 'Nenhum' WHERE idTerreno = ?");
+            stnt = con.prepareStatement("UPDATE terreno SET estado = 'Limpo', cultura = 'Nenhum', gastos = 0 WHERE idTerreno = ?");
             stnt.setInt(1, id);
             
             java.util.Date dia = new java.util.Date();
@@ -209,7 +209,17 @@ public class TerrenoDAO {
             stnt.executeUpdate();
             stnt2.executeUpdate();
             
+            stnt3 = con.prepareStatement("INSERT INTO movimento (nome, tipo, qtde, descricao, preco_un, login, data, idTerreno) VALUES (?,?,?,?,?,?,?,?)");
+            stnt3.setString(1,"Colheita");
+            stnt3.setString(2, cultura);
+            stnt3.setDouble(3, q);
+            stnt3.setString(4, nomeT);
+            stnt3.setDouble(5, custo/q);
+            stnt3.setString(6, Cliente.getNome());
+            stnt3.setDate(7, dataSql);
+            stnt3.setInt(8, id);
             
+            stnt3.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Colheita Registrada!");
         }

@@ -35,7 +35,7 @@ public class TelaMovimento extends javax.swing.JFrame {
                 mov.getDescricao(),
                 mov.getData(),
                 mov.getIdTerreno(),
-                mov.getQtde(),
+                String.format("%.2f", mov.getQtde()),
                 String.format("%.2f", mov.getPreco_un()),
                 String.format("%.2f",mov.getPreco_un() * mov.getQtde())
             });
@@ -192,8 +192,7 @@ public class TelaMovimento extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        System.out.println(tabelaMovimento.getValueAt(tabelaMovimento.getSelectedRow(), 8));
-        System.out.println(tabelaMovimento.getValueAt(tabelaMovimento.getSelectedRow(), 8).getClass());
+
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
