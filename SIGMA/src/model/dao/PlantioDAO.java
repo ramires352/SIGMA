@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import model.bean.Cliente;
 import model.bean.Plantio;
 
 /**
@@ -55,5 +56,41 @@ public class PlantioDAO {
         }
         return plantios;
             
+    }
+    
+    public List<Plantio> readFiltro(String de, String ate){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stnt = null;
+        ResultSet rs = null;
+        List<Plantio> plantios = new ArrayList<>();
+        
+        try{
+            stnt = con.prepareStatement("SELECT * FROM plantio WHERE idTerreno IN (SELECT idTerreno FROM terreno WHERE login = ?) AND data >= ? AND data <= ?");
+            stnt.setString(1,Cliente.getNome());
+            stnt.setString(2,de);
+            stnt.setString(3,ate);    
+            
+            rs = stnt.executeQuery();
+            
+            while(rs.next()){
+                Plantio p = new Plantio();
+                
+                p.setIdPlantio(rs.getInt("idPlantio"));
+                p.setIdTerreno(rs.getInt("idTerreno"));
+                p.setData(rs.getDate("data"));
+                p.setSementes(rs.getString("sementes"));
+                p.setQtde_sementes(rs.getDouble("qtde_sementes"));
+                p.setCultura(rs.getString("cultura"));
+                
+                plantios.add(p);
+            }
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Erro na Leitura! "+ ex);
+        }
+        finally{
+            ConnectionFactory.closeConnection(con, stnt, rs);
+        }
+        return plantios;
     }
 }
