@@ -7,6 +7,9 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -25,6 +28,9 @@ public class TelaTerreno extends javax.swing.JFrame {
         modelo.setNumRows(0);
         TerrenoDAO tDAO = new TerrenoDAO();
         
+        DecimalFormat df = new DecimalFormat("0.00",new DecimalFormatSymbols(new Locale("en","US")));
+        
+        
         for(Terreno t: tDAO.read()){
             modelo.addRow(new Object[]{
                 t.getIdTerreno(),
@@ -32,7 +38,7 @@ public class TelaTerreno extends javax.swing.JFrame {
                 t.getArea(),
                 t.getEstado(),
                 t.getCultura(),
-                t.getGastos()
+                df.format(t.getGastos())
             });
         }
     }
@@ -244,6 +250,8 @@ public class TelaTerreno extends javax.swing.JFrame {
                 TelaRegistrarColheita.idTerreno = (int) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 0);
                 TelaRegistrarColheita.nomeT = (String) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 1);
                 TelaRegistrarColheita.cultura = (String) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 4);
+                TelaRegistrarColheita.preco = Double.parseDouble((String) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 5));
+                
                 new TelaRegistrarColheita().setVisible(true);
             }
         }

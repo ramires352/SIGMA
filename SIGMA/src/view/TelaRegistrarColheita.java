@@ -21,6 +21,7 @@ public class TelaRegistrarColheita extends javax.swing.JFrame {
     public static int idTerreno;
     public static String nomeT, cultura;
     public static TelaTerreno tTerreno;
+    public static double preco;
     
     public TelaRegistrarColheita() {
         initComponents();
@@ -141,8 +142,7 @@ public class TelaRegistrarColheita extends javax.swing.JFrame {
         // TODO add your handling code here:
         TerrenoDAO tDAO = new TerrenoDAO();
         
-        tDAO.colher(idTerreno, Double.parseDouble(textQtd.getText()), nomeT, cultura);
-        
+        tDAO.colher(idTerreno, Double.parseDouble(textQtd.getText()), nomeT, cultura, preco);
         
         this.dispose();
         tTerreno.readJTable();
