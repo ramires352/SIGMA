@@ -93,7 +93,7 @@ create table movimento(
 	nf varchar(45) default '-',
 	nome varchar(45) not null,
 	tipo varchar(45) not null,
-	qtde int not null,
+	qtde double not null,
 	descricao varchar(45) default '-',
 	preco_un double default 0,
 	login varchar(45) not null,
