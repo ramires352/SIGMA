@@ -95,8 +95,19 @@ public class TelaMovimento extends javax.swing.JFrame {
             new String [] {
                 "ID", "NF", "Nome", "Tipo", "Descrição", "Data", "Terreno", "Quantidade", "Preço (un)", "Preço"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tabelaMovimento);
+        if (tabelaMovimento.getColumnModel().getColumnCount() > 0) {
+            tabelaMovimento.getColumnModel().getColumn(0).setPreferredWidth(7);
+        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
