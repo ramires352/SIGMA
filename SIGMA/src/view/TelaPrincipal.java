@@ -126,6 +126,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         botaoPlantacoes.setBackground(new java.awt.Color(51, 153, 255));
         botaoPlantacoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/planting.png"))); // NOI18N
+        botaoPlantacoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoPlantacoesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -276,6 +281,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         new TelaMovimento().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void botaoPlantacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPlantacoesActionPerformed
+        new TelaPlantio().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botaoPlantacoesActionPerformed
 
     /**
      * @param args the command line arguments
