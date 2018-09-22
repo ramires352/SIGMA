@@ -121,4 +121,28 @@ public class ProdutoDAO {
         }
     }
     
+    public List<String> readSementes(){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stnt = null;
+        ResultSet rs = null;
+        List<String> sementes = new ArrayList<>();
+        
+        try{
+            stnt = con.prepareStatement("SELECT nome FROM produto WHERE tipo = 'Semente' AND login = ?");
+            stnt.setString(1, Cliente.getNome());
+            
+            rs = stnt.executeQuery();
+            
+            while(rs.next()){
+                sementes.add(rs.getString("nome"));
+            }
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Erro na Leitura! "+ex);
+        }
+        finally{
+            ConnectionFactory.closeConnection(con, stnt);
+        }
+        return sementes;
+    }
 }
