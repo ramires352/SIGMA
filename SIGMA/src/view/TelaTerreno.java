@@ -279,6 +279,8 @@ public class TelaTerreno extends javax.swing.JFrame {
         }
         else {
             TelaAltTerreno.telaTerreno = this;
+            
+            //Pegar ID e nome do terreno para alteração
             TelaAltTerreno.idTerrenoAux = (int) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 0);
             TelaAltTerreno.nomeT = (String) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 1);
             

@@ -113,6 +113,8 @@ public class TerrenoDAO {
         return terrenos;
     }
     
+    //Enquanto a função anterior retorna todos os terrenos
+    //Essa aqui retorna apenas o terreno do ID que foi passado
     public List<Terreno> readOne(int ID){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stnt = null;
