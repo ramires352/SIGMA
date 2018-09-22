@@ -195,9 +195,9 @@ public class TelaPlantio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void botaoFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFiltroActionPerformed
-     /*   // TODO add your handling code here:
-        new TelaFiltrarColheita().setVisible(true);
-        TelaFiltrarColheita.telaC = this;*/
+        // TODO add your handling code here:
+        new TelaFiltrarPlantio().setVisible(true);
+        TelaFiltrarPlantio.telaP = this;
     }//GEN-LAST:event_botaoFiltroActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
