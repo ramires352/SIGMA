@@ -251,14 +251,13 @@ public class TelaEstoque extends javax.swing.JFrame {
             int id;
             
             if(confirmacao == JOptionPane.YES_OPTION) {
-                
+
                 id = (int) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
                 
                 ProdutoDAO pDAO = new ProdutoDAO();
                 pDAO.delete(id);
                 
                 readJTable();   
-                
             }
             
         }

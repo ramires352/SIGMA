@@ -103,6 +103,7 @@ public class ProdutoDAO {
         }
     }
     
+    //Função para remover o produto do banco de dados
     public void delete(int id){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stnt = null;
