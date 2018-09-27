@@ -7,6 +7,9 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -26,6 +29,8 @@ public class TelaMovimento extends javax.swing.JFrame {
         modelo.setNumRows(0);
         MovimentoDAO movDAO = new MovimentoDAO();
         
+        DecimalFormat df = new DecimalFormat("0.00",new DecimalFormatSymbols(new Locale("en","US")));
+        
         for(Movimento mov: movDAO.read()){
             modelo.addRow(new Object[]{
                 mov.getIdMov(),
@@ -35,9 +40,9 @@ public class TelaMovimento extends javax.swing.JFrame {
                 mov.getDescricao(),
                 mov.getData(),
                 mov.getIdTerreno(),
-                String.format("%.2f", mov.getQtde()),
-                String.format("%.2f", mov.getPreco_un()),
-                String.format("%.2f",mov.getPreco_un() * mov.getQtde())
+                df.format(mov.getQtde()),
+                df.format(mov.getPreco_un()),
+                df.format(mov.getPreco_un() * mov.getQtde())
             });
         }
     }
@@ -46,6 +51,8 @@ public class TelaMovimento extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tabelaMovimento.getModel();
         modelo.setNumRows(0);
         MovimentoDAO movDAO = new MovimentoDAO();
+        
+        DecimalFormat df = new DecimalFormat("0.00",new DecimalFormatSymbols(new Locale("en","US")));
         
         for(Movimento mov: movDAO.readFiltro(de, ate)){
             modelo.addRow(new Object[]{
@@ -56,9 +63,9 @@ public class TelaMovimento extends javax.swing.JFrame {
                 mov.getDescricao(),
                 mov.getData(),
                 mov.getIdTerreno(),
-                String.format("%.2f", mov.getQtde()),
-                String.format("%.2f", mov.getPreco_un()),
-                String.format("%.2f",mov.getPreco_un() * mov.getQtde())
+                df.format(mov.getQtde()),
+                df.format(mov.getPreco_un()),
+                df.format(mov.getPreco_un() * mov.getQtde())
             });
         }
     }

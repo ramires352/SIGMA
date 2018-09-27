@@ -7,8 +7,11 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -28,13 +31,15 @@ public class TelaEstoque extends javax.swing.JFrame {
         modelo.setNumRows(0);
         ProdutoDAO tDAO = new ProdutoDAO();
         
+        DecimalFormat df = new DecimalFormat("0.00",new DecimalFormatSymbols(new Locale("en","US")));
+        
         for(Produto t: tDAO.read()){
             modelo.addRow(new Object[]{
                 t.getIdProduto(),
                 t.getNome(),
                 t.getTipo(),
-                String.format("%.2f",t.getPreco()),
-                String.format("%.2f",t.getQtde()),
+                df.format(t.getPreco()),
+                df.format(t.getQtde()),
             });
         }
     }
@@ -218,19 +223,14 @@ public class TelaEstoque extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione um Produto!");
         }
         else{
-            TelaAltProduto.telaE = this;
             
             Produto p = new Produto();
             
             p.setIdProduto((int) jTable1.getValueAt(jTable1.getSelectedRow(), 0));
             p.setNome(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
             p.setTipo(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
-            p.setPreco((double) jTable1.getValueAt(jTable1.getSelectedRow(), 3));
-            p.setQtde((double) jTable1.getValueAt(jTable1.getSelectedRow(), 4));
-            
-            
-            //TelaAltProduto.descricao = jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString();
-            //TelaAltProduto.id = (int) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+            p.setPreco(Double.parseDouble((String) jTable1.getValueAt(jTable1.getSelectedRow(), 3)));
+            p.setQtde(Double.parseDouble((String) jTable1.getValueAt(jTable1.getSelectedRow(), 4)));
             
             new TelaAltProduto(p).setVisible(true);
             this.dispose();

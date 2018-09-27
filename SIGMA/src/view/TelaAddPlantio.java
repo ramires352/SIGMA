@@ -164,6 +164,8 @@ public class TelaAddPlantio extends javax.swing.JFrame {
 
     private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarActionPerformed
         // TODO add your handling code here:
+        new TelaPlantio().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_botaoVoltarActionPerformed
 
     private void botaoAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAddActionPerformed
