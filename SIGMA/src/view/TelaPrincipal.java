@@ -83,6 +83,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         botaoMaq.setBackground(new java.awt.Color(51, 153, 255));
         botaoMaq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/tractor.png"))); // NOI18N
+        botaoMaq.setToolTipText("Máquinas");
         botaoMaq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoMaqActionPerformed(evt);
@@ -110,6 +111,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(51, 153, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/land.png"))); // NOI18N
+        jButton3.setToolTipText("Terrenos");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -118,6 +120,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/combine-harvester.png"))); // NOI18N
+        jButton1.setToolTipText("Colheitas");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -126,6 +129,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         botaoPlantacoes.setBackground(new java.awt.Color(51, 153, 255));
         botaoPlantacoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/planting.png"))); // NOI18N
+        botaoPlantacoes.setToolTipText("Plantios");
         botaoPlantacoes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoPlantacoesActionPerformed(evt);
@@ -160,6 +164,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButton4.setBackground(new java.awt.Color(51, 153, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/warehouse.png"))); // NOI18N
+        jButton4.setToolTipText("Estoque");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -168,6 +173,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(51, 153, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/coins.png"))); // NOI18N
+        jButton2.setToolTipText("Movimentações Financeiras");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -197,6 +203,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         botaoLogOff.setBackground(new java.awt.Color(51, 153, 255));
         botaoLogOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/power.png"))); // NOI18N
+        botaoLogOff.setToolTipText("Sair");
         botaoLogOff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoLogOffActionPerformed(evt);

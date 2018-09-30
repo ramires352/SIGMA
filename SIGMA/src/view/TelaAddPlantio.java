@@ -74,6 +74,7 @@ public class TelaAddPlantio extends javax.swing.JFrame {
 
         botaoAdd.setBackground(new java.awt.Color(51, 153, 255));
         botaoAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/check.png"))); // NOI18N
+        botaoAdd.setToolTipText("Confirmar");
         botaoAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoAddActionPerformed(evt);
@@ -82,6 +83,7 @@ public class TelaAddPlantio extends javax.swing.JFrame {
 
         botaoVoltar.setBackground(new java.awt.Color(51, 153, 255));
         botaoVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow(1).png"))); // NOI18N
+        botaoVoltar.setToolTipText("Voltar");
         botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoVoltarActionPerformed(evt);

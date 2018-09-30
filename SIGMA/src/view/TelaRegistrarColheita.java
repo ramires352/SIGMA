@@ -66,6 +66,7 @@ public class TelaRegistrarColheita extends javax.swing.JFrame {
 
         botaoVoltar.setBackground(new java.awt.Color(51, 153, 255));
         botaoVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow(1).png"))); // NOI18N
+        botaoVoltar.setToolTipText("Voltar");
         botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoVoltarActionPerformed(evt);
@@ -74,6 +75,7 @@ public class TelaRegistrarColheita extends javax.swing.JFrame {
 
         botaoOK.setBackground(new java.awt.Color(51, 153, 255));
         botaoOK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/check.png"))); // NOI18N
+        botaoOK.setToolTipText("Confirmar");
         botaoOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoOKActionPerformed(evt);

@@ -114,6 +114,7 @@ public class TelaPlantio extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow(1).png"))); // NOI18N
+        jButton1.setToolTipText("Voltar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -122,6 +123,7 @@ public class TelaPlantio extends javax.swing.JFrame {
 
         botaoFiltro.setBackground(new java.awt.Color(51, 153, 255));
         botaoFiltro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/filter.png"))); // NOI18N
+        botaoFiltro.setToolTipText("Filtrar");
         botaoFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoFiltroActionPerformed(evt);
@@ -130,6 +132,7 @@ public class TelaPlantio extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(51, 153, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/rubbish.png"))); // NOI18N
+        jButton2.setToolTipText("Remover");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -138,6 +141,7 @@ public class TelaPlantio extends javax.swing.JFrame {
 
         botaoAdd.setBackground(new java.awt.Color(51, 153, 255));
         botaoAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
+        botaoAdd.setToolTipText("Adicionar");
         botaoAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoAddActionPerformed(evt);
@@ -156,7 +160,7 @@ public class TelaPlantio extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(botaoAdd)
-                        .addGap(37, 37, 37)
+                        .addGap(18, 18, 18)
                         .addComponent(botaoFiltro)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()

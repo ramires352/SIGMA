@@ -74,7 +74,6 @@ public class TelaTerreno extends javax.swing.JFrame {
 
             }
         };
-        jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaTerreno = new javax.swing.JTable();
         botaoVoltar = new javax.swing.JButton();
@@ -104,20 +103,9 @@ public class TelaTerreno extends javax.swing.JFrame {
         tabelaTerreno.setOpaque(false);
         jScrollPane1.setViewportView(tabelaTerreno);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-        );
-
         botaoVoltar.setBackground(new java.awt.Color(51, 153, 255));
         botaoVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow(1).png"))); // NOI18N
-        botaoVoltar.setToolTipText("");
+        botaoVoltar.setToolTipText("Voltar");
         botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoVoltarActionPerformed(evt);
@@ -126,6 +114,7 @@ public class TelaTerreno extends javax.swing.JFrame {
 
         botaoEditar.setBackground(new java.awt.Color(51, 153, 255));
         botaoEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/edit.png"))); // NOI18N
+        botaoEditar.setToolTipText("Editar");
         botaoEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoEditarActionPerformed(evt);
@@ -134,6 +123,7 @@ public class TelaTerreno extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/rubbish.png"))); // NOI18N
+        jButton1.setToolTipText("Remover");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -142,6 +132,7 @@ public class TelaTerreno extends javax.swing.JFrame {
 
         botaoAdd.setBackground(new java.awt.Color(51, 153, 255));
         botaoAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
+        botaoAdd.setToolTipText("Adicionar");
         botaoAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoAddActionPerformed(evt);
@@ -153,6 +144,7 @@ public class TelaTerreno extends javax.swing.JFrame {
 
         botaoColheita.setBackground(new java.awt.Color(51, 153, 255));
         botaoColheita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/combine-harvester.png"))); // NOI18N
+        botaoColheita.setToolTipText("Colher");
         botaoColheita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoColheitaActionPerformed(evt);
@@ -161,9 +153,11 @@ public class TelaTerreno extends javax.swing.JFrame {
 
         botaoVeneno.setBackground(new java.awt.Color(51, 153, 255));
         botaoVeneno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/passarVeneno.png"))); // NOI18N
+        botaoVeneno.setToolTipText("Passar Veneno");
 
         jButton2.setBackground(new java.awt.Color(51, 153, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/plant.png"))); // NOI18N
+        jButton2.setToolTipText("Plantar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -174,9 +168,8 @@ public class TelaTerreno extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(300, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(268, 268, 268))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -198,6 +191,7 @@ public class TelaTerreno extends javax.swing.JFrame {
                         .addComponent(jButton2)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,8 +211,8 @@ public class TelaTerreno extends javax.swing.JFrame {
                     .addComponent(botaoVoltar, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(botaoEditar, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(botaoAdd, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -370,7 +364,6 @@ public class TelaTerreno extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelaTerreno;
     // End of variables declaration//GEN-END:variables

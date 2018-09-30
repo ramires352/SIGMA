@@ -100,6 +100,7 @@ public class TelaAltTerreno extends javax.swing.JFrame {
 
         botaoAlt.setBackground(new java.awt.Color(51, 153, 255));
         botaoAlt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/check.png"))); // NOI18N
+        botaoAlt.setToolTipText("Confirmar");
         botaoAlt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoAltActionPerformed(evt);
@@ -108,6 +109,7 @@ public class TelaAltTerreno extends javax.swing.JFrame {
 
         botaoVoltar.setBackground(new java.awt.Color(51, 153, 255));
         botaoVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow(1).png"))); // NOI18N
+        botaoVoltar.setToolTipText("Voltar");
         botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoVoltarActionPerformed(evt);
