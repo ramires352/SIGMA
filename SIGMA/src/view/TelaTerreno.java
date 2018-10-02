@@ -154,6 +154,11 @@ public class TelaTerreno extends javax.swing.JFrame {
         botaoVeneno.setBackground(new java.awt.Color(51, 153, 255));
         botaoVeneno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/passarVeneno.png"))); // NOI18N
         botaoVeneno.setToolTipText("Passar Veneno");
+        botaoVeneno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoVenenoActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(51, 153, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/plant.png"))); // NOI18N
@@ -318,6 +323,20 @@ public class TelaTerreno extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void botaoVenenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVenenoActionPerformed
+        // TODO add your handling code here:
+        if(tabelaTerreno.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(null, "Selecione um Terreno!");
+        }
+        else{
+            TelaAddManutTerreno.nomeT = (String) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 1);
+            new TelaAddManutTerreno().setVisible(true);
+            TelaAddManutTerreno.telaTerreno = this;
+            TelaAddManutTerreno.idTerreno = (int) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 0);
+        }
+        
+    }//GEN-LAST:event_botaoVenenoActionPerformed
 
     /**
      * @param args the command line arguments
