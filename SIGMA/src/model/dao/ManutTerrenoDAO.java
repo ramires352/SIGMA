@@ -92,15 +92,17 @@ public class ManutTerrenoDAO {
             
     }
     
-    public List<ManutTerreno> read(){
+    public List<ManutTerreno> readFiltro(String de, String ate){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stnt = null;
         ResultSet rs = null;
         List<ManutTerreno> manutTerrenos = new ArrayList<>();
         
         try{
-            stnt = con.prepareStatement("SELECT * FROM manut_terreno WHERE login = ?");
+            stnt = con.prepareStatement("SELECT * FROM manut_terreno WHERE login = ? and data >= ? AND data <= ?");
             stnt.setString(1, Cliente.getNome());
+            stnt.setString(2, de);
+            stnt.setString(3, ate);
             
             rs = stnt.executeQuery();
             
