@@ -146,4 +146,35 @@ public class ProdutoDAO {
         }
         return sementes;
     }
+    
+    public List<Produto> readDefensivos(){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stnt = null;
+        ResultSet rs = null;
+        List<Produto> prod = new ArrayList<>();
+        try{
+            stnt = con.prepareStatement("SELECT * FROM produto WHERE login = ? and tipo = 'Defensivo'");
+            stnt.setString(1, Cliente.getNome());
+            rs = stnt.executeQuery();
+            
+                while(rs.next()){
+                    
+                    Produto t = new Produto();
+
+                    t.setIdProduto(rs.getInt("idProduto"));
+                    t.setNome(rs.getString("nome"));
+                    t.setTipo(rs.getString("tipo"));
+                    t.setPreco(rs.getDouble("preco"));
+                    t.setQtde(rs.getDouble("qtde"));
+                    prod.add(t);
+            }
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Erro na Leitura! "+ex);
+        }
+        finally{
+            ConnectionFactory.closeConnection(con, stnt, rs);
+        }
+        return prod;
+    }
 }

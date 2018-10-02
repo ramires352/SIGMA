@@ -18,6 +18,7 @@ import model.bean.Colheita;
 import model.bean.ManutTerreno;
 import model.bean.Movimento;
 import model.bean.Plantio;
+import model.bean.Produto;
 import model.bean.Terreno;
 
 /**
@@ -284,6 +285,58 @@ public class TerrenoDAO {
         }finally{
             ConnectionFactory.closeConnection(con, stnt);
         }
+    }
+        
+    public void manutTerreno(Produto p, int idTerreno, String descr, double qtdeUsada){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stnt = null;
+        
+        try{
+            stnt = con.prepareStatement("UPDATE produto SET qtde = qtde - ? WHERE idProduto = ?");
+            stnt.setDouble(1, qtdeUsada);
+            stnt.setInt(2, p.getIdProduto());
+
+            stnt.executeUpdate();
+
+            stnt = con.prepareStatement("UPDATE terreno SET gastos = gastos + ? WHERE idTerreno = ?");
+            stnt.setDouble(1, p.getPreco() * qtdeUsada);
+            stnt.setInt(2, idTerreno);
+
+            stnt.executeUpdate();
+
+            java.util.Date dia = new java.util.Date();
+            java.sql.Date dataSql = new java.sql.Date(dia.getTime());
+
+            stnt = con.prepareStatement("INSERT INTO manut_terreno (nome, defensivo, qtde_defensivo, data, idTerreno) VALUES (?,?,?,?,?)");
+            stnt.setString(1, descr);
+            stnt.setString(2, p.getNome());
+            stnt.setDouble(3, qtdeUsada);
+            stnt.setDate(4, dataSql);
+            stnt.setInt(5, idTerreno);
+
+            stnt.executeUpdate();
+
+            stnt = con.prepareStatement("INSERT INTO movimento (nome, tipo, qtde, descricao, preco_un, login, data, idTerreno) VALUES (?,?,?,?,?,?,?,?)");
+            stnt.setString(1, "Manutenção de Terreno");
+            stnt.setString(2, "Defensivo");
+            stnt.setDouble(3, qtdeUsada);
+            stnt.setString(4, descr);
+            stnt.setDouble(5, p.getPreco());
+            stnt.setString(6, Cliente.getNome());
+            stnt.setDate(7, dataSql);
+            stnt.setInt(8, idTerreno);
+
+            stnt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Manutenção de Terreno Registrada!");
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Erro na Manutenção do Terreno! "+ex);
+        }
+        finally{
+            ConnectionFactory.closeConnection(con, stnt);
+        }
+    
     }
     
 }
