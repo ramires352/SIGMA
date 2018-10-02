@@ -61,4 +61,9 @@ public class Produto {
     public void setQtde(double qtde) {
         this.qtde = qtde;
     }
+    
+    @Override
+    public String toString(){
+        return nome;
+    }
 }
