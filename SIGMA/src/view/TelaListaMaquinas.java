@@ -306,7 +306,7 @@ public class TelaListaMaquinas extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
     //Botao relatorio
-        new TelaRelatorio().setVisible(true);
+        new TelaRelatorioManutencoes().setVisible(true);
         this.dispose();        
     }//GEN-LAST:event_jButton7ActionPerformed
 
