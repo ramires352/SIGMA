@@ -251,8 +251,9 @@ public class TelaListaMaquinas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new TelaMaquina().setVisible(true);
-        this.dispose();
+        TelaAddMaquina.tlm = this;
+        new TelaAddMaquina().setVisible(true);
+        //this.dispose();
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
