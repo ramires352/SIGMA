@@ -6,7 +6,6 @@
 package view;
 
 
-import javax.swing.JOptionPane;
 import model.bean.Item;
 import model.dao.ItemDAO;
 
@@ -15,7 +14,8 @@ import model.dao.ItemDAO;
  * @author ramir
  */
 public class TelaAltItem extends javax.swing.JFrame {
-
+    
+    public static TelaDetalhes td;
     /**
      * Creates new form TelaNovoItem
      */
@@ -151,7 +151,9 @@ public class TelaAltItem extends javax.swing.JFrame {
         it.setMarca(txtMarca.getText());
         
         dao.update(it);
-                
+        
+        td.readJTable();
+        
         new TelaDetalhes().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -178,20 +180,20 @@ public class TelaAltItem extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaNovoItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAddItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaNovoItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAddItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaNovoItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAddItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaNovoItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAddItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaNovoItem().setVisible(true);
+                new TelaAddItem().setVisible(true);
             }
         });
     }
