@@ -291,6 +291,7 @@ public class TelaDetalhes extends javax.swing.JFrame {
             Item.setChaveHD((int) jTableItem.getValueAt(jTableItem.getSelectedRow(), 3));
             Item.setChavePreco(Double.parseDouble((String) jTableItem.getValueAt(jTableItem.getSelectedRow(), 4)) );
             Item.setChaveMarca((String) jTableItem.getValueAt(jTableItem.getSelectedRow(), 5));
+            TelaManut.td = this;
             new TelaManut().setVisible(true);
             
         }else{
