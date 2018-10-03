@@ -64,7 +64,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(102, 255, 102));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 600));
 
-        jLabel1.setFont(new java.awt.Font("Chilanka", 0, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Chilanka", 1, 48)); // NOI18N
         jLabel1.setText("Login");
 
         jLabel2.setFont(new java.awt.Font("Chilanka", 1, 18)); // NOI18N
@@ -103,7 +103,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(362, Short.MAX_VALUE)
+                .addContainerGap(345, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(319, 319, 319))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -155,7 +155,7 @@ public class TelaLogin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 624, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
         );
 
         pack();

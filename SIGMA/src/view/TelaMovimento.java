@@ -148,6 +148,7 @@ public class TelaMovimento extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(51, 153, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/rubbish.png"))); // NOI18N
+        jButton2.setToolTipText("Remover");
 
         jButton3.setBackground(new java.awt.Color(51, 153, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
@@ -179,15 +180,14 @@ public class TelaMovimento extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 960, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addContainerGap())
+                        .addComponent(jButton2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton3)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4)
-                        .addContainerGap())))
+                        .addComponent(jButton4)))
+                .addContainerGap())
             .addComponent(jScrollPane1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
