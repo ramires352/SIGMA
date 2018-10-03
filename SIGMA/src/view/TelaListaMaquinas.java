@@ -57,7 +57,18 @@ public class TelaListaMaquinas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel(){
+            public void paintComponent(Graphics g){
+
+                ClassLoader cl = this.getClass().getClassLoader();
+
+                ImageIcon im = new ImageIcon(cl.getResource("images/bg.jpg"));
+                Image i = im.getImage();
+
+                g.drawImage(i,0,0,this.getSize().width,this.getSize().height,this);
+
+            }
+        };
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableMaq = new javax.swing.JTable();
         jButton5 = new javax.swing.JButton();
@@ -70,7 +81,7 @@ public class TelaListaMaquinas extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Bem vindo ao SIGMA");
+        setTitle("Máquinas");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 

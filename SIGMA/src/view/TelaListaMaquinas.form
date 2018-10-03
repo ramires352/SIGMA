@@ -3,7 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Bem vindo ao SIGMA"/>
+    <Property name="title" type="java.lang.String" value="M&#xe1;quinas"/>
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
       <Color id="Cursor Padr&#xe3;o"/>
     </Property>
@@ -47,6 +47,9 @@
           <Color blue="0" green="cc" red="cc" type="rgb"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel(){&#xa;    public void paintComponent(Graphics g){&#xa;&#xa;        ClassLoader cl = this.getClass().getClassLoader();&#xa;&#xa;        ImageIcon im = new ImageIcon(cl.getResource(&quot;images/bg.jpg&quot;));&#xa;        Image i = im.getImage();&#xa;&#xa;        g.drawImage(i,0,0,this.getSize().width,this.getSize().height,this);&#xa;&#xa;    }&#xa;}"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
