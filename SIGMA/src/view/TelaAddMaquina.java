@@ -138,8 +138,6 @@ public class TelaAddMaquina extends javax.swing.JFrame {
         dao.create(m);
         //nome.setText("");
         tlm.readJTable();
-        
-        new TelaListaMaquinas().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
