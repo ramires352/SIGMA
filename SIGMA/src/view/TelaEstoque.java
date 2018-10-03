@@ -102,7 +102,7 @@ public class TelaEstoque extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel1.setFont(new java.awt.Font("Chilanka", 0, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Chilanka", 1, 48)); // NOI18N
         jLabel1.setText("Estoque");
 
         jButtonAdd.setBackground(new java.awt.Color(51, 153, 255));
@@ -162,7 +162,7 @@ public class TelaEstoque extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(308, 308, 308)
                         .addComponent(jLabel1)
-                        .addGap(0, 296, Short.MAX_VALUE)))
+                        .addGap(0, 282, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );

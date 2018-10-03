@@ -68,7 +68,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="308" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="296" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="282" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -150,7 +150,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Chilanka" size="48" style="0"/>
+              <Font name="Chilanka" size="48" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Estoque"/>
           </Properties>
