@@ -221,14 +221,17 @@ public class TelaDetalhes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new TelaNovoItem().setVisible(true);
+        TelaAddItem.td = this;
+        new TelaAddItem().setVisible(true);
         this.dispose();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         //Botao alterar item
         if (jTableItem.getSelectedRow() != -1){
             Item.setChave((int) jTableItem.getValueAt(jTableItem.getSelectedRow(), 0));
+            TelaAltItem.td = this;
             new TelaAltItem().setVisible(true);
             this.dispose();
         }else{
