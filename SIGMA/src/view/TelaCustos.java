@@ -11,6 +11,9 @@ import model.bean.Manutencao;
 import model.dao.ManutencaoDAO;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 import javax.swing.ImageIcon;
 
 /**
@@ -36,10 +39,14 @@ public class TelaCustos extends javax.swing.JFrame {
         modelo.setNumRows(0);
         ManutencaoDAO mdao = new ManutencaoDAO();
         double relacao;
+        
+        DecimalFormat df = new DecimalFormat("0.00",new DecimalFormatSymbols(new Locale("en","US")));
+        
         for(Manutencao m: mdao.readItens()){
+            relacao = m.getPreco() / m.getHoras_dur();
             modelo.addRow(new Object[]{
-                String.format("%.2f",relacao = m.getPreco() / m.getHoras_dur()),
-                String.format("%.2f",relacao * m.getHoras_dur()),
+                df.format(relacao),
+                df.format(relacao * m.getHoras_dur()),
                 m.getMarca(),
                 m.getHoras_dur(),
             });
