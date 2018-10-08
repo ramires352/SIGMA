@@ -39,7 +39,9 @@ public class TelaDetalhes extends javax.swing.JFrame {
         modelo.setNumRows(0);
         ItemDAO idao = new ItemDAO();
         boolean aviso = false;
+        
         DecimalFormat df = new DecimalFormat("0.00",new DecimalFormatSymbols(new Locale("en","US")));
+        
         for(Item it: idao.read()){
             modelo.addRow(new Object[]{
                 it.getIdItem(),
