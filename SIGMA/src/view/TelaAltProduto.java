@@ -104,6 +104,8 @@ public class TelaAltProduto extends javax.swing.JFrame {
 
         boxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semente", "Defensivo", "Soja", "Milho", "Aveia", "Trigo" }));
 
+        textPreco.setEditable(false);
+
         jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/check.png"))); // NOI18N
         jButton1.setToolTipText("Confirmar");

@@ -145,4 +145,58 @@ public class PlantioDAO {
         }
         
     }
+    
+    public List<Plantio> LerSementes(){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stnt = null;
+        ResultSet rs = null;
+        List<Plantio> plant = new ArrayList<>();
+        try{
+            stnt = con.prepareStatement("SELECT * FROM produto WHERE login = ? and tipo = 'sementes");
+            stnt.setString(1, Cliente.getNome());
+            rs = stnt.executeQuery();
+            
+                while(rs.next()){
+                    
+                    Plantio t = new Plantio();
+
+                    t.setIdPlantio(rs.getInt("idPlantio"));
+                    t.setIdTerreno(rs.getInt("idTerreno"));
+                    t.setData(rs.getDate("date"));
+                    t.setSementes(rs.getString("sementes"));
+                    t.setQtde_sementes(rs.getDouble("qtde_sementes"));
+                    t.setCultura(rs.getString("cultura"));
+                    plant.add(t);
+            }
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Erro na Leitura! "+ex);
+        }
+        finally{
+            ConnectionFactory.closeConnection(con, stnt, rs);
+        }
+        return plant;
+    }
+    
+    public void create (Plantio p){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stnt = null;
+        try{
+            stnt = con.prepareStatement("insert into plantio (idTerreno, data, sementes, qtde_sementes, cultura) values (?,?,?,?,?)");
+            stnt.setInt(1, p.getIdTerreno());
+            stnt.setDate(2, p.getData());
+            stnt.setString(3, p.getSementes());
+            stnt.setDouble(4, p.getQtde_sementes());
+            stnt.setString(5, p.getCultura());
+            stnt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Salvo com sucesso");
+        }
+        catch (SQLException ex){
+            JOptionPane.showMessageDialog(null, "Erro ao salvar" + ex);
+        }
+        finally {
+            ConnectionFactory.closeConnection(con, stnt);
+        }
+       
+    }
 }
