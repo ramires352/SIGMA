@@ -215,7 +215,7 @@ public class TelaPlantio extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if(tabelaPlantio.getSelectedRow() == -1){
-            JOptionPane.showMessageDialog(null, "Selecione um terreno");
+            JOptionPane.showMessageDialog(null, "Selecione um Plantio!");
         }
         else{
             int id = (int) tabelaPlantio.getValueAt(tabelaPlantio.getSelectedRow(),0);

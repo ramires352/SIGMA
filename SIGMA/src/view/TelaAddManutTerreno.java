@@ -83,7 +83,7 @@ public class TelaAddManutTerreno extends javax.swing.JFrame {
         jLabel3.setText("Defensivo");
 
         jLabel4.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel4.setText("Qauntidade");
+        jLabel4.setText("Quantidade");
 
         jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow(1).png"))); // NOI18N
