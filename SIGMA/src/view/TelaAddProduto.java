@@ -196,7 +196,19 @@ public class TelaAddProduto extends javax.swing.JFrame {
         p.setQtde(Double.parseDouble(jTextqtde.getText()));
         p.setLogin(Cliente.getNome());
         
+        
         ProdutoDAO pdao = new ProdutoDAO();
+        /*
+        Verificar igualdade de atributos;
+        
+        Se houver algum produto já cadastrado que possua os mesmos nome, tipo, preço
+            Aumentar quantidade;
+        Senao
+            Cadastrar novo;
+        
+        Registrar adição;
+        */
+        
         pdao.create(p);
         
         new TelaEstoque().setVisible(true);
