@@ -86,6 +86,7 @@ public class TelaEstoque extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         botaoDelete = new javax.swing.JButton();
+        botaoCompraVenda = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -141,6 +142,15 @@ public class TelaEstoque extends javax.swing.JFrame {
             }
         });
 
+        botaoCompraVenda.setBackground(new java.awt.Color(51, 153, 255));
+        botaoCompraVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/money.png"))); // NOI18N
+        botaoCompraVenda.setToolTipText("Compra e venda");
+        botaoCompraVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCompraVendaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -157,12 +167,13 @@ public class TelaEstoque extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton2))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(botaoCompraVenda)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(botaoDelete))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(308, 308, 308)
                         .addComponent(jLabel1)
-                        .addGap(0, 282, Short.MAX_VALUE)))
+                        .addGap(0, 288, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
@@ -170,10 +181,12 @@ public class TelaEstoque extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(botaoDelete)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botaoDelete)
+                    .addComponent(botaoCompraVenda))
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonAdd, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -254,6 +267,11 @@ public class TelaEstoque extends javax.swing.JFrame {
         
     }//GEN-LAST:event_botaoDeleteActionPerformed
 
+    private void botaoCompraVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCompraVendaActionPerformed
+        new TelaCompraVenda().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botaoCompraVendaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -293,6 +311,7 @@ public class TelaEstoque extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoCompraVenda;
     private javax.swing.JButton botaoDelete;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
