@@ -18,31 +18,18 @@ import model.dao.ProdutoDAO;
  *
  * @author ramires
  */
-public class TelaCompraVenda extends javax.swing.JFrame {
+public class TelaCompraProdutos extends javax.swing.JFrame {
     
     private int id;
     public static TelaEstoque telaE;
     
     /** Creates new form TelaAltProduto
-     * @param p */
-    public TelaCompraVenda(Produto p) {
+     * @param  */
+    public TelaCompraProdutos() {
         initComponents();
-        labelNomeT.setText(p.getNome());
         
-        id = p.getIdProduto();
-        //System.out.println("ID -> "+id);
         
-        textNome.setText(p.getNome());
-        textPreco.setText(String.valueOf(p.getPreco()));
-        textQtde.setText(String.valueOf(p.getQtde()));
         
-        boxTipo.setSelectedItem(p.getTipo());
-        
-    }
-
-    private TelaCompraVenda() {
-        initComponents();
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /** This method is called from within the constructor to
@@ -74,10 +61,10 @@ public class TelaCompraVenda extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         textNome = new javax.swing.JTextField();
-        boxTipo = new javax.swing.JComboBox<String>();
+        boxTipo = new javax.swing.JComboBox<>();
         textPreco = new javax.swing.JTextField();
-        botaoConfirmar = new javax.swing.JButton();
-        botaoVoltar = new javax.swing.JButton();
+        botaoConfirma = new javax.swing.JButton();
+        botaoVolta = new javax.swing.JButton();
         textQtde = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -88,7 +75,7 @@ public class TelaCompraVenda extends javax.swing.JFrame {
 
         titulo.setFont(new java.awt.Font("Chilanka", 1, 48)); // NOI18N
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo.setText("Compra e venda");
+        titulo.setText("Compra de produtos");
 
         jLabel1.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel1.setText("Nome");
@@ -102,32 +89,40 @@ public class TelaCompraVenda extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel4.setText("Quantidade");
 
-        boxTipo.setModel(new javax.swing.DefaultComboBoxModel<String>(new String[] { "Semente", "Defensivo", "Soja", "Milho", "Aveia", "Trigo" }));
+        boxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semente", "Defensivo", "Soja", "Milho", "Aveia", "Trigo" }));
 
-        botaoConfirmar.setBackground(new java.awt.Color(51, 153, 255));
-        botaoConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/check.png"))); // NOI18N
-        botaoConfirmar.setToolTipText("Confirmar");
-        botaoConfirmar.addActionListener(new java.awt.event.ActionListener() {
+        textPreco.setEditable(false);
+
+        botaoConfirma.setBackground(new java.awt.Color(51, 153, 255));
+        botaoConfirma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/check.png"))); // NOI18N
+        botaoConfirma.setToolTipText("Confirmar");
+        botaoConfirma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoConfirmarActionPerformed(evt);
+                botaoConfirmaActionPerformed(evt);
             }
         });
 
-        botaoVoltar.setBackground(new java.awt.Color(51, 153, 255));
-        botaoVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow(1).png"))); // NOI18N
-        botaoVoltar.setToolTipText("Voltar");
-        botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
+        botaoVolta.setBackground(new java.awt.Color(51, 153, 255));
+        botaoVolta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow(1).png"))); // NOI18N
+        botaoVolta.setToolTipText("Voltar");
+        botaoVolta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoVoltarActionPerformed(evt);
+                botaoVoltaActionPerformed(evt);
             }
         });
+
+        textQtde.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(145, 145, 145)
+                .addContainerGap()
+                .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(187, 187, 187)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -146,22 +141,18 @@ public class TelaCompraVenda extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(botaoVoltar)
+                                .addComponent(botaoVolta)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(botaoConfirmar))
+                                .addComponent(botaoConfirma))
                             .addComponent(textQtde, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(218, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(201, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(titulo)
-                .addGap(115, 115, 115)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -179,9 +170,9 @@ public class TelaCompraVenda extends javax.swing.JFrame {
                     .addComponent(textQtde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botaoConfirmar)
-                    .addComponent(botaoVoltar))
-                .addContainerGap(161, Short.MAX_VALUE))
+                    .addComponent(botaoConfirma)
+                    .addComponent(botaoVolta))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -199,16 +190,47 @@ public class TelaCompraVenda extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarActionPerformed
+    private void botaoVoltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltaActionPerformed
         // TODO add your handling code here:
         new TelaEstoque().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_botaoVoltarActionPerformed
+    }//GEN-LAST:event_botaoVoltaActionPerformed
 
-    private void botaoConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmarActionPerformed
+    private void botaoConfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmaActionPerformed
         // TODO add your handling code here:
+        int confirmacao = JOptionPane.showConfirmDialog(this, "Todos os dados estão corretos?");
         
-    }//GEN-LAST:event_botaoConfirmarActionPerformed
+        if(confirmacao == JOptionPane.YES_OPTION){
+            Produto p1 = new Produto();
+            
+            p1.setLogin(Cliente.getNome());
+            p1.setNome(textNome.getText());
+            p1.setPreco(Double.parseDouble(textPreco.getText()));
+            p1.setTipo(boxTipo.getSelectedItem().toString());
+            p1.setQtde(Double.parseDouble(textQtde.getText()));
+            
+            ProdutoDAO pDAO = new ProdutoDAO();
+            
+            int idProdutoAtual;
+            idProdutoAtual = pDAO.verificaCompraProduto(p1.nome, p1.tipo);
+            
+            if(idProdutoAtual != -1){
+                pDAO.update(idProdutoAtual, p1);
+
+                telaE.readJTable();
+                new TelaEstoque().setVisible(true);
+                this.dispose();
+                
+            }
+            
+            else {
+                new TelaCompraProdutosErro().setVisible(true);
+                this.dispose();
+            }
+            
+        }
+        
+    }//GEN-LAST:event_botaoConfirmaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,30 +249,28 @@ public class TelaCompraVenda extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCompraVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCompraProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCompraVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCompraProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCompraVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCompraProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCompraVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCompraProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCompraVenda().setVisible(true);
+                new TelaCompraProdutos().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoConfirmar;
-    private javax.swing.JButton botaoVoltar;
+    private javax.swing.JButton botaoConfirma;
+    private javax.swing.JButton botaoVolta;
     private javax.swing.JComboBox<String> boxTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

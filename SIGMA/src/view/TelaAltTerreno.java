@@ -121,6 +121,8 @@ public class TelaAltTerreno extends javax.swing.JFrame {
 
         cultura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nenhum", "Soja", "Milho", "Aveia", "Trigo" }));
 
+        textGastos.setEditable(false);
+
         jLabel6.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel6.setText("Gastos");
 

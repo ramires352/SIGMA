@@ -18,31 +18,17 @@ import model.dao.ProdutoDAO;
  *
  * @author ramires
  */
-public class TelaAltProduto extends javax.swing.JFrame {
+public class TelaVendaGraos extends javax.swing.JFrame {
     
     private int id;
     public static TelaEstoque telaE;
     
     /** Creates new form TelaAltProduto
      * @param p */
-    public TelaAltProduto(Produto p) {
+    public TelaVendaGraos() {
         initComponents();
-        labelNomeT.setText(p.getNome());
         
-        id = p.getIdProduto();
-        //System.out.println("ID -> "+id);
         
-        textNome.setText(p.getNome());
-        textPreco.setText(String.valueOf(p.getPreco()));
-        textQtde.setText(String.valueOf(p.getQtde()));
-        
-        boxTipo.setSelectedItem(p.getTipo());
-        
-    }
-
-    private TelaAltProduto() {
-        initComponents();
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /** This method is called from within the constructor to
@@ -255,20 +241,23 @@ public class TelaAltProduto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaAltProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaVendaGraos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaAltProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaVendaGraos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaAltProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaVendaGraos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaAltProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaVendaGraos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaAltProduto().setVisible(true);
+                new TelaVendaGraos().setVisible(true);
             }
         });
     }

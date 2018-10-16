@@ -177,4 +177,35 @@ public class ProdutoDAO {
         }
         return prod;
     }
+    
+    public int verificaCompraProduto(String nome, String tipo) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stnt = null;
+        PreparedStatement stnt2 = null;
+        PreparedStatement stnt3 = null;
+        ResultSet rs = null;
+        
+        try {
+            
+            stnt3 = con.prepareStatement("select idProduto from produto where nome = ? and tipo = ? and login = ?");
+            stnt3.setString(1, nome);
+            stnt3.setString(2, tipo);
+            stnt3.setString(3, Cliente.getNome());
+
+            rs = stnt3.executeQuery();
+            rs.next();
+
+            if(rs.getString("idProduto") != null) {
+                return rs.getInt("idProduto");
+            }
+        
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Falha na busca do produto! "+ ex);
+        }
+        
+        return -1;
+        
+    }
+    
 }
