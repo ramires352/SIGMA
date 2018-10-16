@@ -212,7 +212,7 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
             ProdutoDAO pDAO = new ProdutoDAO();
             
             int idProdutoAtual;
-            idProdutoAtual = pDAO.verificaCompraProduto(p1.nome, p1.tipo);
+            idProdutoAtual = pDAO.verificaCompraProduto(p1.getNome(), p1.getTipo());
             
             if(idProdutoAtual != -1){
                 pDAO.update(idProdutoAtual, p1);
