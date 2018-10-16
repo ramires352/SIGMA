@@ -11,7 +11,9 @@ package model.bean;
  */
 public class Produto {
     private int idProduto;
-    private String nome, tipo, login;
+    public String nome;
+    public String tipo;
+    private String login;
     private double preco, qtde;
 
     public int getIdProduto() {

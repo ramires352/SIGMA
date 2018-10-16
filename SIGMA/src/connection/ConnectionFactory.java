@@ -11,21 +11,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 /**
- *
  * @author ramir
  */
 public class ConnectionFactory {
     //BD freemysqlhosting
-    /*private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://sql10.freemysqlhosting.net:3306/sql10258374";
-    private static final String USER = "sql10258374";
-    private static final String PASS = "gt6ZXnUeat";*/
+    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    private static final String URL = "jdbc:mysql://sql10.freemysqlhosting.net:3306/sql10261050";
+    private static final String USER = "sql10261050";
+    private static final String PASS = "NZHbEHIZ94";
     
     //BD Local
-    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    /*private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost:3306/sigmaBD?useSSL=false";
     private static final String USER = "root";
-    private static final String PASS = "ramires2313";
+    private static final String PASS = "ramires2313";*/
     
     
     public static Connection getConnection(){

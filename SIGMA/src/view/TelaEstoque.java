@@ -86,7 +86,8 @@ public class TelaEstoque extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         botaoDelete = new javax.swing.JButton();
-        botaoCompraVenda = new javax.swing.JButton();
+        botaoCompra = new javax.swing.JButton();
+        botaoVenda = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -142,12 +143,21 @@ public class TelaEstoque extends javax.swing.JFrame {
             }
         });
 
-        botaoCompraVenda.setBackground(new java.awt.Color(51, 153, 255));
-        botaoCompraVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/money.png"))); // NOI18N
-        botaoCompraVenda.setToolTipText("Compra e venda");
-        botaoCompraVenda.addActionListener(new java.awt.event.ActionListener() {
+        botaoCompra.setBackground(new java.awt.Color(51, 153, 255));
+        botaoCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/buy.png"))); // NOI18N
+        botaoCompra.setToolTipText("Compra");
+        botaoCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoCompraVendaActionPerformed(evt);
+                botaoCompraActionPerformed(evt);
+            }
+        });
+
+        botaoVenda.setBackground(new java.awt.Color(51, 153, 255));
+        botaoVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/sale.png"))); // NOI18N
+        botaoVenda.setToolTipText("Venda");
+        botaoVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoVendaActionPerformed(evt);
             }
         });
 
@@ -167,7 +177,9 @@ public class TelaEstoque extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton2))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(botaoCompraVenda)
+                                .addComponent(botaoCompra)
+                                .addGap(18, 18, 18)
+                                .addComponent(botaoVenda)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(botaoDelete))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -183,7 +195,8 @@ public class TelaEstoque extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botaoDelete)
-                    .addComponent(botaoCompraVenda))
+                    .addComponent(botaoCompra)
+                    .addComponent(botaoVenda))
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -267,10 +280,17 @@ public class TelaEstoque extends javax.swing.JFrame {
         
     }//GEN-LAST:event_botaoDeleteActionPerformed
 
-    private void botaoCompraVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCompraVendaActionPerformed
-        new TelaCompraVenda().setVisible(true);
+    private void botaoCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCompraActionPerformed
+        // TODO add your handling code here:
+        new TelaCompraProdutos().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_botaoCompraVendaActionPerformed
+    }//GEN-LAST:event_botaoCompraActionPerformed
+
+    private void botaoVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVendaActionPerformed
+        // TODO add your handling code here:
+        new TelaVendaGraos().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botaoVendaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -311,8 +331,9 @@ public class TelaEstoque extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoCompraVenda;
+    private javax.swing.JButton botaoCompra;
     private javax.swing.JButton botaoDelete;
+    private javax.swing.JButton botaoVenda;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonAdd;
