@@ -83,7 +83,7 @@ public class TelaTerreno extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         botaoColheita = new javax.swing.JButton();
         botaoVeneno = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botaoPlantio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Terrenos");
@@ -160,12 +160,12 @@ public class TelaTerreno extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(51, 153, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/plant.png"))); // NOI18N
-        jButton2.setToolTipText("Plantar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botaoPlantio.setBackground(new java.awt.Color(51, 153, 255));
+        botaoPlantio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/plant.png"))); // NOI18N
+        botaoPlantio.setToolTipText("Plantar");
+        botaoPlantio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botaoPlantioActionPerformed(evt);
             }
         });
 
@@ -193,7 +193,7 @@ public class TelaTerreno extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(botaoPlantio)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -208,7 +208,7 @@ public class TelaTerreno extends javax.swing.JFrame {
                         .addComponent(botaoColheita))
                     .addComponent(botaoVeneno))
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(botaoPlantio)
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
@@ -308,7 +308,7 @@ public class TelaTerreno extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botaoPlantioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPlantioActionPerformed
         // TODO add your handling code here:
         if(tabelaTerreno.getSelectedRow() == -1){
             JOptionPane.showMessageDialog(null,"Selecione um Terreno!");
@@ -318,11 +318,11 @@ public class TelaTerreno extends javax.swing.JFrame {
             if(estado.equals("Plantado")){
                 JOptionPane.showMessageDialog(null, "O Terreno Já Está Plantado!");
             }else{
-                
+
             }
         }
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botaoPlantioActionPerformed
 
     private void botaoVenenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVenenoActionPerformed
         // TODO add your handling code here:
@@ -377,10 +377,10 @@ public class TelaTerreno extends javax.swing.JFrame {
     private javax.swing.JButton botaoAdd;
     private javax.swing.JButton botaoColheita;
     private javax.swing.JButton botaoEditar;
+    private javax.swing.JButton botaoPlantio;
     private javax.swing.JButton botaoVeneno;
     private javax.swing.JButton botaoVoltar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
