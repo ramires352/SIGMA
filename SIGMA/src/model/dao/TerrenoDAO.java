@@ -317,10 +317,10 @@ public class TerrenoDAO {
             stnt.executeUpdate();
 
             stnt = con.prepareStatement("INSERT INTO movimento (nome, tipo, qtde, descricao, preco_un, login, data, idTerreno) VALUES (?,?,?,?,?,?,?,?)");
-            stnt.setString(1, "Manutenção de Terreno");
+            stnt.setString(1, descr);
             stnt.setString(2, "Defensivo");
             stnt.setDouble(3, qtdeUsada);
-            stnt.setString(4, descr);
+            stnt.setString(4, "Manutenção de Terreno");
             stnt.setDouble(5, p.getPreco());
             stnt.setString(6, Cliente.getNome());
             stnt.setDate(7, dataSql);
