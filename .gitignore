@@ -4,6 +4,7 @@
 SIGMA/build/*
 
 SIGMA/nbproject/private/private.xml
+SIGMA/nbproject/private/private.properties
 
 # Log file
 *.log
