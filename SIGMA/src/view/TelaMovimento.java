@@ -47,14 +47,14 @@ public class TelaMovimento extends javax.swing.JFrame {
         }
     }
     
-    public void readJTableFiltro(String de, String ate){
+    public void readJTableFiltro(String de, String ate, String tipo){
         DefaultTableModel modelo = (DefaultTableModel) tabelaMovimento.getModel();
         modelo.setNumRows(0);
         MovimentoDAO movDAO = new MovimentoDAO();
         
         DecimalFormat df = new DecimalFormat("0.00",new DecimalFormatSymbols(new Locale("en","US")));
         
-        for(Movimento mov: movDAO.readFiltro(de, ate)){
+        for(Movimento mov: movDAO.readFiltro(de, ate, tipo)){
             modelo.addRow(new Object[]{
                 mov.getIdMov(),
                 mov.getNf(),
