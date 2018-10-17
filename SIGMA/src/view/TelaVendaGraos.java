@@ -68,10 +68,11 @@ public class TelaVendaGraos extends javax.swing.JFrame {
         textQtde = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Alteração de Produto");
+        setTitle("Venda de Grãos");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 153, 0));
+        jPanel1.setToolTipText("");
 
         titulo.setFont(new java.awt.Font("Chilanka", 1, 48)); // NOI18N
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
