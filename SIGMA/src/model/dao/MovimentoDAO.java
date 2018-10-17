@@ -102,17 +102,18 @@ public class MovimentoDAO {
         return movimentos;
     }
     
-    public List<Movimento> readFiltro(String de, String ate){
+    public List<Movimento> readFiltro(String de, String ate, String tipo){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stnt = null;
         ResultSet rs = null;
         List<Movimento> movimentos = new ArrayList<>();
         
         try{
-            stnt = con.prepareStatement("SELECT * FROM movimento WHERE login = ? AND data >= ? AND data <= ?");
+            stnt = con.prepareStatement("SELECT * FROM movimento WHERE login = ? AND data >= ? AND data <= ? AND descricao = ?");
             stnt.setString(1, Cliente.getNome());
             stnt.setString(2,de);
             stnt.setString(3, ate);
+            stnt.setString(4, tipo);
             
             rs = stnt.executeQuery();
             
