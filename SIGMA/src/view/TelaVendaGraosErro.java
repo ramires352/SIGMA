@@ -61,7 +61,7 @@ public class TelaVendaGraosErro extends javax.swing.JFrame {
         titulo2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Alteração de Produto");
+        setTitle("Erro");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 153, 0));
