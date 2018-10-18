@@ -239,7 +239,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(botaoLogOff)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(245, 245, 245)
+                .addGap(270, 270, 270)
                 .addComponent(jButton5)
                 .addContainerGap())
         );
@@ -253,9 +253,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(botaoLogOff)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jButton5)))
+                    .addComponent(jButton5)
+                    .addComponent(jLabel1))
                 .addGap(13, 13, 13))
         );
 
