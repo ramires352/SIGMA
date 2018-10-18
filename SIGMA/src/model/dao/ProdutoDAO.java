@@ -78,6 +78,50 @@ public class ProdutoDAO {
         return prod;
     }
     
+    public List<Produto> readFiltroTipo(String tipo){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stnt = null;
+        ResultSet rs = null;
+        List<Produto> prod = new ArrayList<>();
+        try{
+            
+            if(tipo.equals("Grãos")){
+            
+                stnt = con.prepareStatement("select * from produto where login = ? AND tipo in ('Soja','Milho','Aveia','Trigo')");
+                stnt.setString(1, Cliente.getNome());
+                rs = stnt.executeQuery();
+
+                while(rs.next()){
+                    Produto t = new Produto();
+
+                    t.setIdProduto(rs.getInt("idProduto"));
+                    t.setNome(rs.getString("nome"));
+                    t.setTipo(rs.getString("tipo"));
+                    t.setPreco(rs.getDouble("preco"));
+                    t.setQtde(rs.getDouble("qtde"));
+                    
+                    prod.add(t);
+                }
+            }
+            
+            if(tipo.equals("Defensivos")){
+                prod = readDefensivos();
+            }
+            
+            /*if(tipo.equals("Sementes")){
+                prod = readSementes();
+            }*/
+            
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Erro na Leitura! "+ex);
+        }
+        finally{
+            ConnectionFactory.closeConnection(con, stnt, rs);
+        }
+        return prod;
+    }
+    
     public void update(int id, Produto p){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stnt = null;
