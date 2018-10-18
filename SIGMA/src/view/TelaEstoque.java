@@ -26,7 +26,7 @@ public class TelaEstoque extends javax.swing.JFrame {
 
     
     
-     public void readJTable(){
+    public void readJTable(){
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setNumRows(0);
         ProdutoDAO tDAO = new ProdutoDAO();
@@ -40,6 +40,23 @@ public class TelaEstoque extends javax.swing.JFrame {
                 t.getTipo(),
                 df.format(t.getPreco()),
                 df.format(t.getQtde()),
+            });
+        }
+    }
+    public void readJTableFiltro(String tipo){
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setNumRows(0);
+        ProdutoDAO pDAO = new ProdutoDAO();
+        
+        DecimalFormat df = new DecimalFormat("0.00",new DecimalFormatSymbols(new Locale("en","US")));
+        
+        for(Produto p: pDAO.readFiltroTipo(tipo)){
+            modelo.addRow(new Object[]{
+                p.getIdProduto(),
+                p.getNome(),
+                p.getTipo(),
+                df.format(p.getPreco()),
+                df.format(p.getQtde()),
             });
         }
     }
@@ -88,6 +105,7 @@ public class TelaEstoque extends javax.swing.JFrame {
         botaoDelete = new javax.swing.JButton();
         botaoCompra = new javax.swing.JButton();
         botaoVenda = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -161,6 +179,14 @@ public class TelaEstoque extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(51, 153, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/filter.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -174,6 +200,8 @@ public class TelaEstoque extends javax.swing.JFrame {
                                 .addComponent(jButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButtonAdd)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton3)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton2))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -203,7 +231,8 @@ public class TelaEstoque extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonAdd, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -292,6 +321,12 @@ public class TelaEstoque extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botaoVendaActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        new TelaFiltrarEstoque().setVisible(true);
+        TelaFiltrarEstoque.telaE = this;
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -336,6 +371,7 @@ public class TelaEstoque extends javax.swing.JFrame {
     private javax.swing.JButton botaoVenda;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonAdd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
