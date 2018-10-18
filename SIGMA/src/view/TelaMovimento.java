@@ -39,7 +39,6 @@ public class TelaMovimento extends javax.swing.JFrame {
                 mov.getTipo(),
                 mov.getDescricao(),
                 mov.getData(),
-                mov.getIdTerreno(),
                 df.format(mov.getQtde()),
                 df.format(mov.getPreco_un()),
                 df.format(mov.getPreco_un() * mov.getQtde())
@@ -62,7 +61,6 @@ public class TelaMovimento extends javax.swing.JFrame {
                 mov.getTipo(),
                 mov.getDescricao(),
                 mov.getData(),
-                mov.getIdTerreno(),
                 df.format(mov.getQtde()),
                 df.format(mov.getPreco_un()),
                 df.format(mov.getPreco_un() * mov.getQtde())
@@ -121,11 +119,11 @@ public class TelaMovimento extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "NF", "Nome", "Tipo", "Descrição", "Data", "Terreno", "Quantidade", "Preço (un)", "Preço"
+                "ID", "NF", "Nome", "Tipo", "Descrição", "Data", "Quantidade", "Preço (un)", "Preço"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
