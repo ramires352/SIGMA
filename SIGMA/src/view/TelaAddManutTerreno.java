@@ -181,7 +181,7 @@ public class TelaAddManutTerreno extends javax.swing.JFrame {
             String descr = textDescricao.getText();
             double qtdeUsada = Double.parseDouble(textQtde.getText());
             TerrenoDAO tDAO = new TerrenoDAO();
-            tDAO.manutTerreno(p, idTerreno, descr, qtdeUsada);
+            tDAO.manutTerreno(p, idTerreno, descr, qtdeUsada, nomeT);
             
             telaTerreno.readJTable();
             
