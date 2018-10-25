@@ -5,36 +5,21 @@
  */
 package view;
 
-
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-import model.bean.Produto;
-import model.dao.ProdutoDAO;
-import model.dao.TerrenoDAO;
 /**
  *
  * @author ramires
  */
-public class TelaAddManutTerreno extends javax.swing.JFrame {
+public class TelaFiltrarEstoque extends javax.swing.JFrame {
+    public static TelaEstoque telaE;
 
-    public static String nomeT;
-    public static TelaTerreno telaTerreno;
-    public static int idTerreno;
-    
     /**
-     * Creates new form TelaManutTerreno
+     * Creates new form TelaFiltrarColheita
      */
-    public TelaAddManutTerreno() {
+    public TelaFiltrarEstoque() {
         initComponents();
-        jLabel2.setText(nomeT);
-        
-        ProdutoDAO pdao = new ProdutoDAO();
-        
-        for(Produto p : pdao.readDefensivos()){
-            boxDefensivo.addItem(p);
-        }
     }
 
     /**
@@ -44,6 +29,10 @@ public class TelaAddManutTerreno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel8 = new javax.swing.JLabel();
+        jComboBox5 = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        jComboBox6 = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel(){
             public void paintComponent(Graphics g){
 
@@ -57,39 +46,40 @@ public class TelaAddManutTerreno extends javax.swing.JFrame {
             }
         };
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        boxDefensivo = new javax.swing.JComboBox<>();
-        textQtde = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        textDescricao = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        boxTipo = new javax.swing.JComboBox<>();
+
+        jLabel8.setText("jLabel4");
+
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel9.setText("jLabel5");
+
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Manutenção de Terreno");
+        setTitle("Filtrar Estoque");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 0));
+        jPanel1.setBackground(new java.awt.Color(51, 102, 0));
 
-        jLabel1.setFont(new java.awt.Font("Chilanka", 1, 48)); // NOI18N
-        jLabel1.setText("Manutenção de Terreno");
-
-        jLabel2.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel2.setText("nome");
-
-        jLabel3.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel3.setText("Defensivo");
-
-        jLabel4.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel4.setText("Quantidade");
+        jLabel1.setFont(new java.awt.Font("Chilanka", 1, 36)); // NOI18N
+        jLabel1.setText("Filtrar Estoque");
 
         jButton1.setBackground(new java.awt.Color(51, 153, 255));
+        jButton1.setForeground(new java.awt.Color(51, 153, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow(1).png"))); // NOI18N
         jButton1.setToolTipText("Voltar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(51, 153, 255));
+        jButton2.setForeground(new java.awt.Color(51, 153, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/check.png"))); // NOI18N
         jButton2.setToolTipText("Confirmar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -98,8 +88,10 @@ public class TelaAddManutTerreno extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel5.setText("Descrição");
+        jLabel12.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
+        jLabel12.setText("Tipo");
+
+        boxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sementes", "Defensivos", "Grãos" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -111,45 +103,27 @@ public class TelaAddManutTerreno extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(116, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addGap(109, 109, 109))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(254, 254, 254)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(boxDefensivo, 0, 180, Short.MAX_VALUE)
-                    .addComponent(textQtde)
-                    .addComponent(textDescricao))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(176, 176, 176)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(boxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(152, 152, 152)
+                .addComponent(jLabel1)
+                .addContainerGap(153, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(textDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(66, 66, 66)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(boxDefensivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textQtde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                    .addComponent(jLabel12)
+                    .addComponent(boxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -171,23 +145,18 @@ public class TelaAddManutTerreno extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Produto p = (Produto) boxDefensivo.getSelectedItem();
-        if(Double.parseDouble(textQtde.getText()) > p.getQtde()){
-            JOptionPane.showMessageDialog(null, "A Quantidade Inserida é Maior que a Quantidade em Estoque!");
-        }
-        else{
-            String descr = textDescricao.getText();
-            double qtdeUsada = Double.parseDouble(textQtde.getText());
-            TerrenoDAO tDAO = new TerrenoDAO();
-            tDAO.manutTerreno(p, idTerreno, descr, qtdeUsada, nomeT);
-            
-            telaTerreno.readJTable();
-            
-            this.dispose();
-        }
+
+        String tipo = (String) boxTipo.getSelectedItem();
         
+        telaE.readJTableFiltro(tipo);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -207,36 +176,41 @@ public class TelaAddManutTerreno extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaAddManutTerreno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaFiltrarEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaAddManutTerreno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaFiltrarEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaAddManutTerreno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaFiltrarEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaAddManutTerreno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaFiltrarEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaAddManutTerreno().setVisible(true);
+                new TelaFiltrarEstoque().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Object> boxDefensivo;
+    private javax.swing.JComboBox<String> boxTipo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField textDescricao;
-    private javax.swing.JTextField textQtde;
     // End of variables declaration//GEN-END:variables
 }

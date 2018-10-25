@@ -287,7 +287,7 @@ public class TerrenoDAO {
         }
     }
         
-    public void manutTerreno(Produto p, int idTerreno, String descr, double qtdeUsada){
+    public void manutTerreno(Produto p, int idTerreno, String descr, double qtdeUsada, String nomeT){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stnt = null;
         
@@ -320,7 +320,7 @@ public class TerrenoDAO {
             stnt.setString(1, descr);
             stnt.setString(2, "Defensivo");
             stnt.setDouble(3, qtdeUsada);
-            stnt.setString(4, "Manutenção de Terreno");
+            stnt.setString(4, nomeT);
             stnt.setDouble(5, p.getPreco());
             stnt.setString(6, Cliente.getNome());
             stnt.setDate(7, dataSql);

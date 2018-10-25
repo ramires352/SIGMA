@@ -74,6 +74,7 @@ public class TelaPrincipalAjuda extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ajuda");
@@ -133,7 +134,7 @@ public class TelaPrincipalAjuda extends javax.swing.JFrame {
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/planting.png"))); // NOI18N
 
         jLabel15.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel15.setText("serão listados todos os plantios realizados nos terrenos previamente cadastrados.");
+        jLabel15.setText("serão listados todos os plantios realizados nos terrenos previamente");
 
         jLabel16.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel16.setText("Para utilizar a seção de Estoque, utilzie o ícone");
@@ -162,6 +163,9 @@ public class TelaPrincipalAjuda extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel24.setText("e venda de grãos.");
 
+        jLabel25.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
+        jLabel25.setText("cadastrados.");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -178,6 +182,7 @@ public class TelaPrincipalAjuda extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel25)
                     .addComponent(jLabel24)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel21)
@@ -219,7 +224,7 @@ public class TelaPrincipalAjuda extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 34, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,6 +263,8 @@ public class TelaPrincipalAjuda extends javax.swing.JFrame {
                                             .addComponent(jLabel14)
                                             .addComponent(jLabel13)))
                                     .addComponent(jLabel15))
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel25)
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel17)
@@ -369,6 +376,7 @@ public class TelaPrincipalAjuda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
