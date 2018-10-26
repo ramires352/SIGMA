@@ -7,6 +7,9 @@ package view;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.awt.Graphics;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -24,13 +27,15 @@ public class TelaPlantio extends javax.swing.JFrame {
         modelo.setNumRows(0);
         PlantioDAO pDAO = new PlantioDAO();
         
+        DecimalFormat df = new DecimalFormat("0.00",new DecimalFormatSymbols(new Locale("en","US")));
+        
         for(Plantio p: pDAO.read()){
             modelo.addRow(new Object[]{
                p.getIdPlantio(),
                p.getNomeTerreno(),
                p.getData(),
                p.getSementes(),
-               p.getQtde_sementes(),
+               df.format(p.getQtde_sementes()),
                p.getCultura()
             });
         }
