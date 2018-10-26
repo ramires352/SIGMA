@@ -15,7 +15,15 @@ public class Plantio {
     
     private int idPlantio, idTerreno;
     private Date data;
-    private String sementes, cultura;
+    private String sementes, cultura, nomeTerreno;
+
+    public String getNomeTerreno() {
+        return nomeTerreno;
+    }
+
+    public void setNomeTerreno(String nomeTerreno) {
+        this.nomeTerreno = nomeTerreno;
+    }
     private double qtde_sementes;
 
     public int getIdPlantio() {

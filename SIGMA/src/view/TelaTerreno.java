@@ -318,7 +318,10 @@ public class TelaTerreno extends javax.swing.JFrame {
             if(estado.equals("Plantado")){
                 JOptionPane.showMessageDialog(null, "O Terreno Já Está Plantado!");
             }else{
-
+                TelaAddPlantio.idTerreno = (int) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 0);
+                TelaAddPlantio.nometerreno = (String) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 1);
+                new TelaAddPlantio().setVisible(true);
+                this.dispose();
             }
         }
         

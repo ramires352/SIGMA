@@ -23,6 +23,7 @@ import model.dao.ProdutoDAO;
 public class TelaAddPlantio extends javax.swing.JFrame {
     public static int idTerreno;
     public static TelaPlantio telaPlantio;
+    public static String nometerreno;
 
     /**
      * Creates new form TelaAddTerreno
@@ -31,10 +32,10 @@ public class TelaAddPlantio extends javax.swing.JFrame {
         initComponents();
         
         
-        PlantioDAO plantiodao = new PlantioDAO();
+        ProdutoDAO pdao = new ProdutoDAO();
         
-        for(Plantio p : plantiodao.LerSementes()){
-            estado.addItem(p);
+        for(Produto p : pdao.readSementes()){
+            boxsemente.addItem(p);
         }
     }
 
@@ -61,7 +62,7 @@ public class TelaAddPlantio extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         textQtde = new javax.swing.JTextField();
-        estado = new javax.swing.JComboBox<>();
+        boxsemente = new javax.swing.JComboBox<>();
         botaoAdd = new javax.swing.JButton();
         botaoVoltar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -103,7 +104,7 @@ public class TelaAddPlantio extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel5.setText("Cultura");
 
-        culturabox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soja", "Milho", "Aveia" }));
+        culturabox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soja", "Milho", "Aveia", "Trigo" }));
         culturabox.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -127,7 +128,7 @@ public class TelaAddPlantio extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(estado, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(boxsemente, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(textQtde, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(botaoVoltar)
@@ -143,7 +144,7 @@ public class TelaAddPlantio extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(78, 78, 78)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boxsemente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -177,38 +178,26 @@ public class TelaAddPlantio extends javax.swing.JFrame {
 
     private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarActionPerformed
         // TODO add your handling code here:
-        new TelaPlantio().setVisible(true);
+        new TelaTerreno().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botaoVoltarActionPerformed
 
     private void botaoAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAddActionPerformed
         // TODO add your handling code here:
-        
-        Produto p = (Produto) estado.getSelectedItem();
-
-        if(Double.parseDouble(textQtde.getText()) < p.getQtde()){
-            JOptionPane.showMessageDialog(null, "A quantidade de semente e maior do que há no estoque");
+        double qtde = Double.parseDouble(textQtde.getText());
+        Produto semente = (Produto) boxsemente.getSelectedItem();
+        if (qtde > semente.getQtde() || qtde <= 0){
+            JOptionPane.showMessageDialog(null,"A Quantidade Inserida é Maior que a Quantidade em Estoque!");
         }
         else{
-            Date data = new Date();
-            Plantio plantio = new Plantio();
-            plantio.setIdTerreno(idTerreno);
-            plantio.setData((java.sql.Date) data);
-            plantio.setSementes(estado.getSelectedItem().toString());
-            plantio.setQtde_sementes(Double.parseDouble(textQtde.getText()));
-            plantio.setCultura(culturabox.getSelectedItem().toString());
-        
-            PlantioDAO plantiodao = new PlantioDAO();
-            plantiodao.create(plantio);
-            
-            telaPlantio.readJTable();
-
+            PlantioDAO pdao = new PlantioDAO();
+            pdao.plantar(semente, qtde, idTerreno, semente.getNome(), (String) culturabox.getSelectedItem(), nometerreno);
+            new TelaTerreno().setVisible(true);
             this.dispose();
         }
         
-        
-        
-        
+
+
     }//GEN-LAST:event_botaoAddActionPerformed
 
     /**
@@ -250,8 +239,8 @@ public class TelaAddPlantio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoAdd;
     private javax.swing.JButton botaoVoltar;
-    private javax.swing.JComboBox<Object> culturabox;
-    private javax.swing.JComboBox<Object> estado;
+    private javax.swing.JComboBox<Object> boxsemente;
+    private javax.swing.JComboBox<String> culturabox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
