@@ -108,9 +108,9 @@ public class ProdutoDAO {
                 prod = readDefensivos();
             }
             
-            /*if(tipo.equals("Sementes")){
+            if(tipo.equals("Sementes")){
                 prod = readSementes();
-            }*/
+            }
             
         }
         catch(SQLException ex){
