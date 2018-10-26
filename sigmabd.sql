@@ -63,6 +63,7 @@ create table colheita(
 create table plantio(
 	idPlantio int not null auto_increment,
 	idTerreno int not null,
+	nomeTerreno varchar(45) not null,
 	data date not null,
 	sementes varchar(45) not null,
 	qtde_sementes double not null,
