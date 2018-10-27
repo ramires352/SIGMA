@@ -7,9 +7,15 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -299,13 +305,41 @@ public class TelaTerreno extends javax.swing.JFrame {
             int id = (int) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 0);
             
             if(confirmacao == JOptionPane.YES_OPTION){
+                File diretorio = new File("C:\\Users\\Renato\\Desktop\\ISS\\SIGMA\\Arquivos Deletados"); 
+                try {
+                    if (!diretorio.exists()) {
+                        diretorio.mkdir();
+                    }
+                    File Arquivodeletado = new File("C:\\Users\\Renato\\Desktop\\ISS\\SIGMA\\Arquivos Deletados\\TerrenosDeletados.txt"); 
+                    if (!Arquivodeletado.exists()){
+                        Arquivodeletado.createNewFile();
+                    }
+                    FileWriter fw = new FileWriter(Arquivodeletado, true);
+                    BufferedWriter bw = new BufferedWriter(fw);
+                    bw.write(tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 0).toString());
+                    bw.write(" ");
+                    bw.write(tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 1).toString());
+                    bw.write(" ");
+                    bw.write(tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 2).toString());
+                    bw.write(" ");
+                    bw.write(tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 3).toString());
+                    bw.write(" ");
+                    bw.write(tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 4).toString());
+                    bw.write(" ");
+                    bw.write(tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 5).toString());
+                    bw.newLine();
+                    
+                    bw.close();
+                    fw.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(TelaTerreno.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 TerrenoDAO tDAO = new TerrenoDAO();
                 tDAO.remover(id);
                 
                 readJTable();
             }
         }
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void botaoPlantioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPlantioActionPerformed
