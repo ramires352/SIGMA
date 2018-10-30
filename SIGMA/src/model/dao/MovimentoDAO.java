@@ -22,6 +22,33 @@ import model.bean.Movimento;
  */
 public class MovimentoDAO {
     
+    public void create(Movimento mov){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stnt = null;
+        
+        try{
+            stnt = con.prepareStatement("insert into movimento (nf, nome, tipo, qtde, descricao, preco_un, login) "
+                    + "values (?,?,?,?,?,?,?)");
+            stnt.setString(1, mov.getNf());
+            stnt.setString(2, mov.getNome());
+            stnt.setString(3, mov.getTipo());
+            stnt.setDouble(4, mov.getQtde());
+            stnt.setString(5, mov.getDescricao());
+            stnt.setDouble(6, mov.getPreco_un());
+            stnt.setString(7, Cliente.getNome());
+            
+            
+            stnt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Salvo com sucesso");
+        }
+        catch (SQLException ex){
+            JOptionPane.showMessageDialog(null, "Erro ao salvar" + ex);
+        }
+        finally {
+            ConnectionFactory.closeConnection(con, stnt);
+        }
+    }
+    
     public List<Movimento> readTerreno(int id){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stnt = null;
