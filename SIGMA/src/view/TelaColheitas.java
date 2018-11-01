@@ -7,6 +7,9 @@ package view;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.awt.Graphics;
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+import javax.swing.Icon;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import model.bean.Colheita;
@@ -17,6 +20,8 @@ import model.dao.ColheitaDAO;
  * @author ramires
  */
 public class TelaColheitas extends javax.swing.JFrame {
+    
+    public static boolean filtro;
     
     public void readJTable(){
         DefaultTableModel modelo = (DefaultTableModel) tabelaColheitas.getModel();
@@ -48,6 +53,12 @@ public class TelaColheitas extends javax.swing.JFrame {
                     
             });
         }
+        
+        //Altera o ícone do botao filtro
+        ClassLoader cl = this.getClass().getClassLoader();
+        Icon icone = new ImageIcon(cl.getResource("icons/removerFiltro.png"));
+        botaoFiltro.setIcon(icone);
+        botaoFiltro.setToolTipText("Remover Filtro");
     }
 
 
@@ -59,6 +70,8 @@ public class TelaColheitas extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tabelaColheitas.getModel();
         modelo.setNumRows(0);
         tabelaColheitas.setRowSorter(new TableRowSorter(modelo));
+        
+        filtro = FALSE;
         
         readJTable();
     }
@@ -177,8 +190,19 @@ public class TelaColheitas extends javax.swing.JFrame {
 
     private void botaoFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFiltroActionPerformed
         // TODO add your handling code here:
-        new TelaFiltrarColheita().setVisible(true);
-        TelaFiltrarColheita.telaC = this;
+        if(filtro == FALSE){
+            new TelaFiltrarColheita().setVisible(true);
+            TelaFiltrarColheita.telaC = this;
+        }
+        else{
+            filtro = FALSE;
+            ClassLoader cl = this.getClass().getClassLoader();
+            Icon icone = new ImageIcon(cl.getResource("icons/filter.png"));
+            botaoFiltro.setIcon(icone);
+            botaoFiltro.setToolTipText("Filtrar");
+            readJTable();
+        }
+        
     }//GEN-LAST:event_botaoFiltroActionPerformed
 
     /**

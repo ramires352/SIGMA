@@ -7,6 +7,7 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import static java.lang.Boolean.TRUE;
 import javax.swing.ImageIcon;
 /**
  *
@@ -260,7 +261,10 @@ public class TelaFiltrarColheita extends javax.swing.JFrame {
         de = (anoDe+"-"+mesDe+"-"+diaDe);
         ate = (anoAte+"-"+mesAte+"-"+diaAte);
         
+        TelaColheitas.filtro = TRUE;
+        
         telaC.readJTableFiltro(de, ate);
+        
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 

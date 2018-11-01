@@ -7,6 +7,7 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import static java.lang.Boolean.TRUE;
 import javax.swing.ImageIcon;
 /**
  *
@@ -141,7 +142,12 @@ public class TelaFiltrarMovimento extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel12.setText("Tipo");
 
-        boxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Compra", "Venda", "Manutenção de Terreno", "Plantio" }));
+        boxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Compra", "Colheita", "Manutenção de Terreno", "Plantio", "Venda" }));
+        boxTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxTipoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -284,9 +290,15 @@ public class TelaFiltrarMovimento extends javax.swing.JFrame {
         ate = (anoAte+"-"+mesAte+"-"+diaAte);
         tipo = (String) boxTipo.getSelectedItem();
         
+        TelaMovimento.filtro = TRUE;
+        
         telaM.readJTableFiltro(de, ate, tipo);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void boxTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxTipoActionPerformed
 
     /**
      * @param args the command line arguments

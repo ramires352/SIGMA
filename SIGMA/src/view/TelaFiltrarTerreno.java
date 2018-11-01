@@ -13,13 +13,13 @@ import javax.swing.ImageIcon;
  *
  * @author ramires
  */
-public class TelaFiltrarEstoque extends javax.swing.JFrame {
-    public static TelaEstoque telaE;
+public class TelaFiltrarTerreno extends javax.swing.JFrame {
+    public static TelaTerreno telaT;
 
     /**
      * Creates new form TelaFiltrarColheita
      */
-    public TelaFiltrarEstoque() {
+    public TelaFiltrarTerreno() {
         initComponents();
     }
 
@@ -61,13 +61,13 @@ public class TelaFiltrarEstoque extends javax.swing.JFrame {
         jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Filtrar Estoque");
+        setTitle("Filtrar Terreno");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 102, 0));
 
         jLabel1.setFont(new java.awt.Font("Chilanka", 1, 36)); // NOI18N
-        jLabel1.setText("Filtrar Estoque");
+        jLabel1.setText("Filtrar Terreno");
 
         jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setForeground(new java.awt.Color(51, 153, 255));
@@ -92,7 +92,7 @@ public class TelaFiltrarEstoque extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel12.setText("Tipo");
 
-        boxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sementes", "Defensivos", "Grãos" }));
+        boxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Limpo", "Plantado" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -113,7 +113,7 @@ public class TelaFiltrarEstoque extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(152, 152, 152)
                 .addComponent(jLabel1)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,11 +154,11 @@ public class TelaFiltrarEstoque extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
 
-        String tipo = (String) boxTipo.getSelectedItem();
+        String estado = (String) boxTipo.getSelectedItem();
         
-        telaE.filtro = TRUE;
+        TelaTerreno.filtro = TRUE;
         
-        telaE.readJTableFiltro(tipo);
+        telaT.readJTableFiltro(estado);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -179,14 +179,22 @@ public class TelaFiltrarEstoque extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaFiltrarEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaFiltrarTerreno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaFiltrarEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaFiltrarTerreno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaFiltrarEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaFiltrarTerreno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaFiltrarEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaFiltrarTerreno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -199,7 +207,7 @@ public class TelaFiltrarEstoque extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaFiltrarEstoque().setVisible(true);
+                new TelaFiltrarTerreno().setVisible(true);
             }
         });
     }

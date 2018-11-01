@@ -7,11 +7,11 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import static java.lang.Boolean.FALSE;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -23,6 +23,8 @@ import model.dao.ProdutoDAO;
  * @author marlene
  */
 public class TelaEstoque extends javax.swing.JFrame {
+    
+    public boolean filtro;
 
     
     
@@ -59,6 +61,11 @@ public class TelaEstoque extends javax.swing.JFrame {
                 df.format(p.getQtde()),
             });
         }
+        //Altera o ícone do botao filtro
+        ClassLoader cl = this.getClass().getClassLoader();
+        Icon icone = new ImageIcon(cl.getResource("icons/removerFiltro.png"));
+        botaoFiltro.setIcon(icone);
+        botaoFiltro.setToolTipText("Remover Filtro");
     }
 
     /**
@@ -66,9 +73,11 @@ public class TelaEstoque extends javax.swing.JFrame {
      */
     public TelaEstoque() {
         initComponents();
-                DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setNumRows(0);
         jTable1.setRowSorter(new TableRowSorter(modelo));
+        
+        filtro = FALSE;
         
         readJTable();
     }
@@ -105,7 +114,7 @@ public class TelaEstoque extends javax.swing.JFrame {
         botaoDelete = new javax.swing.JButton();
         botaoCompra = new javax.swing.JButton();
         botaoVenda = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        botaoFiltro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -179,11 +188,12 @@ public class TelaEstoque extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(51, 153, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/filter.png"))); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botaoFiltro.setBackground(new java.awt.Color(51, 153, 255));
+        botaoFiltro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/filter.png"))); // NOI18N
+        botaoFiltro.setToolTipText("Filtrar");
+        botaoFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botaoFiltroActionPerformed(evt);
             }
         });
 
@@ -201,7 +211,7 @@ public class TelaEstoque extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButtonAdd)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3)
+                                .addComponent(botaoFiltro)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton2))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -232,7 +242,7 @@ public class TelaEstoque extends javax.swing.JFrame {
                     .addComponent(jButtonAdd, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(botaoFiltro, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -321,11 +331,23 @@ public class TelaEstoque extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botaoVendaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void botaoFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFiltroActionPerformed
         // TODO add your handling code here:
-        new TelaFiltrarEstoque().setVisible(true);
-        TelaFiltrarEstoque.telaE = this;
-    }//GEN-LAST:event_jButton3ActionPerformed
+        
+        if(filtro == FALSE){
+            new TelaFiltrarEstoque().setVisible(true);
+            TelaFiltrarEstoque.telaE = this;
+        }
+        else{
+            filtro = FALSE;
+            ClassLoader cl = this.getClass().getClassLoader();
+            Icon icone = new ImageIcon(cl.getResource("icons/filter.png"));
+            botaoFiltro.setIcon(icone);
+            botaoFiltro.setToolTipText("Filtrar");
+            readJTable();
+        }
+        
+    }//GEN-LAST:event_botaoFiltroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -368,10 +390,10 @@ public class TelaEstoque extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCompra;
     private javax.swing.JButton botaoDelete;
+    private javax.swing.JButton botaoFiltro;
     private javax.swing.JButton botaoVenda;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonAdd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

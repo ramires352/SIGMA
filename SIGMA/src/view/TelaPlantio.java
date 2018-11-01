@@ -7,9 +7,11 @@ package view;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.awt.Graphics;
+import static java.lang.Boolean.FALSE;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
+import javax.swing.Icon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -21,6 +23,8 @@ import model.dao.PlantioDAO;
  * @author ramires
  */
 public class TelaPlantio extends javax.swing.JFrame {
+    
+    public static boolean filtro;
     
     public void readJTable(){
         DefaultTableModel modelo = (DefaultTableModel) tabelaPlantio.getModel();
@@ -56,6 +60,11 @@ public class TelaPlantio extends javax.swing.JFrame {
                p.getCultura()
             });
         }
+        
+        ClassLoader cl = this.getClass().getClassLoader();
+        Icon icone = new ImageIcon(cl.getResource("icons/removerFiltro.png"));
+        botaoFiltro.setIcon(icone);
+        botaoFiltro.setToolTipText("Remover Filtro");
     }
     
 
@@ -67,6 +76,8 @@ public class TelaPlantio extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tabelaPlantio.getModel();
         modelo.setNumRows(0);
         tabelaPlantio.setRowSorter(new TableRowSorter(modelo));
+        
+        filtro = FALSE;
         
         readJTable();
     }
@@ -201,8 +212,18 @@ public class TelaPlantio extends javax.swing.JFrame {
 
     private void botaoFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFiltroActionPerformed
         // TODO add your handling code here:
-        new TelaFiltrarPlantio().setVisible(true);
-        TelaFiltrarPlantio.telaP = this;
+        if(filtro == FALSE){
+            new TelaFiltrarPlantio().setVisible(true);
+            TelaFiltrarPlantio.telaP = this;
+        }
+        else{
+            filtro = FALSE;
+            ClassLoader cl = this.getClass().getClassLoader();
+            Icon icone = new ImageIcon(cl.getResource("icons/filter.png"));
+            botaoFiltro.setIcon(icone);
+            botaoFiltro.setToolTipText("Filtrar");
+            readJTable();
+        }
     }//GEN-LAST:event_botaoFiltroActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

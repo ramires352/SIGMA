@@ -114,6 +114,41 @@ public class TerrenoDAO {
         return terrenos;
     }
     
+    public List<Terreno> readFiltro(String estado){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stnt = null;
+        ResultSet rs = null;
+        List<Terreno> terrenos = new ArrayList<>();
+        
+        try{
+            stnt = con.prepareStatement("SELECT * FROM terreno WHERE login = ? and estado = ?");
+            stnt.setString(1, Cliente.getNome());
+            stnt.setString(2, estado);
+            rs = stnt.executeQuery();
+            
+            while(rs.next()){
+                Terreno t = new Terreno();
+                
+                t.setIdTerreno(rs.getInt("idTerreno"));
+                t.setArea(rs.getDouble("area"));
+                t.setNome(rs.getString("nome"));
+                t.setLogin(Cliente.getNome());
+                t.setEstado(rs.getString("estado"));
+                t.setGastos(rs.getDouble("gastos"));
+                t.setCultura(rs.getString("cultura"));
+                
+                terrenos.add(t);
+            }
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Erro na Leitura! "+ex);
+        }
+        finally{
+            ConnectionFactory.closeConnection(con, stnt, rs);
+        }
+        return terrenos;
+    }
+    
     //Enquanto a função anterior retorna todos os terrenos
     //Essa aqui retorna apenas o terreno do ID que foi passado
     public List<Terreno> readOne(int ID){
@@ -213,8 +248,8 @@ public class TerrenoDAO {
             stnt2.executeUpdate();
             
             stnt3 = con.prepareStatement("INSERT INTO movimento (nome, tipo, qtde, descricao, preco_un, login, data, idTerreno) VALUES (?,?,?,?,?,?,?,?)");
-            stnt3.setString(1,"Colheita");
-            stnt3.setString(2, cultura);
+            stnt3.setString(1, cultura);
+            stnt3.setString(2, "Colheita");
             stnt3.setDouble(3, q);
             stnt3.setString(4, nomeT);
             stnt3.setDouble(5, custo/q);
@@ -318,7 +353,7 @@ public class TerrenoDAO {
 
             stnt = con.prepareStatement("INSERT INTO movimento (nome, tipo, qtde, descricao, preco_un, login, data, idTerreno) VALUES (?,?,?,?,?,?,?,?)");
             stnt.setString(1, descr);
-            stnt.setString(2, "Defensivo");
+            stnt.setString(2, "Manutanção de Terreno");
             stnt.setDouble(3, qtdeUsada);
             stnt.setString(4, nomeT);
             stnt.setDouble(5, p.getPreco());
