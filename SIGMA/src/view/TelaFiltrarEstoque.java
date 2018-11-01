@@ -7,6 +7,7 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import static java.lang.Boolean.TRUE;
 import javax.swing.ImageIcon;
 /**
  *
@@ -154,6 +155,8 @@ public class TelaFiltrarEstoque extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         String tipo = (String) boxTipo.getSelectedItem();
+        
+        telaE.filtro = TRUE;
         
         telaE.readJTableFiltro(tipo);
         this.dispose();

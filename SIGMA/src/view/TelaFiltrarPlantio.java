@@ -7,6 +7,7 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import static java.lang.Boolean.TRUE;
 import javax.swing.ImageIcon;
 /**
  *
@@ -259,6 +260,8 @@ public class TelaFiltrarPlantio extends javax.swing.JFrame {
         
         de = (anoDe+"-"+mesDe+"-"+diaDe);
         ate = (anoAte+"-"+mesAte+"-"+diaAte);
+        
+        TelaPlantio.filtro = TRUE;
         
         telaP.readJTableFiltro(de, ate);
         this.dispose();
