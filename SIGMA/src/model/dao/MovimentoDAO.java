@@ -109,7 +109,7 @@ public class MovimentoDAO {
         List<Movimento> movimentos = new ArrayList<>();
         
         try{
-            stnt = con.prepareStatement("SELECT * FROM movimento WHERE login = ? AND data >= ? AND data <= ? AND descricao = ?");
+            stnt = con.prepareStatement("SELECT * FROM movimento WHERE login = ? AND data >= ? AND data <= ? AND tipo = ?");
             stnt.setString(1, Cliente.getNome());
             stnt.setString(2,de);
             stnt.setString(3, ate);
