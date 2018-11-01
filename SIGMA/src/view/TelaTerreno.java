@@ -7,9 +7,11 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import static java.lang.Boolean.FALSE;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,6 +24,8 @@ import model.dao.TerrenoDAO;
  * @author ramires
  */
 public class TelaTerreno extends javax.swing.JFrame {
+    
+    public static boolean filtro;
     
     public void readJTable(){
         DefaultTableModel modelo = (DefaultTableModel) tabelaTerreno.getModel();
@@ -41,6 +45,31 @@ public class TelaTerreno extends javax.swing.JFrame {
                 df.format(t.getGastos())
             });
         }
+    }
+    
+    public void readJTableFiltro(String tipo){
+        DefaultTableModel modelo = (DefaultTableModel) tabelaTerreno.getModel();
+        modelo.setNumRows(0);
+        TerrenoDAO tDAO = new TerrenoDAO();
+        
+        DecimalFormat df = new DecimalFormat("0.00",new DecimalFormatSymbols(new Locale("en","US")));
+        
+        
+        for(Terreno t: tDAO.readFiltro(tipo)){
+            modelo.addRow(new Object[]{
+                t.getIdTerreno(),
+                t.getNome(),
+                t.getArea(),
+                t.getEstado(),
+                t.getCultura(),
+                df.format(t.getGastos())
+            });
+        }
+        //Altera o ícone do botao filtro
+        ClassLoader cl = this.getClass().getClassLoader();
+        Icon icone = new ImageIcon(cl.getResource("icons/removerFiltro.png"));
+        botaoFiltro.setIcon(icone);
+        botaoFiltro.setToolTipText("Remover Filtro");
     }
 
     /**
@@ -84,6 +113,7 @@ public class TelaTerreno extends javax.swing.JFrame {
         botaoColheita = new javax.swing.JButton();
         botaoVeneno = new javax.swing.JButton();
         botaoPlantio = new javax.swing.JButton();
+        botaoFiltro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Terrenos");
@@ -169,6 +199,15 @@ public class TelaTerreno extends javax.swing.JFrame {
             }
         });
 
+        botaoFiltro.setBackground(new java.awt.Color(51, 153, 255));
+        botaoFiltro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/filter.png"))); // NOI18N
+        botaoFiltro.setToolTipText("Filtrar");
+        botaoFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoFiltroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -184,6 +223,8 @@ public class TelaTerreno extends javax.swing.JFrame {
                         .addComponent(botaoVoltar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botaoAdd)
+                        .addGap(18, 18, 18)
+                        .addComponent(botaoFiltro)
                         .addGap(18, 18, 18)
                         .addComponent(botaoEditar))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -215,7 +256,8 @@ public class TelaTerreno extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botaoVoltar, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(botaoEditar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(botaoAdd, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(botaoAdd, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botaoFiltro, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -341,6 +383,23 @@ public class TelaTerreno extends javax.swing.JFrame {
         
     }//GEN-LAST:event_botaoVenenoActionPerformed
 
+    private void botaoFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFiltroActionPerformed
+        // TODO add your handling code here:
+        if(filtro == FALSE){
+            new TelaFiltrarTerreno().setVisible(true);
+            TelaFiltrarTerreno.telaT = this;
+        }
+        else{
+            filtro = FALSE;
+            ClassLoader cl = this.getClass().getClassLoader();
+            Icon icone = new ImageIcon(cl.getResource("icons/filter.png"));
+            botaoFiltro.setIcon(icone);
+            botaoFiltro.setToolTipText("Filtrar");
+            readJTable();
+        }
+        
+    }//GEN-LAST:event_botaoFiltroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -380,6 +439,7 @@ public class TelaTerreno extends javax.swing.JFrame {
     private javax.swing.JButton botaoAdd;
     private javax.swing.JButton botaoColheita;
     private javax.swing.JButton botaoEditar;
+    private javax.swing.JButton botaoFiltro;
     private javax.swing.JButton botaoPlantio;
     private javax.swing.JButton botaoVeneno;
     private javax.swing.JButton botaoVoltar;
