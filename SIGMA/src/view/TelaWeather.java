@@ -9,27 +9,35 @@ package view;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-import model.bean.Cliente;
-import model.bean.Produto;
-import model.dao.ProdutoDAO;
+import weather.OpenWeatherMap;
+
 
 /**
  *
  * @author ramires
  */
-public class TelaVendaGraosErro extends javax.swing.JFrame {
-    
-    private int id;
-    public static TelaEstoque telaE;
+public class TelaWeather extends javax.swing.JFrame {
     
     /** Creates new form TelaAltProduto
      * @param  */
-    public TelaVendaGraosErro() {
+    public TelaWeather() {
         initComponents();
         
         
         
+    }
+
+    TelaWeather(String cidade) {
+        initComponents();
+        labelCidade.setText(cidade);
+        OpenWeatherMap weather = new OpenWeatherMap();
+        weather.setLOCATION(cidade);
+        
+        weather.getWeather();
+        
+        labelTemperatura.setText("Temperatura: "+weather.getTemperatura()+" C");
+        labelUmidade.setText("Umidade: "+weather.getUmidade()+" %");
+        labelVento.setText("Velocidade do Vento: "+weather.getWindSpeed()+" km/h");
     }
 
     /** This method is called from within the constructor to
@@ -55,20 +63,18 @@ public class TelaVendaGraosErro extends javax.swing.JFrame {
         }
 
         ;
-        titulo = new javax.swing.JLabel();
         botaoConfirma = new javax.swing.JButton();
-        titulo1 = new javax.swing.JLabel();
-        titulo2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        labelCidade = new javax.swing.JLabel();
+        labelTemperatura = new javax.swing.JLabel();
+        labelUmidade = new javax.swing.JLabel();
+        labelVento = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Erro");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Previsão do Tempo");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 153, 0));
-
-        titulo.setFont(new java.awt.Font("Chilanka", 1, 36)); // NOI18N
-        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo.setText("em menor quantidade");
 
         botaoConfirma.setBackground(new java.awt.Color(51, 153, 255));
         botaoConfirma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/check.png"))); // NOI18N
@@ -79,39 +85,70 @@ public class TelaVendaGraosErro extends javax.swing.JFrame {
             }
         });
 
-        titulo1.setFont(new java.awt.Font("Chilanka", 1, 36)); // NOI18N
-        titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo1.setText("Produto inexistente");
+        jLabel1.setFont(new java.awt.Font("Chilanka", 1, 36)); // NOI18N
+        jLabel1.setText("Previsão do Tempo");
 
-        titulo2.setFont(new java.awt.Font("Chilanka", 1, 36)); // NOI18N
-        titulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo2.setText("ou");
+        labelCidade.setFont(new java.awt.Font("Chilanka", 1, 18)); // NOI18N
+        labelCidade.setText("cidade");
+
+        labelTemperatura.setFont(new java.awt.Font("Chilanka", 1, 14)); // NOI18N
+        labelTemperatura.setText("jLabel3");
+
+        labelUmidade.setFont(new java.awt.Font("Chilanka", 1, 14)); // NOI18N
+        labelUmidade.setText("jLabel2");
+
+        labelVento.setFont(new java.awt.Font("Chilanka", 1, 14)); // NOI18N
+        labelVento.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
-                    .addComponent(titulo1, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
-                    .addComponent(titulo2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(botaoConfirma)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(botaoConfirma))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(labelTemperatura)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(labelUmidade))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(labelVento)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(80, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(54, 54, 54))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelCidade)
+                        .addGap(192, 192, 192))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelCidade)
+                .addGap(33, 33, 33)
+                .addComponent(labelTemperatura)
                 .addGap(18, 18, 18)
-                .addComponent(titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelUmidade)
                 .addGap(18, 18, 18)
-                .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(labelVento)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(botaoConfirma)
                 .addContainerGap())
         );
@@ -133,7 +170,6 @@ public class TelaVendaGraosErro extends javax.swing.JFrame {
 
     private void botaoConfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmaActionPerformed
         // TODO add your handling code here:
-        new TelaEstoque().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botaoConfirmaActionPerformed
 
@@ -154,14 +190,22 @@ public class TelaVendaGraosErro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaVendaGraosErro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaWeather.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaVendaGraosErro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaWeather.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaVendaGraosErro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaWeather.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaVendaGraosErro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaWeather.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -174,17 +218,19 @@ public class TelaVendaGraosErro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaVendaGraosErro().setVisible(true);
+                new TelaWeather().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoConfirma;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel titulo;
-    private javax.swing.JLabel titulo1;
-    private javax.swing.JLabel titulo2;
+    private javax.swing.JLabel labelCidade;
+    private javax.swing.JLabel labelTemperatura;
+    private javax.swing.JLabel labelUmidade;
+    private javax.swing.JLabel labelVento;
     // End of variables declaration//GEN-END:variables
 
 }

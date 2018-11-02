@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import weather.OpenWeatherMap;
 
 /**
  *
@@ -75,6 +76,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         botaoLogOff = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SIGMA");
@@ -223,6 +225,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setBackground(new java.awt.Color(51, 153, 255));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/rain.png"))); // NOI18N
+        jButton6.setToolTipText("Previsão do Tempo");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -239,7 +250,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(botaoLogOff)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(270, 270, 270)
+                .addGap(191, 191, 191)
+                .addComponent(jButton6)
+                .addGap(18, 18, 18)
                 .addComponent(jButton5)
                 .addContainerGap())
         );
@@ -254,7 +267,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(botaoLogOff)
                     .addComponent(jButton5)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jButton6))
                 .addGap(13, 13, 13))
         );
 
@@ -312,6 +326,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         new TelaPrincipalAjuda().setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        
+        String cidade = JOptionPane.showInputDialog("Digite o nome da cidade: ");
+        System.out.println(cidade);
+        new TelaWeather(cidade).setVisible(true);
+        
+        
+        
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -356,6 +381,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
