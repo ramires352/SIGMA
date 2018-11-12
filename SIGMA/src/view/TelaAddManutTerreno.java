@@ -174,18 +174,25 @@ public class TelaAddManutTerreno extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         Produto p = (Produto) boxDefensivo.getSelectedItem();
-        if(Double.parseDouble(textQtde.getText()) > p.getQtde()){
+        double qtde = Double.parseDouble(textQtde.getText());
+        if(qtde > p.getQtde()){
             JOptionPane.showMessageDialog(null, "A Quantidade Inserida é Maior que a Quantidade em Estoque!");
         }
         else{
-            String descr = textDescricao.getText();
-            double qtdeUsada = Double.parseDouble(textQtde.getText());
-            TerrenoDAO tDAO = new TerrenoDAO();
-            tDAO.manutTerreno(p, idTerreno, descr, qtdeUsada, nomeT);
+            if(qtde < 0){
+                JOptionPane.showMessageDialog(null, "A Quantidade Não Pode Ser Menor que 0!");
+            }
+            else{
+                String descr = textDescricao.getText();
+                double qtdeUsada = Double.parseDouble(textQtde.getText());
+                TerrenoDAO tDAO = new TerrenoDAO();
+                tDAO.manutTerreno(p, idTerreno, descr, qtdeUsada, nomeT);
+
+                telaTerreno.readJTable();
+
+                this.dispose();
+            }
             
-            telaTerreno.readJTable();
-            
-            this.dispose();
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
