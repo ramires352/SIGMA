@@ -9,7 +9,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import weather.OpenWeatherMap;
 
 /**
  *
@@ -330,10 +329,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         String cidade = JOptionPane.showInputDialog("Digite o nome da cidade: ");
-        System.out.println(cidade);
-        new TelaWeather(cidade).setVisible(true);
-        
-        
+        if(cidade.equals("")){
+            
+        }else{
+            new TelaWeather(cidade).setVisible(true);
+        }
         
     }//GEN-LAST:event_jButton6ActionPerformed
 
