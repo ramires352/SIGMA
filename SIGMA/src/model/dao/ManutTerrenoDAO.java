@@ -64,7 +64,7 @@ public class ManutTerrenoDAO {
         List<ManutTerreno> manutTerrenos = new ArrayList<>();
         
         try{
-            stnt = con.prepareStatement("SELECT * FROM manut_terreno WHERE login = ?");
+            stnt = con.prepareStatement("SELECT * FROM manut_terreno WHERE idTerreno in (select idTerreno from terreno where login = ?)");
             stnt.setString(1, Cliente.getNome());
             
             rs = stnt.executeQuery();
@@ -77,6 +77,8 @@ public class ManutTerrenoDAO {
                 mt.setDefensivo(rs.getString("defensivo"));
                 mt.setData(rs.getDate("data"));
                 mt.setIdTerreno(rs.getInt("idTerreno"));
+                mt.setNomeTerreno(rs.getString("nomeTerreno"));
+                mt.setQtde_defensivo(rs.getDouble("qtde_defensivo"));
                 
                 manutTerrenos.add(mt);
             }
@@ -99,7 +101,7 @@ public class ManutTerrenoDAO {
         List<ManutTerreno> manutTerrenos = new ArrayList<>();
         
         try{
-            stnt = con.prepareStatement("SELECT * FROM manut_terreno WHERE login = ? and data >= ? AND data <= ?");
+            stnt = con.prepareStatement("SELECT * FROM manut_terreno WHERE idTerreno in (select idTerreno from terreno where login = ?) and data >= ? AND data <= ?");
             stnt.setString(1, Cliente.getNome());
             stnt.setString(2, de);
             stnt.setString(3, ate);
@@ -114,6 +116,8 @@ public class ManutTerrenoDAO {
                 mt.setDefensivo(rs.getString("defensivo"));
                 mt.setData(rs.getDate("data"));
                 mt.setIdTerreno(rs.getInt("idTerreno"));
+                mt.setNomeTerreno(rs.getString("nomeTerreno"));
+
                 
                 manutTerrenos.add(mt);
             }
@@ -127,5 +131,24 @@ public class ManutTerrenoDAO {
         }
         return manutTerrenos;
             
+    }
+
+    public void delete(int id) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stnt = null;
+        
+        try{
+            stnt = con.prepareStatement("DELETE FROM manut_terreno WHERE idManut_terreno = ?");
+            stnt.setInt(1,id);
+            
+            stnt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Removido com Sucesso!");
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Erro ao Remover! "+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stnt);
+        }
+   
     }
 }
