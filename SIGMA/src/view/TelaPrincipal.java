@@ -141,6 +141,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButton7.setBackground(new java.awt.Color(51, 153, 255));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/passarVeneno.png"))); // NOI18N
+        jButton7.setToolTipText("Manutenções de Terreno");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
