@@ -117,6 +117,7 @@ public class ManutTerrenoDAO {
                 mt.setData(rs.getDate("data"));
                 mt.setIdTerreno(rs.getInt("idTerreno"));
                 mt.setNomeTerreno(rs.getString("nomeTerreno"));
+                mt.setQtde_defensivo(rs.getDouble("qtde_defensivo"));
 
                 
                 manutTerrenos.add(mt);
