@@ -77,6 +77,7 @@ create table manut_terreno(
 	qtde_defensivo double not null,
 	data date not null,
 	idTerreno int not null,
+	nomeTerreno varchar(45) not null
 	primary key(idManut_terreno));
 
 create table vendas(
