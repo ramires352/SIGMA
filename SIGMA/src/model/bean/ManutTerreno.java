@@ -13,9 +13,17 @@ import java.sql.Date;
  */
 public class ManutTerreno {
     private int idManut_terreno, idTerreno;
-    private String defensivo, nome;
+    private String defensivo, nome, nomeTerreno;
     private double qtde_defensivo;
     private Date data;
+
+    public String getNomeTerreno() {
+        return nomeTerreno;
+    }
+
+    public void setNomeTerreno(String nomeTerreno) {
+        this.nomeTerreno = nomeTerreno;
+    }
 
     public int getIdManut_terreno() {
         return idManut_terreno;
