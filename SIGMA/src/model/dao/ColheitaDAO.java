@@ -128,5 +128,23 @@ public class ColheitaDAO {
         return colheitas;
             
     }
+
+    public void delete(int id) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stnt = null;
+        
+        try{
+            stnt = con.prepareStatement("DELETE FROM colheita WHERE idColheita = ?");
+            stnt.setInt(1,id);
+            
+            stnt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Removido com Sucesso!");
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Erro ao Remover! "+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stnt);
+        }
+    }
     
 }
