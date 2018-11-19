@@ -4,6 +4,8 @@ select * from produto;
 
 select * from plantio;
 
+select * from manut_terreno;
+
 select if((select cultura from terreno where idTerreno = 1) in (select tipo from produto where login = 'teste'),'TRUE','FALSE');
 
 select qtde from produto where tipo = 'Soja';

@@ -342,12 +342,13 @@ public class TerrenoDAO {
             java.util.Date dia = new java.util.Date();
             java.sql.Date dataSql = new java.sql.Date(dia.getTime());
 
-            stnt = con.prepareStatement("INSERT INTO manut_terreno (nome, defensivo, qtde_defensivo, data, idTerreno) VALUES (?,?,?,?,?)");
+            stnt = con.prepareStatement("INSERT INTO manut_terreno (nome, defensivo, qtde_defensivo, data, idTerreno, nomeTerreno) VALUES (?,?,?,?,?,?)");
             stnt.setString(1, descr);
             stnt.setString(2, p.getNome());
             stnt.setDouble(3, qtdeUsada);
             stnt.setDate(4, dataSql);
             stnt.setInt(5, idTerreno);
+            stnt.setString(6, nomeT);
 
             stnt.executeUpdate();
 
