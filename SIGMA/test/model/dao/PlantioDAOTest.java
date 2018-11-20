@@ -43,18 +43,6 @@ public class PlantioDAOTest {
     @After
     public void tearDown() {
     }
-
-    /**
-     * Test of readTerreno method, of class PlantioDAO.
-     */
-    @Test
-    public void testReadTerreno() {
-
-    }
-
-    /**
-     * Test of readFiltro method, of class PlantioDAO.
-     */
     @Test
     public void testReadFiltro() {
         Cliente.setNome("teste");
@@ -68,22 +56,6 @@ public class PlantioDAOTest {
     public void testRead() {
         Cliente.setNome("teste");
         assertTrue(pDAO.read().isEmpty());
-    }
-
-    /**
-     * Test of delete method, of class PlantioDAO.
-     */
-    @Test
-    public void testDelete() {
-
-    }
-
-    /**
-     * Test of plantar method, of class PlantioDAO.
-     */
-    @Test
-    public void testPlantar() {
-
     }
     
 }

@@ -60,13 +60,5 @@ public class ColheitaDAOTest {
         Cliente.setNome("teste");
         assertTrue(cDAO.readFiltro("01-12-2020", "02-12-2020").isEmpty());
     }
-
-    /**
-     * Test of readTerreno method, of class ColheitaDAO.
-     */
-    @Test
-    public void testReadTerreno() {
-
-    }
     
 }
