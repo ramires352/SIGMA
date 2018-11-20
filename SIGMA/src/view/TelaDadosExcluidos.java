@@ -5,6 +5,7 @@
  */
 package view;
 
+import file.ManipularArquivos;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.BufferedReader;
@@ -13,8 +14,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -44,7 +43,7 @@ public class TelaDadosExcluidos extends javax.swing.JFrame {
         
             String linha = br.readLine();
             while (linha != null){
-                Object[] obj = linha.split(" ");
+                Object[] obj = linha.split("\t");
                 modelo.addRow(obj);
                 linha = br.readLine();
             }
@@ -72,7 +71,7 @@ public class TelaDadosExcluidos extends javax.swing.JFrame {
         
             String linha = br.readLine();
             while (linha != null){
-                Object[] obj = linha.split(" ");
+                Object[] obj = linha.split("\t");
                 modelo.addRow(obj);
                 linha = br.readLine();
             }
@@ -91,7 +90,7 @@ public class TelaDadosExcluidos extends javax.swing.JFrame {
             }
             String dir = System.getProperty("user.home") + "\\Desktop\\ISS\\SIGMA\\Arquivos Deletados";
             
-            String nomeArquivo = "MaquinasDeletados.txt";
+            String nomeArquivo = "MaquinasDeletadas.txt";
             File arquivo = new File (dir, nomeArquivo);
         
             FileInputStream fis = new FileInputStream(arquivo);
@@ -100,7 +99,7 @@ public class TelaDadosExcluidos extends javax.swing.JFrame {
         
             String linha = br.readLine();
             while (linha != null){
-                Object[] obj = linha.split(" ");
+                Object[] obj = linha.split("\t");
                 modelo.addRow(obj);
                 linha = br.readLine();
             }
@@ -128,7 +127,7 @@ public class TelaDadosExcluidos extends javax.swing.JFrame {
         
             String linha = br.readLine();
             while (linha != null){
-                Object[] obj = linha.split(" ");
+                Object[] obj = linha.split("\t");
                 modelo.addRow(obj);
                 linha = br.readLine();
             }
@@ -147,7 +146,7 @@ public class TelaDadosExcluidos extends javax.swing.JFrame {
             }
             String dir = System.getProperty("user.home") + "\\Desktop\\ISS\\SIGMA\\Arquivos Deletados";
             
-            String nomeArquivo = "ColheitaDeletados.txt";
+            String nomeArquivo = "ColheitaDeletadas.txt";
             File arquivo = new File (dir, nomeArquivo);
         
             FileInputStream fis = new FileInputStream(arquivo);
@@ -156,40 +155,12 @@ public class TelaDadosExcluidos extends javax.swing.JFrame {
         
             String linha = br.readLine();
             while (linha != null){
-                Object[] obj = linha.split(" ");
+                Object[] obj = linha.split("\t");
                 modelo.addRow(obj);
                 linha = br.readLine();
             }
         } catch (FileNotFoundException e){
             JOptionPane.showMessageDialog(null, "Não há nenhuma colheita excluida!");
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Erro!"+ex);
-        }
-    }
-    
-    public void preencheTabelaMovimetacoes(){
-        try{
-            DefaultTableModel modelo = (DefaultTableModel) tabelaExcluidos.getModel();
-            if(modelo.getRowCount() > 0){
-                modelo.setRowCount(0);
-            }
-            String dir = System.getProperty("user.home") + "\\Desktop\\ISS\\SIGMA\\Arquivos Deletados";
-            
-            String nomeArquivo = "MovimetacoesDeletados.txt";
-            File arquivo = new File (dir, nomeArquivo);
-        
-            FileInputStream fis = new FileInputStream(arquivo);
-            InputStreamReader isr = new InputStreamReader(fis);
-            BufferedReader br = new BufferedReader(isr);
-        
-            String linha = br.readLine();
-            while (linha != null){
-                Object[] obj = linha.split(" ");
-                modelo.addRow(obj);
-                linha = br.readLine();
-            }
-        } catch (FileNotFoundException e){
-            JOptionPane.showMessageDialog(null, "Não há nenhuma Movimentação excluida!");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Erro!"+ex);
         }
@@ -237,12 +208,35 @@ public class TelaDadosExcluidos extends javax.swing.JFrame {
 
         tabelaExcluidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "Área", "Estado", "Cultura", "Gastos"
+                "", "", "", "", "", ""
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tabelaExcluidos.setToolTipText("");
         tabelaExcluidos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tabelaExcluidos.setOpaque(false);
         jScrollPane1.setViewportView(tabelaExcluidos);
@@ -259,7 +253,7 @@ public class TelaDadosExcluidos extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Chilanka", 1, 48)); // NOI18N
         jLabel1.setText("Dados excluidos");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Terrenos", "Plantios", "Produtos", "Maquina", "Colheitas", "Movimentação" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Terrenos", "Plantios", "Produtos", "Maquina", "Colheitas" }));
         jComboBox1.setToolTipText("");
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -349,19 +343,15 @@ public class TelaDadosExcluidos extends javax.swing.JFrame {
                     break;
                     
                 case 2:
-                    preencheTabelaMaquinas();
+                    preencheTabelaProdutos();
                     break;
                     
                 case 3:
-                    preencheTabelaProdutos();
+                    preencheTabelaMaquinas();
                     break;
                     
                 case 4:
                     preencheTabelaColheita();
-                    break;
-                    
-                case 5:
-                    preencheTabelaMovimetacoes();
                     break;
                     
                 default:
@@ -370,23 +360,65 @@ public class TelaDadosExcluidos extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void botaorestaurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaorestaurarActionPerformed
+        ManipularArquivos manip = new ManipularArquivos();
         if(tabelaExcluidos.getSelectedRow() == -1){
             JOptionPane.showMessageDialog(null, "Selecione primeiro o item que deseja restaurar!");
         }     
         else{
+            int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja realmente restaurar este item?");
             switch (jComboBox1.getSelectedIndex()) {
                 case 0:
-                    
+                    if(confirmacao == JOptionPane.YES_OPTION){
+                        String nome, estado, cultura, area, gastos;
+                        int nlinha;
+                        nlinha = tabelaExcluidos.getSelectedRow();
+                        nome = tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 1).toString();
+                        area =  tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 2).toString();
+                        estado = tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 3).toString();
+                        cultura = tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 4).toString();
+                        gastos =  tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 5).toString();
+                        manip.RestaurarTerreno(nlinha,nome,area,estado,cultura,gastos);
+                        preencheTabelaTerreno();
+                    }
                     break;
+                    
                 case 1:
-                    
+                    if(confirmacao == JOptionPane.YES_OPTION){
+                        JOptionPane.showMessageDialog(null, "Não é possível restaurar um Plantio!");
+                    }
                     break;
+                    
                 case 2:
-                    
+                    if(confirmacao == JOptionPane.YES_OPTION){
+                        String nome, tipo, preco, qtde;
+                        int nlinha;
+                        nlinha = tabelaExcluidos.getSelectedRow();
+                        nome = tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 1).toString();
+                        tipo =  tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 2).toString();
+                        preco = tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 3).toString();
+                        qtde = tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 4).toString();
+                        manip.RestaurarProdutos(nlinha,nome,tipo,preco,qtde);
+                        preencheTabelaProdutos();
+                    }
                     break;
+                    
                 case 3:
-                    
+                    if(confirmacao == JOptionPane.YES_OPTION){
+                        String nome;
+                        int nlinha;
+                        nlinha = tabelaExcluidos.getSelectedRow();
+                        nome =  tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 2).toString();
+                        manip.RestaurarMaquinas(nlinha, nome);
+                        preencheTabelaMaquinas();
+                    }
                     break;
+                    
+                case 4:
+                    if(confirmacao == JOptionPane.YES_OPTION){
+                        JOptionPane.showMessageDialog(null, "Não é possível restaurar uma Colheita!");
+                    }
+                    break;
+                
                 default:
                     break;
             }
