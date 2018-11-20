@@ -76,8 +76,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         botaoLogOff = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         botaoRelatoriodosexcluidos = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SIGMA");
@@ -238,21 +238,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(51, 153, 255));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/rain.png"))); // NOI18N
-        jButton6.setToolTipText("Previsão do Tempo");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
         botaoRelatoriodosexcluidos.setBackground(new java.awt.Color(51, 153, 255));
         botaoRelatoriodosexcluidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/analytics.png"))); // NOI18N
         botaoRelatoriodosexcluidos.setToolTipText("Histórico");
         botaoRelatoriodosexcluidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoRelatoriodosexcluidosActionPerformed(evt);
+            }
+        });
+
+        jButton6.setBackground(new java.awt.Color(51, 153, 255));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/rain.png"))); // NOI18N
+        jButton6.setToolTipText("Previsão do Tempo");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
             }
         });
 
@@ -270,7 +270,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(botaoLogOff)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(botaoRelatoriodosexcluidos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -292,9 +292,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(botaoLogOff)
                     .addComponent(jButton5)
                     .addComponent(jLabel1)
+                    .addComponent(botaoRelatoriodosexcluidos)
                     .addComponent(jButton6))
-                    .addComponent(jLabel1)
-                    .addComponent(botaoRelatoriodosexcluidos))
                 .addGap(13, 13, 13))
         );
 
