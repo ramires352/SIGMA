@@ -91,8 +91,6 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
 
         boxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semente", "Defensivo", "Soja", "Milho", "Aveia", "Trigo" }));
 
-        textPreco.setEditable(false);
-
         botaoConfirma.setBackground(new java.awt.Color(51, 153, 255));
         botaoConfirma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/check.png"))); // NOI18N
         botaoConfirma.setToolTipText("Confirmar");
@@ -110,8 +108,6 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
                 botaoVoltaActionPerformed(evt);
             }
         });
-
-        textQtde.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

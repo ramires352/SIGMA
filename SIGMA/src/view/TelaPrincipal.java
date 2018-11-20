@@ -77,6 +77,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        botaoRelatoriodosexcluidos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SIGMA");
@@ -246,6 +247,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        botaoRelatoriodosexcluidos.setBackground(new java.awt.Color(51, 153, 255));
+        botaoRelatoriodosexcluidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/analytics.png"))); // NOI18N
+        botaoRelatoriodosexcluidos.setToolTipText("Histórico");
+        botaoRelatoriodosexcluidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoRelatoriodosexcluidosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -260,6 +270,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(botaoLogOff)
+                .addGap(26, 26, 26)
+                .addComponent(botaoRelatoriodosexcluidos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(191, 191, 191)
@@ -281,6 +293,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButton5)
                     .addComponent(jLabel1)
                     .addComponent(jButton6))
+                    .addComponent(jLabel1)
+                    .addComponent(botaoRelatoriodosexcluidos))
                 .addGap(13, 13, 13))
         );
 
@@ -356,6 +370,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void botaoRelatoriodosexcluidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRelatoriodosexcluidosActionPerformed
+        new TelaDadosExcluidos().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botaoRelatoriodosexcluidosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -395,6 +414,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botaoLogOff;
     private javax.swing.JButton botaoMaq;
     private javax.swing.JButton botaoPlantacoes;
+    private javax.swing.JButton botaoRelatoriodosexcluidos;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

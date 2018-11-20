@@ -137,7 +137,7 @@ public class TelaPrincipalAjuda extends javax.swing.JFrame {
         jLabel15.setText("serão listados todos os plantios realizados nos terrenos previamente");
 
         jLabel16.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel16.setText("Para utilizar a seção de Estoque, utilzie o ícone");
+        jLabel16.setText("Para utilizar a seção de Estoque, utilize o ícone");
 
         jLabel17.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/warehouse.png"))); // NOI18N
@@ -158,7 +158,7 @@ public class TelaPrincipalAjuda extends javax.swing.JFrame {
         jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/coins.png"))); // NOI18N
 
         jLabel23.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel23.setText("lsita todas as movimentações financeiras realizadas, tais como compra de produtos");
+        jLabel23.setText("lista todas as movimentações financeiras realizadas, tais como compra de produtos");
 
         jLabel24.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel24.setText("e venda de grãos.");

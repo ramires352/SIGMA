@@ -5,13 +5,20 @@
  */
 package view;
 
+import file.ManipularArquivos;
 import java.awt.Graphics;
 import java.awt.Image;
 import static java.lang.Boolean.FALSE;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 import javax.swing.Icon;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -114,6 +121,7 @@ public class TelaTerreno extends javax.swing.JFrame {
         botaoVeneno = new javax.swing.JButton();
         botaoPlantio = new javax.swing.JButton();
         botaoFiltro = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Terrenos");
@@ -208,6 +216,15 @@ public class TelaTerreno extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setBackground(new java.awt.Color(51, 153, 255));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/faq.png"))); // NOI18N
+        jButton5.setToolTipText("Ajuda");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -232,6 +249,8 @@ public class TelaTerreno extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(botaoVeneno)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton5)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(botaoPlantio)
@@ -243,11 +262,13 @@ public class TelaTerreno extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton1)
-                        .addComponent(botaoColheita))
-                    .addComponent(botaoVeneno))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1)
+                            .addComponent(botaoColheita))
+                        .addComponent(botaoVeneno))
+                    .addComponent(jButton5))
                 .addGap(18, 18, 18)
                 .addComponent(botaoPlantio)
                 .addGap(15, 15, 15)
@@ -341,13 +362,21 @@ public class TelaTerreno extends javax.swing.JFrame {
             int id = (int) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 0);
             
             if(confirmacao == JOptionPane.YES_OPTION){
+                ManipularArquivos manip = new ManipularArquivos();
+                String arq_id,arq_nome, arq_area, arq_estado, arq_cultura,arq_gastos;
+                arq_id = tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 0).toString();
+                arq_nome = tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 1).toString();
+                arq_area = tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 2).toString();
+                arq_estado = tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 3).toString();
+                arq_cultura = tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 4).toString();
+                arq_gastos = tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 5).toString();
+                manip.ArquivoTerreno(arq_id, arq_nome, arq_area, arq_estado, arq_cultura, arq_gastos);
                 TerrenoDAO tDAO = new TerrenoDAO();
                 tDAO.remover(id);
                 
                 readJTable();
             }
         }
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void botaoPlantioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPlantioActionPerformed
@@ -377,6 +406,7 @@ public class TelaTerreno extends javax.swing.JFrame {
         else{
             TelaAddManutTerreno.nomeT = (String) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 1);
             new TelaAddManutTerreno().setVisible(true);
+            this.dispose();
             TelaAddManutTerreno.telaTerreno = this;
             TelaAddManutTerreno.idTerreno = (int) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 0);
         }
@@ -399,6 +429,12 @@ public class TelaTerreno extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_botaoFiltroActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        new TelaTerrenoAjuda().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -444,6 +480,7 @@ public class TelaTerreno extends javax.swing.JFrame {
     private javax.swing.JButton botaoVeneno;
     private javax.swing.JButton botaoVoltar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

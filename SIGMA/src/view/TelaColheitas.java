@@ -4,12 +4,14 @@
  * and open the template in the editor.
  */
 package view;
+import file.ManipularArquivos;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.awt.Graphics;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 import javax.swing.Icon;
+import javax.swing.JOptionPane;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -104,6 +106,7 @@ public class TelaColheitas extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         botaoFiltro = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Colheitas");
@@ -158,6 +161,15 @@ public class TelaColheitas extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(0, 153, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/rubbish.png"))); // NOI18N
+        jButton3.setToolTipText("Remover");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -180,6 +192,21 @@ public class TelaColheitas extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton2)
                                 .addContainerGap())))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botaoFiltro)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(273, 273, 273))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton3)
+                                .addContainerGap())))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,6 +214,9 @@ public class TelaColheitas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButton2)
                 .addGap(19, 19, 19)
+                .addContainerGap()
+                .addComponent(jButton3)
+                .addGap(4, 4, 4)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,6 +279,33 @@ public class TelaColheitas extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if(tabelaColheitas.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(null, "Selecione uma Colheita!");
+        }
+        else {
+            
+            int confirmacao = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir a colheita?");
+            int id;
+            if(confirmacao == JOptionPane.YES_OPTION) {
+                ManipularArquivos manip = new ManipularArquivos();
+                String arq_id,arq_data, arq_terreno, arq_qtde,arq_cultura;
+                arq_id = tabelaColheitas.getValueAt(tabelaColheitas.getSelectedRow(), 0).toString();
+                arq_data = tabelaColheitas.getValueAt(tabelaColheitas.getSelectedRow(), 1).toString();
+                arq_terreno = tabelaColheitas.getValueAt(tabelaColheitas.getSelectedRow(), 2).toString();
+                arq_qtde = tabelaColheitas.getValueAt(tabelaColheitas.getSelectedRow(), 3).toString();
+                arq_cultura = tabelaColheitas.getValueAt(tabelaColheitas.getSelectedRow(), 4).toString();
+                manip.ArquivoColheitas(arq_id, arq_data, arq_terreno, arq_qtde, arq_cultura);
+                
+                id = (int) tabelaColheitas.getValueAt(tabelaColheitas.getSelectedRow(), 0);
+                ColheitaDAO pDAO = new ColheitaDAO();
+                //pDAO.delete(id);
+                readJTable();   
+            }
+            
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -288,6 +345,7 @@ public class TelaColheitas extends javax.swing.JFrame {
     private javax.swing.JButton botaoFiltro;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
