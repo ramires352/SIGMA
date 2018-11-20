@@ -5,6 +5,7 @@
  */
 package view;
 
+import file.ManipularArquivos;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -263,7 +264,12 @@ public class TelaListaMaquinas extends javax.swing.JFrame {
             
             Maquina maq = new Maquina();
             MaquinaDAO dao = new MaquinaDAO();
-            
+            ManipularArquivos manip = new ManipularArquivos();
+            String arq_id,arq_numero, arq_nome;
+            arq_id = jTableMaq.getValueAt(jTableMaq.getSelectedRow(), 0).toString();
+            arq_numero = jTableMaq.getValueAt(jTableMaq.getSelectedRow(), 1).toString();
+            arq_nome = jTableMaq.getValueAt(jTableMaq.getSelectedRow(), 2).toString();
+            manip.ArquivoMaquinas(arq_id, arq_numero, arq_nome);
             Maquina.setChave((int) jTableMaq.getValueAt(jTableMaq.getSelectedRow(), 0));
             
             dao.delete(maq);

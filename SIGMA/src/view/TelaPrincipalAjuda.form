@@ -341,7 +341,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Chilanka" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Para utilizar a se&#xe7;&#xe3;o de Estoque, utilzie o &#xed;cone"/>
+            <Property name="text" type="java.lang.String" value="Para utilizar a se&#xe7;&#xe3;o de Estoque, utilize o &#xed;cone"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel17">
@@ -401,7 +401,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Chilanka" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="lsita todas as movimenta&#xe7;&#xf5;es financeiras realizadas, tais como compra de produtos"/>
+            <Property name="text" type="java.lang.String" value="lista todas as movimenta&#xe7;&#xf5;es financeiras realizadas, tais como compra de produtos"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel24">

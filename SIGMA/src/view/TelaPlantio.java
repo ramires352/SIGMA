@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package view;
+import file.ManipularArquivos;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.awt.Graphics;
@@ -219,9 +220,17 @@ public class TelaPlantio extends javax.swing.JFrame {
             int id = (int) tabelaPlantio.getValueAt(tabelaPlantio.getSelectedRow(),0);
             int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja realmente remover o plantio?");
             if (confirmacao == JOptionPane.YES_OPTION){
+                ManipularArquivos manip = new ManipularArquivos();
+                String arq_id, arq_terreno, arq_data, arq_sementes, arq_qtde, arq_cultura;
+                arq_id = tabelaPlantio.getValueAt(tabelaPlantio.getSelectedRow(),0).toString();
+                arq_terreno = tabelaPlantio.getValueAt(tabelaPlantio.getSelectedRow(),1).toString();
+                arq_data = tabelaPlantio.getValueAt(tabelaPlantio.getSelectedRow(),2).toString();
+                arq_sementes = tabelaPlantio.getValueAt(tabelaPlantio.getSelectedRow(),3).toString();
+                arq_qtde = tabelaPlantio.getValueAt(tabelaPlantio.getSelectedRow(),4).toString();
+                arq_cultura = tabelaPlantio.getValueAt(tabelaPlantio.getSelectedRow(),5).toString();
+                manip.ArquivoPlantio(arq_id, arq_terreno, arq_data, arq_sementes, arq_qtde, arq_cultura);
                 PlantioDAO pDAO = new PlantioDAO();
                 pDAO.delete(id);
-                
                 readJTable();
             }
         }

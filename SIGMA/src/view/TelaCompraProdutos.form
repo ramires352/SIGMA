@@ -185,9 +185,6 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="textPreco">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="botaoConfirma">
           <Properties>
@@ -218,9 +215,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="textQtde">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>

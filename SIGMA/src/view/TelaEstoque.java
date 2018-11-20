@@ -5,6 +5,7 @@
  */
 package view;
 
+import file.ManipularArquivos;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.text.DecimalFormat;
@@ -296,7 +297,14 @@ public class TelaEstoque extends javax.swing.JFrame {
             int id;
             
             if(confirmacao == JOptionPane.YES_OPTION) {
-
+                ManipularArquivos manip = new ManipularArquivos();
+                String arq_id,arq_nome, arq_tipo, arq_preco,arq_qtde;
+                arq_id = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+                arq_nome = jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString();
+                arq_tipo = jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString();
+                arq_preco = jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString();
+                arq_qtde = jTable1.getValueAt(jTable1.getSelectedRow(), 4).toString();
+                manip.ArquivoProdutos(arq_id, arq_nome, arq_tipo, arq_preco, arq_qtde);
                 id = (int) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
                 
                 ProdutoDAO pDAO = new ProdutoDAO();
