@@ -8,15 +8,23 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.sql.Date;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.bean.Cliente;
+import model.bean.Movimento;
 import model.bean.Produto;
+import model.dao.MovimentoDAO;
 import model.dao.ProdutoDAO;
 
 /**
@@ -105,6 +113,13 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
         textQtde = new javax.swing.JTextField();
         textNF = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        boxMes = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        boxAno = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        boxDia = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Alteração de Produto");
@@ -157,6 +172,24 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel5.setText("Nº Nota fical");
 
+        boxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+
+        jLabel10.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
+        jLabel10.setText("Ano");
+
+        boxAno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025" }));
+
+        jLabel6.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
+        jLabel6.setText("Dia");
+
+        boxDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+
+        jLabel7.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
+        jLabel7.setText("Mês");
+
+        jLabel8.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
+        jLabel8.setText("Data");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -168,10 +201,6 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(187, 187, 187)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(textNF, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel3)
@@ -188,12 +217,33 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel4)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(botaoVolta)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(botaoConfirma))
-                                .addComponent(textQtde, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(textQtde, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(boxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(boxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(boxAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(botaoVolta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botaoConfirma))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(textNF, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap(200, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -221,11 +271,24 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(textNF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(boxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(boxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(boxAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botaoConfirma)
                     .addComponent(botaoVolta))
-                .addGap(69, 69, 69))
+                .addGap(31, 31, 31))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -253,6 +316,9 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
         // TODO add your handling code here:
         int confirmacao = JOptionPane.showConfirmDialog(this, "Todos os dados estão corretos?");
         
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+        String dia, mes, ano;
+        
         if(confirmacao == JOptionPane.YES_OPTION){
             Produto p1 = new Produto();
             
@@ -262,13 +328,38 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
             p1.setTipo(boxTipo.getSelectedItem().toString());
             p1.setQtde(Double.parseDouble(textQtde.getText()));
             
+            Movimento mov1 = new Movimento();
+            
+            dia = (String) boxDia.getSelectedItem();
+            mes = (String) boxMes.getSelectedItem();
+            ano = (String) boxAno.getSelectedItem();
+            String dataString = ano+"/"+mes+"/"+dia;
+            
+            java.sql.Date dataSql = null;
+            try {
+                dataSql = new java.sql.Date(formato.parse(dataString).getTime());
+            } catch (ParseException ex) {
+                Logger.getLogger(TelaCompraProdutos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            mov1.setLogin(Cliente.getNome());
+            mov1.setNome(textNome.getText());
+            mov1.setPreco_un(Double.parseDouble(textPreco.getText()));
+            mov1.setTipo(boxTipo.getSelectedItem().toString());
+            mov1.setQtde(Double.parseDouble(textQtde.getText()));
+            mov1.setNf(textNF.getText());
+            mov1.setDescricao("Compra");
+            mov1.setData(dataSql);
+            
             ProdutoDAO pDAO = new ProdutoDAO();
+            MovimentoDAO movDAO = new MovimentoDAO();
             
             int idProdutoAtual;
             idProdutoAtual = pDAO.verificaCompraProduto(p1.getNome(), p1.getTipo());
             
             if(idProdutoAtual != -1){
                 pDAO.update(idProdutoAtual, p1);
+                movDAO.create(mov1);
 
                 telaE.readJTable();
                 new TelaEstoque().setVisible(true);
@@ -324,12 +415,19 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoConfirma;
     private javax.swing.JButton botaoVolta;
+    private javax.swing.JComboBox<String> boxAno;
+    private javax.swing.JComboBox<String> boxDia;
+    private javax.swing.JComboBox<String> boxMes;
     private javax.swing.JComboBox<String> boxTipo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField textNF;
     private javax.swing.JTextField textNome;
