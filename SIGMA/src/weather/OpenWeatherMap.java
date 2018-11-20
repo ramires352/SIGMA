@@ -78,7 +78,7 @@ public class OpenWeatherMap {
         }
         
         catch(IOException e){
-            JOptionPane.showMessageDialog(null, "Erro na Previsão do Tempo! "+e);
+            JOptionPane.showMessageDialog(null, "Erro na Previsão do Tempo! ");
         }
         
     }
