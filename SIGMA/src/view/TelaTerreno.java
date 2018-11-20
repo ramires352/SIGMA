@@ -9,16 +9,10 @@ import file.ManipularArquivos;
 import java.awt.Graphics;
 import java.awt.Image;
 import static java.lang.Boolean.FALSE;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 import javax.swing.Icon;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -406,7 +400,6 @@ public class TelaTerreno extends javax.swing.JFrame {
         else{
             TelaAddManutTerreno.nomeT = (String) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 1);
             new TelaAddManutTerreno().setVisible(true);
-            this.dispose();
             TelaAddManutTerreno.telaTerreno = this;
             TelaAddManutTerreno.idTerreno = (int) tabelaTerreno.getValueAt(tabelaTerreno.getSelectedRow(), 0);
         }
