@@ -15,11 +15,11 @@ import javax.swing.ImageIcon;
  *
  * @author ramires
  */
-public class TelaPrincipalAjuda extends javax.swing.JFrame {
+public class TelaTerrenoAjuda extends javax.swing.JFrame {
      
     /** Creates new form TelaAltProduto
      * @param  */
-    public TelaPrincipalAjuda() {
+    public TelaTerrenoAjuda() {
         initComponents();
         
         
@@ -75,6 +75,12 @@ public class TelaPrincipalAjuda extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ajuda");
@@ -98,73 +104,91 @@ public class TelaPrincipalAjuda extends javax.swing.JFrame {
         jLabel2.setText("Ao clicar no ícone");
 
         jLabel3.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/tractor.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel4.setText("é possível cadastrar as máquinas possuídas pelo usuário, bem como seus");
+        jLabel4.setText("é possível cadastrar seus terrenos, o usuário definirá um nome para este");
 
         jLabel5.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel5.setText("respectivos itens a serem monitorados.");
+        jLabel5.setText("terreno, também definirá a área deste terreno, selecionará se este terreno esta limpo ou contém algum ");
 
         jLabel6.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel6.setText("Para utilizar a seção de cadastro de terrenos, utilize o ícone");
+        jLabel6.setText("Para utilizar a seção de editar terrenos, utilize o ícone");
 
         jLabel7.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/land.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/edit.png"))); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel8.setText(". Aqui será possível cadastrar");
+        jLabel8.setText(". Aqui será possível editar o terreno");
 
         jLabel9.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel9.setText("todos os terrenos onde o usuário trabalha, com suas respectivas áreas e culturas.");
+        jLabel9.setText("selecionado na tabela.");
 
         jLabel10.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel10.setText("O ícone");
+        jLabel10.setText("Com ícone");
 
         jLabel11.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/combine-harvester.png"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/rubbish.png"))); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel12.setText("exibe ao usuário todas as colheitas realizadas nos terrenos previamente cadastrados.");
+        jLabel12.setText("o usuário será capaz de excluir um terreno que não esteja com algum plantio ou alguma");
 
         jLabel13.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel13.setText("Ao clicar no ícone");
 
         jLabel14.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/planting.png"))); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/passarVeneno.png"))); // NOI18N
 
         jLabel15.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel15.setText("serão listados todos os plantios realizados nos terrenos previamente");
+        jLabel15.setText("é possível passar veneno em seu terreno, o usuário definirá uma descrição ");
 
         jLabel16.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel16.setText("Para utilizar a seção de Estoque, utilzie o ícone");
+        jLabel16.setText("Para realizar uma colheita, selecione o ícone");
 
         jLabel17.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/warehouse.png"))); // NOI18N
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/combine-harvester.png"))); // NOI18N
 
         jLabel18.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel18.setText(". Aqui será possível cadastrar todos os produtos");
+        jLabel18.setText(". Aqui será possível colher todo o terreno selecionado");
 
         jLabel19.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel19.setText("adquiridos, tais como sementes, defensivos e grãos que foram colhidos. É possível ainda realizar");
+        jLabel19.setText("na tabela, caso não tenha nada plantado no terreno aparecerá uma mensagem de erro. O usuário definirá ");
 
         jLabel20.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel20.setText("compra e venda de produtos no estoque.");
+        jLabel20.setText("a quantidade que deseja colher.");
 
         jLabel21.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel21.setText("O ícone");
+        jLabel21.setText("Para realizar um Plantio utilize o ícone");
 
         jLabel22.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/coins.png"))); // NOI18N
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/plant.png"))); // NOI18N
 
         jLabel23.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel23.setText("lsita todas as movimentações financeiras realizadas, tais como compra de produtos");
+        jLabel23.setText("o terreno tem que estar limpo para efetuar um plantio ");
 
         jLabel24.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel24.setText("e venda de grãos.");
+        jLabel24.setText("senão, não será possível realizar um plantio. O usuário definirá a semente, a quantidade que vai plantar");
 
         jLabel25.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
-        jLabel25.setText("cadastrados.");
+        jLabel25.setText("para esta manutenção feita, o usuário  selecionará o defensivo que irá usar e a quantidade que irá usar.  ");
+
+        jLabel26.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
+        jLabel26.setText("plantio e selecionará a cultura deste terreno. ");
+
+        jLabel27.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
+        jLabel27.setText("colheita cadastrada.");
+
+        jLabel28.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
+        jLabel28.setText("e a cultura para o terreno selecionado.");
+
+        jLabel29.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
+        jLabel29.setText("o usuário voltará para o menu principal.");
+
+        jLabel30.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow(1).png"))); // NOI18N
+
+        jLabel31.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
+        jLabel31.setText("Neste ícone ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -172,104 +196,112 @@ public class TelaPrincipalAjuda extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(botaoConfirma)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(137, 137, 137))))
+                .addComponent(jLabel1)
+                .addGap(137, 137, 137))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel25)
-                    .addComponent(jLabel24)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel21)
+                        .addComponent(jLabel31)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel22)
+                        .addComponent(jLabel30)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel23))
-                    .addComponent(jLabel20)
-                    .addComponent(jLabel19)
+                        .addComponent(jLabel29)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botaoConfirma))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel18))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel15))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel12))
-                    .addComponent(jLabel9)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8))
-                    .addComponent(jLabel5)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)))
-                .addGap(0, 34, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel28)
+                            .addComponent(jLabel25)
+                            .addComponent(jLabel26)
+                            .addComponent(jLabel24)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel22)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel23))
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel19)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel17)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel18))
+                            .addComponent(jLabel9)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel8))
+                            .addComponent(jLabel5)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4))
+                            .addComponent(jLabel27)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel15))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel12)))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel26)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel1)
-                                                .addGap(35, 35, 35)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel2)
-                                                    .addComponent(jLabel3)
-                                                    .addComponent(jLabel4))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel5)
-                                                .addGap(18, 18, 18)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel7)
-                                                    .addComponent(jLabel6)
-                                                    .addComponent(jLabel8))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel9)
-                                                .addGap(18, 18, 18)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel11)
-                                                    .addComponent(jLabel10)))
-                                            .addComponent(jLabel12))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel14)
-                                            .addComponent(jLabel13)))
-                                    .addComponent(jLabel15))
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel25)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel16)))
-                            .addComponent(jLabel18))
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel10)))
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel25)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -278,12 +310,18 @@ public class TelaPrincipalAjuda extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel22)
                             .addComponent(jLabel21)))
-                    .addComponent(jLabel23))
+                    .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botaoConfirma)
-                .addContainerGap())
+                .addComponent(jLabel28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botaoConfirma)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel29)
+                        .addComponent(jLabel30)
+                        .addComponent(jLabel31))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -302,8 +340,7 @@ public class TelaPrincipalAjuda extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoConfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmaActionPerformed
-        // TODO add your handling code here:
-
+        new TelaTerreno().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botaoConfirmaActionPerformed
 
@@ -324,14 +361,30 @@ public class TelaPrincipalAjuda extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipalAjuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaTerrenoAjuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipalAjuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaTerrenoAjuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipalAjuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaTerrenoAjuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipalAjuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaTerrenoAjuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -352,7 +405,7 @@ public class TelaPrincipalAjuda extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaPrincipalAjuda().setVisible(true);
+                new TelaTerrenoAjuda().setVisible(true);
             }
         });
     }
@@ -377,7 +430,13 @@ public class TelaPrincipalAjuda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
