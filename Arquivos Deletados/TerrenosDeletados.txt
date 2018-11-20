@@ -1,2 +1,3 @@
 ID	Nome	Área	Estado	Cultura	Gastos
-10	teste	123.0	Limpo	Nenhum	0.00
+1	terreno10	140.14	Limpo	Soja	130.24
+18	terreno10	140.14	Limpo	Soja	130.24
