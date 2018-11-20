@@ -8,10 +8,23 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.bean.Cliente;
+import model.bean.Movimento;
 import model.bean.Produto;
+import model.dao.MovimentoDAO;
 import model.dao.ProdutoDAO;
 
 /**
@@ -28,7 +41,39 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
     public TelaCompraProdutos() {
         initComponents();
         
+        //Colocar no box apenas os tipos já existentes no BD
         
+        List<String> listaTipos = new ArrayList<String>();
+        String tipo;
+        
+        int i;
+        
+        ProdutoDAO tDAO = new ProdutoDAO();
+        for(Produto t: tDAO.read()){
+                tipo = t.getTipo();
+                
+                i = 0;
+                while(i < listaTipos.size() && listaTipos.get(i).equals(tipo)){
+                    i++;
+                }
+                //Chegou até o final, ou seja, ainda não encontrou o tipo
+                //Se achou no BD o tipo de semente ou defensivo, colocar
+                if(i == listaTipos.size() && (tipo.equals("Semente") || tipo.equals("Defensivo"))) {
+                    listaTipos.add(tipo);
+                }
+                
+        }
+        
+        if(listaTipos.isEmpty()){ //Não encontrou nenhum tipo, ou seja, não tem cadastro algum
+            new TelaCompraProdutosErro().setVisible(true);
+            this.dispose();
+        }
+        
+        for(i = 1; i <= listaTipos.size() ; i++){
+            boxTipo.addItem(listaTipos.get(i));
+        }
+        
+
         
     }
 
@@ -66,6 +111,16 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
         botaoConfirma = new javax.swing.JButton();
         botaoVolta = new javax.swing.JButton();
         textQtde = new javax.swing.JTextField();
+        textNF = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        boxMes = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        boxAno = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        boxDia = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        botaoAjuda = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Alteração de Produto");
@@ -89,7 +144,7 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel4.setText("Quantidade");
 
-        boxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semente", "Defensivo", "Soja", "Milho", "Aveia", "Trigo" }));
+        boxTipo.setEditable(true);
 
         botaoConfirma.setBackground(new java.awt.Color(51, 153, 255));
         botaoConfirma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/check.png"))); // NOI18N
@@ -109,45 +164,108 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
             }
         });
 
+        textQtde.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textQtdeActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
+        jLabel5.setText("Nº Nota fiscal");
+
+        boxMes.setEditable(true);
+        boxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+        boxMes.setSelectedIndex(-1);
+
+        jLabel10.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
+        jLabel10.setText("Ano");
+
+        boxAno.setEditable(true);
+        boxAno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025" }));
+        boxAno.setSelectedIndex(-1);
+
+        jLabel6.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
+        jLabel6.setText("Dia");
+
+        boxDia.setEditable(true);
+        boxDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        boxDia.setSelectedIndex(-1);
+
+        jLabel7.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
+        jLabel7.setText("Mês");
+
+        jLabel8.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
+        jLabel8.setText("Data");
+
+        botaoAjuda.setBackground(new java.awt.Color(51, 153, 255));
+        botaoAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/faq.png"))); // NOI18N
+        botaoAjuda.setToolTipText("Voltar");
+        botaoAjuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAjudaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(187, 187, 187)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(textPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42)
+                        .addComponent(botaoAjuda)
+                        .addGap(18, 18, 18)
+                        .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(boxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(187, 187, 187)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(botaoVolta)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(botaoConfirma))
-                            .addComponent(textQtde, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(201, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel8))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(botaoVolta)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(botaoConfirma))
+                                    .addComponent(textNF, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(boxDia, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(37, 37, 37)
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(boxMes, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(33, 33, 33)
+                                        .addComponent(jLabel10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(boxAno, 0, 1, Short.MAX_VALUE))))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(textPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(textQtde, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(boxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(titulo)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(titulo))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(botaoAjuda)))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -164,11 +282,27 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(textQtde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(textNF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(boxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(boxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10)
+                            .addComponent(boxAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botaoConfirma)
                     .addComponent(botaoVolta))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -196,6 +330,9 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
         // TODO add your handling code here:
         int confirmacao = JOptionPane.showConfirmDialog(this, "Todos os dados estão corretos?");
         
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+        String dia, mes, ano;
+        
         if(confirmacao == JOptionPane.YES_OPTION){
             Produto p1 = new Produto();
             
@@ -205,13 +342,38 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
             p1.setTipo(boxTipo.getSelectedItem().toString());
             p1.setQtde(Double.parseDouble(textQtde.getText()));
             
+            Movimento mov1 = new Movimento();
+            
+            dia = (String) boxDia.getSelectedItem();
+            mes = (String) boxMes.getSelectedItem();
+            ano = (String) boxAno.getSelectedItem();
+            String dataString = ano+"/"+mes+"/"+dia;
+            
+            java.sql.Date dataSql = null;
+            try {
+                dataSql = new java.sql.Date(formato.parse(dataString).getTime());
+            } catch (ParseException ex) {
+                Logger.getLogger(TelaCompraProdutos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            mov1.setLogin(Cliente.getNome());
+            mov1.setNome(textNome.getText());
+            mov1.setPreco_un(Double.parseDouble(textPreco.getText()));
+            mov1.setTipo(boxTipo.getSelectedItem().toString());
+            mov1.setQtde(Double.parseDouble(textQtde.getText()));
+            mov1.setNf(textNF.getText());
+            mov1.setDescricao("Compra");
+            mov1.setData(dataSql);
+            
             ProdutoDAO pDAO = new ProdutoDAO();
+            MovimentoDAO movDAO = new MovimentoDAO();
             
             int idProdutoAtual;
             idProdutoAtual = pDAO.verificaCompraProduto(p1.getNome(), p1.getTipo());
             
             if(idProdutoAtual != -1){
                 pDAO.update(idProdutoAtual, p1);
+                movDAO.create(mov1);
 
                 telaE.readJTable();
                 new TelaEstoque().setVisible(true);
@@ -227,6 +389,16 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_botaoConfirmaActionPerformed
+
+    private void botaoAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAjudaActionPerformed
+        // TODO add your handling code here:
+        new TelaCompraProdutosAjuda().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botaoAjudaActionPerformed
+
+    private void textQtdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textQtdeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textQtdeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,14 +437,24 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoAjuda;
     private javax.swing.JButton botaoConfirma;
     private javax.swing.JButton botaoVolta;
+    private javax.swing.JComboBox<String> boxAno;
+    private javax.swing.JComboBox<String> boxDia;
+    private javax.swing.JComboBox<String> boxMes;
     private javax.swing.JComboBox<String> boxTipo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField textNF;
     private javax.swing.JTextField textNome;
     private javax.swing.JTextField textPreco;
     private javax.swing.JTextField textQtde;
