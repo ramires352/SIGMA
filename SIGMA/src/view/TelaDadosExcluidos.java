@@ -371,14 +371,19 @@ public class TelaDadosExcluidos extends javax.swing.JFrame {
                     if(confirmacao == JOptionPane.YES_OPTION){
                         String nome, estado, cultura, area, gastos;
                         int nlinha;
-                        nlinha = tabelaExcluidos.getSelectedRow();
-                        nome = tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 1).toString();
-                        area =  tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 2).toString();
-                        estado = tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 3).toString();
-                        cultura = tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 4).toString();
-                        gastos =  tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 5).toString();
-                        manip.RestaurarTerreno(nlinha,nome,area,estado,cultura,gastos);
-                        preencheTabelaTerreno();
+                        if (tabelaExcluidos.getSelectedRow() == 0){
+                            JOptionPane.showMessageDialog(null, "Não e possivel excluir esta linha!");
+                        }
+                        else{
+                            nlinha = tabelaExcluidos.getSelectedRow();
+                            nome = tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 1).toString();
+                            area =  tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 2).toString();
+                            estado = tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 3).toString();
+                            cultura = tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 4).toString();
+                            gastos =  tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 5).toString();
+                            manip.RestaurarTerreno(nlinha,nome,area,estado,cultura,gastos);
+                            preencheTabelaTerreno();    
+                        }
                     }
                     break;
                     
@@ -392,13 +397,18 @@ public class TelaDadosExcluidos extends javax.swing.JFrame {
                     if(confirmacao == JOptionPane.YES_OPTION){
                         String nome, tipo, preco, qtde;
                         int nlinha;
-                        nlinha = tabelaExcluidos.getSelectedRow();
-                        nome = tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 1).toString();
-                        tipo =  tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 2).toString();
-                        preco = tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 3).toString();
-                        qtde = tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 4).toString();
-                        manip.RestaurarProdutos(nlinha,nome,tipo,preco,qtde);
-                        preencheTabelaProdutos();
+                        if (tabelaExcluidos.getSelectedRow() == 0){
+                            JOptionPane.showMessageDialog(null, "Não e possivel excluir esta linha!");
+                        }
+                        else{
+                            nlinha = tabelaExcluidos.getSelectedRow();
+                            nome = tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 1).toString();
+                            tipo =  tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 2).toString();
+                            preco = tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 3).toString();
+                            qtde = tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 4).toString();
+                            manip.RestaurarProdutos(nlinha,nome,tipo,preco,qtde);
+                            preencheTabelaProdutos();
+                        }
                     }
                     break;
                     
@@ -406,10 +416,15 @@ public class TelaDadosExcluidos extends javax.swing.JFrame {
                     if(confirmacao == JOptionPane.YES_OPTION){
                         String nome;
                         int nlinha;
-                        nlinha = tabelaExcluidos.getSelectedRow();
-                        nome =  tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 2).toString();
-                        manip.RestaurarMaquinas(nlinha, nome);
-                        preencheTabelaMaquinas();
+                        if (tabelaExcluidos.getSelectedRow() == 0){
+                            JOptionPane.showMessageDialog(null, "Não e possivel excluir esta linha!");
+                        }
+                        else{
+                            nlinha = tabelaExcluidos.getSelectedRow();
+                            nome =  tabelaExcluidos.getValueAt(tabelaExcluidos.getSelectedRow(), 2).toString();
+                            manip.RestaurarMaquinas(nlinha, nome);
+                            preencheTabelaMaquinas();
+                        }
                     }
                     break;
                     
