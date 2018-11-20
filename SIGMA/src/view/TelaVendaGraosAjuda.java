@@ -85,13 +85,13 @@ public class TelaVendaGraosAjuda extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(51, 153, 0));
 
         jLabel3.setFont(new java.awt.Font("Chilanka", 1, 14)); // NOI18N
-        jLabel3.setText("No campo \"tipo\", selecionar o tipo do produto da mesma forma que foi cadastrado.");
+        jLabel3.setText("No campo \"tipo\", selecionar o tipo do grão da mesma forma que foi cadastrado.");
 
         jLabel4.setFont(new java.awt.Font("Chilanka", 1, 14)); // NOI18N
-        jLabel4.setText("No campo \"preço\", colocar o preço pago por cada unidade do produto.");
+        jLabel4.setText("No campo \"preço\", colocar o preço que cada unidade foi vendida.");
 
         jLabel5.setFont(new java.awt.Font("Chilanka", 1, 14)); // NOI18N
-        jLabel5.setText("No campo \"quantidade\", colocar a quantidade de produtos comprados.");
+        jLabel5.setText("No campo \"quantidade\", colocar a quantidade de grãos vendidos.");
 
         jLabel6.setFont(new java.awt.Font("Chilanka", 1, 14)); // NOI18N
         jLabel6.setText("Colocar da forma \"0.00\", com um \".\" separando a parte dos centavos.");
@@ -100,10 +100,10 @@ public class TelaVendaGraosAjuda extends javax.swing.JFrame {
         jLabel7.setText("No campo \"nota fiscal\", colocar o número da nota fiscal. Apenas números.");
 
         jLabel8.setFont(new java.awt.Font("Chilanka", 1, 14)); // NOI18N
-        jLabel8.setText("No campo \"data\", selecionar dia, mês e ano que a compra foi realizada.");
+        jLabel8.setText("No campo \"data\", selecionar dia, mês e ano que a venda foi realizada.");
 
         jLabel2.setFont(new java.awt.Font("Chilanka", 1, 14)); // NOI18N
-        jLabel2.setText("No campo \"nome\", colocar o nome do produto da mesma forma que foi cadastrado.");
+        jLabel2.setText("No campo \"nome\", colocar o nome do grão da mesma forma que foi cadastrado.");
 
         boxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
 
@@ -254,9 +254,9 @@ public class TelaVendaGraosAjuda extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(27, 27, 27)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
@@ -267,7 +267,6 @@ public class TelaVendaGraosAjuda extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel10)
