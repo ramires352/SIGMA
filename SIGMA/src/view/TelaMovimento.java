@@ -78,6 +78,7 @@ public class TelaMovimento extends javax.swing.JFrame {
         botaoFiltro.setToolTipText("Remover Filtro");
     }
     
+<<<<<<< HEAD
     public void setTotalCompraEVenda() {
         
         double valorTotalVenda = 0, valorTotalCompra = 0;
@@ -111,6 +112,11 @@ public class TelaMovimento extends javax.swing.JFrame {
         
         totalCompras.setText(String.valueOf(valorTotalCompra));
         totalVendas.setText(String.valueOf(valorTotalVenda));
+=======
+    public void setTotalCompra() {
+        
+        
+>>>>>>> Rafael
         
     }
     
@@ -122,7 +128,11 @@ public class TelaMovimento extends javax.swing.JFrame {
         tabelaMovimento.setRowSorter(new TableRowSorter(modelo));
         
         readJTable();
+<<<<<<< HEAD
         setTotalCompraEVenda();
+=======
+
+>>>>>>> Rafael
         
     }
 
@@ -151,6 +161,11 @@ public class TelaMovimento extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         botaoFiltro = new javax.swing.JButton();
+<<<<<<< HEAD
+=======
+        botaoCompra = new javax.swing.JButton();
+        botaoVenda = new javax.swing.JButton();
+>>>>>>> Rafael
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         totalCompras = new javax.swing.JTextField();
@@ -208,6 +223,27 @@ public class TelaMovimento extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
+=======
+        botaoCompra.setBackground(new java.awt.Color(51, 153, 255));
+        botaoCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/buy.png"))); // NOI18N
+        botaoCompra.setToolTipText("Voltar");
+        botaoCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCompraActionPerformed(evt);
+            }
+        });
+
+        botaoVenda.setBackground(new java.awt.Color(51, 153, 255));
+        botaoVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/sale.png"))); // NOI18N
+        botaoVenda.setToolTipText("Voltar");
+        botaoVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoVendaActionPerformed(evt);
+            }
+        });
+
+>>>>>>> Rafael
         jLabel2.setFont(new java.awt.Font("Chilanka", 1, 18)); // NOI18N
         jLabel2.setText("Valor total das compras:");
 
@@ -236,8 +272,18 @@ public class TelaMovimento extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+<<<<<<< HEAD
                                 .addComponent(botaoFiltro))
                             .addGroup(jPanel1Layout.createSequentialGroup()
+=======
+                                .addComponent(jButton3)
+                                .addGap(18, 18, 18)
+                                .addComponent(botaoFiltro))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(botaoCompra)
+                                .addGap(18, 18, 18)
+                                .addComponent(botaoVenda)
+>>>>>>> Rafael
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton2))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -261,12 +307,26 @@ public class TelaMovimento extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+<<<<<<< HEAD
                 .addComponent(jButton2)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+=======
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2)
+                    .addComponent(botaoCompra)
+                    .addComponent(botaoVenda))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jButton3)
+                                .addComponent(jButton1))
+>>>>>>> Rafael
                             .addComponent(botaoFiltro, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -322,6 +382,21 @@ public class TelaMovimento extends javax.swing.JFrame {
         
     }//GEN-LAST:event_botaoFiltroActionPerformed
 
+<<<<<<< HEAD
+=======
+    private void botaoCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCompraActionPerformed
+        // TODO add your handling code here:
+        new TelaCompraProdutos().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botaoCompraActionPerformed
+
+    private void botaoVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVendaActionPerformed
+        // TODO add your handling code here:
+        new TelaVendaGraos().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botaoVendaActionPerformed
+
+>>>>>>> Rafael
     private void totalComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalComprasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_totalComprasActionPerformed
@@ -362,7 +437,9 @@ public class TelaMovimento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoCompra;
     private javax.swing.JButton botaoFiltro;
+    private javax.swing.JButton botaoVenda;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
