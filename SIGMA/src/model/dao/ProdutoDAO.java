@@ -227,7 +227,7 @@ public class ProdutoDAO {
         }
         return prod;
     }
-    
+    //roda ai de novo e faz da erro
     public int verificaCompraProduto(String nome, String tipo) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stnt = null;
@@ -260,23 +260,29 @@ public class ProdutoDAO {
     
     public int verificaVendaGrao(String nome, String tipo, double quantidade) {
         Connection con = ConnectionFactory.getConnection();
-        PreparedStatement stnt = null;
-        PreparedStatement stnt2 = null;
         PreparedStatement stnt3 = null;
         ResultSet rs = null;
         
         try {
             
-            stnt3 = con.prepareStatement("select idProduto and qtde from produto where nome = ? and tipo = ? and login = ?");
+            stnt3 = con.prepareStatement("select * from produto where nome = ? and tipo = ? and login = ?");
             stnt3.setString(1, nome);
             stnt3.setString(2, tipo);
             stnt3.setString(3, Cliente.getNome());
 
             rs = stnt3.executeQuery();
             rs.next();
+            
+            Produto t = new Produto();
 
-            if(rs.getString("idProduto") != null && rs.getDouble("qtde") >= quantidade) {
-                return rs.getInt("idProduto");
+            t.setIdProduto(rs.getInt("idProduto"));
+            t.setNome(rs.getString("nome"));
+            t.setTipo(rs.getString("tipo"));
+            t.setPreco(rs.getDouble("preco"));
+            t.setQtde(rs.getDouble("qtde"));
+
+            if(t.getIdProduto() != 0 && t.getQtde() >= quantidade) {
+                return t.getIdProduto();
             }
         
         }

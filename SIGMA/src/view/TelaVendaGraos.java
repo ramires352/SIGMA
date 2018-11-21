@@ -53,18 +53,18 @@ public class TelaVendaGraos extends javax.swing.JFrame {
                 
                 //Chegou até o final, ou seja, ainda não encontrou o tipo
                 //Se achou no BD um tipo diferente de semente ou defensivo, colocar
-                if(i == listaTipos.size() && (!tipo.equals("Semente") && !tipo.equals("Defensivo"))) {
+                if(i == listaTipos.size() && (!(tipo.equals("Semente")) && !(tipo.equals("Defensivo")))) {
                     listaTipos.add(tipo);
                 }
                 
         }
         
         if(listaTipos.isEmpty()){ //Não encontrou nenhum tipo, ou seja, não tem cadastro algum
-            new TelaCompraProdutosErro().setVisible(true);
+            new TelaVendaGraosErro().setVisible(true);
             this.dispose();
         }
         
-        for(i = 1; i <= listaTipos.size() ; i++){
+        for(i = 0; i < listaTipos.size() ; i++){
             boxTipo.addItem(listaTipos.get(i));
         }
         
@@ -301,9 +301,7 @@ public class TelaVendaGraos extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 58, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,13 +367,12 @@ public class TelaVendaGraos extends javax.swing.JFrame {
             if(idProdutoAtual != -1){
                 Produto aux = pDAO.getProduto(idProdutoAtual);
                 
-                p1.setPreco(p1.getPreco() + aux.getPreco());
+                p1.setPreco((p1.getPreco()*p1.getQtde()) + aux.getPreco());
                 p1.setQtde(-p1.getQtde() + aux.getQtde());
                 
                 pDAO.update(idProdutoAtual, p1);
                 movDAO.create(mov1);
 
-                telaE.readJTable();
                 new TelaEstoque().setVisible(true);
                 this.dispose();
                 
