@@ -43,7 +43,7 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
         
         //Colocar no box apenas os tipos já existentes no BD
         
-        List<String> listaTipos = new ArrayList<String>();
+        List<String> listaTipos = new ArrayList<>();
         String tipo;
         
         int i;
@@ -53,9 +53,10 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
                 tipo = t.getTipo();
                 
                 i = 0;
-                while(i < listaTipos.size() && listaTipos.get(i).equals(tipo)){
+                while(i < listaTipos.size() && !(listaTipos.get(i).equals(tipo))){
                     i++;
                 }
+                
                 //Chegou até o final, ou seja, ainda não encontrou o tipo
                 //Se achou no BD o tipo de semente ou defensivo, colocar
                 if(i == listaTipos.size() && (tipo.equals("Semente") || tipo.equals("Defensivo"))) {
@@ -69,7 +70,7 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
             this.dispose();
         }
         
-        for(i = 1; i <= listaTipos.size() ; i++){
+        for(i = 0; i < listaTipos.size() ; i++){
             boxTipo.addItem(listaTipos.get(i));
         }
         
@@ -259,14 +260,11 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(titulo))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(botaoAjuda)))
-                .addGap(40, 40, 40)
+                    .addComponent(titulo)
+                    .addComponent(botaoAjuda))
+                .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -330,7 +328,7 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
         // TODO add your handling code here:
         int confirmacao = JOptionPane.showConfirmDialog(this, "Todos os dados estão corretos?");
         
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         String dia, mes, ano;
         
         if(confirmacao == JOptionPane.YES_OPTION){
@@ -347,14 +345,15 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
             dia = (String) boxDia.getSelectedItem();
             mes = (String) boxMes.getSelectedItem();
             ano = (String) boxAno.getSelectedItem();
-            String dataString = ano+"/"+mes+"/"+dia;
+            String dataString = dia+"/"+mes+"/"+ano;
             
-            java.sql.Date dataSql = null;
+            java.util.Date dataJava = null;
             try {
-                dataSql = new java.sql.Date(formato.parse(dataString).getTime());
+                dataJava = formato.parse(dataString);
             } catch (ParseException ex) {
                 Logger.getLogger(TelaCompraProdutos.class.getName()).log(Level.SEVERE, null, ex);
             }
+            java.sql.Date dataSql = new java.sql.Date(dataJava.getTime());
             
             mov1.setLogin(Cliente.getNome());
             mov1.setNome(textNome.getText());
@@ -372,10 +371,15 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
             idProdutoAtual = pDAO.verificaCompraProduto(p1.getNome(), p1.getTipo());
             
             if(idProdutoAtual != -1){
+                
+                Produto aux = pDAO.getProduto(idProdutoAtual);
+                
+                p1.setPreco((p1.getPreco()*p1.getQtde()) + aux.getPreco());
+                p1.setQtde(p1.getQtde() + aux.getQtde());
+                
                 pDAO.update(idProdutoAtual, p1);
                 movDAO.create(mov1);
-
-                telaE.readJTable();
+                
                 new TelaEstoque().setVisible(true);
                 this.dispose();
                 
