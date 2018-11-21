@@ -37,7 +37,7 @@ public class TelaVendaGraos extends javax.swing.JFrame {
     public TelaVendaGraos() {
         initComponents();
         
-        List<String> listaTipos = new ArrayList<String>();
+        List<String> listaTipos = new ArrayList<>();
         String tipo;
         
         int i;
@@ -47,7 +47,7 @@ public class TelaVendaGraos extends javax.swing.JFrame {
                 tipo = t.getTipo();
                 
                 i = 0;
-                while(i < listaTipos.size() && listaTipos.get(i).equals(tipo)){
+                while(i < listaTipos.size() && !(listaTipos.get(i).equals(tipo))){
                     i++;
                 }
                 
@@ -281,14 +281,15 @@ public class TelaVendaGraos extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel8)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(boxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(boxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10)
-                            .addComponent(boxAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(boxAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(boxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botaoConfirma)
@@ -323,7 +324,7 @@ public class TelaVendaGraos extends javax.swing.JFrame {
         // TODO add your handling code here:
         int confirmacao = JOptionPane.showConfirmDialog(this, "Deseja realmente alterar os dados?");
         
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         String dia, mes, ano;
         
         if(confirmacao == JOptionPane.YES_OPTION){
@@ -340,14 +341,15 @@ public class TelaVendaGraos extends javax.swing.JFrame {
             dia = (String) boxDia.getSelectedItem();
             mes = (String) boxMes.getSelectedItem();
             ano = (String) boxAno.getSelectedItem();
-            String dataString = ano+"/"+mes+"/"+dia;
+            String dataString = dia+"/"+mes+"/"+ano;
             
-            java.sql.Date dataSql = null;
+            java.util.Date dataJava = null;
             try {
-                dataSql = new java.sql.Date(formato.parse(dataString).getTime());
+                dataJava = formato.parse(dataString);
             } catch (ParseException ex) {
                 Logger.getLogger(TelaCompraProdutos.class.getName()).log(Level.SEVERE, null, ex);
             }
+            java.sql.Date dataSql = new java.sql.Date(dataJava.getTime());
             
             mov1.setLogin(Cliente.getNome());
             mov1.setNome(textNome.getText());
@@ -365,7 +367,10 @@ public class TelaVendaGraos extends javax.swing.JFrame {
             idProdutoAtual = pDAO.verificaVendaGrao(p1.getNome(), p1.getTipo(), p1.getQtde());
             
             if(idProdutoAtual != -1){
-                p1.setQtde(0 - p1.getQtde());
+                Produto aux = pDAO.getProduto(idProdutoAtual);
+                
+                p1.setPreco(p1.getPreco() + aux.getPreco());
+                p1.setQtde(-p1.getQtde() + aux.getQtde());
                 
                 pDAO.update(idProdutoAtual, p1);
                 movDAO.create(mov1);

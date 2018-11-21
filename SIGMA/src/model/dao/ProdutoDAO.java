@@ -44,6 +44,7 @@ public class ProdutoDAO {
             ConnectionFactory.closeConnection(con, stnt);
         }
     }
+    
     public List<Produto> read(){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stnt = null;
@@ -147,7 +148,6 @@ public class ProdutoDAO {
         }
     }
     
-    //Função para remover o produto do banco de dados
     public void delete(int id){
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stnt = null;
@@ -165,8 +165,6 @@ public class ProdutoDAO {
             ConnectionFactory.closeConnection(con, stnt);
         }
     }
-    
-
     
     public List<Produto> readDefensivos(){
         Connection con = ConnectionFactory.getConnection();
@@ -288,6 +286,39 @@ public class ProdutoDAO {
         
         return -1;
         
+    }
+    
+    public Produto getProduto(int idProduto){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stnt = null;
+        ResultSet rs = null;
+        Produto t = new Produto();
+        
+        try {
+            
+            stnt = con.prepareStatement("select * from produto where idProduto = ? and login = ?");
+            stnt.setInt(1, idProduto);
+            stnt.setString(2, Cliente.getNome());
+
+            rs = stnt.executeQuery();
+            rs.next();
+            
+            t.setIdProduto(rs.getInt("idProduto"));
+            t.setNome(rs.getString("nome"));
+            t.setTipo(rs.getString("tipo"));
+            t.setPreco(rs.getDouble("preco"));
+            t.setQtde(rs.getDouble("qtde"));
+
+        
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Falha na busca do produto! "+ ex);
+        }
+        finally{
+            ConnectionFactory.closeConnection(con, stnt, rs);
+        }
+        
+        return t;
     }
     
 }
