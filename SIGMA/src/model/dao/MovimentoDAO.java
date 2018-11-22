@@ -43,7 +43,7 @@ public class MovimentoDAO {
             JOptionPane.showMessageDialog(null, "Salvo com sucesso");
         }
         catch (SQLException ex){
-            JOptionPane.showMessageDialog(null, "Erro ao salvar" + ex);
+            JOptionPane.showMessageDialog(null, "Erro ao salvar " + ex);
         }
         finally {
             ConnectionFactory.closeConnection(con, stnt);

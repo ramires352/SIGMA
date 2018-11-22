@@ -145,8 +145,6 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel4.setText("Quantidade");
 
-        boxTipo.setEditable(true);
-
         botaoConfirma.setBackground(new java.awt.Color(51, 153, 255));
         botaoConfirma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/check.png"))); // NOI18N
         botaoConfirma.setToolTipText("Confirmar");
@@ -174,21 +172,18 @@ public class TelaCompraProdutos extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel5.setText("Nº Nota fiscal");
 
-        boxMes.setEditable(true);
         boxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         boxMes.setSelectedIndex(-1);
 
         jLabel10.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel10.setText("Ano");
 
-        boxAno.setEditable(true);
         boxAno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025" }));
         boxAno.setSelectedIndex(-1);
 
         jLabel6.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel6.setText("Dia");
 
-        boxDia.setEditable(true);
         boxDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         boxDia.setSelectedIndex(-1);
 

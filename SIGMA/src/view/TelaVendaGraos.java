@@ -53,18 +53,18 @@ public class TelaVendaGraos extends javax.swing.JFrame {
                 
                 //Chegou até o final, ou seja, ainda não encontrou o tipo
                 //Se achou no BD um tipo diferente de semente ou defensivo, colocar
-                if(i == listaTipos.size() && (!tipo.equals("Semente") && !tipo.equals("Defensivo"))) {
+                if(i == listaTipos.size() && (!(tipo.equals("Semente")) && !(tipo.equals("Defensivo")))) {
                     listaTipos.add(tipo);
                 }
                 
         }
         
         if(listaTipos.isEmpty()){ //Não encontrou nenhum tipo, ou seja, não tem cadastro algum
-            new TelaCompraProdutosErro().setVisible(true);
+            new TelaVendaGraosErro().setVisible(true);
             this.dispose();
         }
         
-        for(i = 1; i <= listaTipos.size() ; i++){
+        for(i = 0; i < listaTipos.size() ; i++){
             boxTipo.addItem(listaTipos.get(i));
         }
         
@@ -138,8 +138,6 @@ public class TelaVendaGraos extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel4.setText("Quantidade");
 
-        boxTipo.setEditable(true);
-
         botaoConfirma.setBackground(new java.awt.Color(51, 153, 255));
         botaoConfirma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/check.png"))); // NOI18N
         botaoConfirma.setToolTipText("Confirmar");
@@ -161,21 +159,18 @@ public class TelaVendaGraos extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel5.setText("Nº Nota fiscal");
 
-        boxMes.setEditable(true);
         boxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         boxMes.setSelectedIndex(-1);
 
         jLabel10.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel10.setText("Ano");
 
-        boxAno.setEditable(true);
         boxAno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025" }));
         boxAno.setSelectedIndex(-1);
 
         jLabel6.setFont(new java.awt.Font("Chilanka", 1, 12)); // NOI18N
         jLabel6.setText("Dia");
 
-        boxDia.setEditable(true);
         boxDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
         boxDia.setSelectedIndex(-1);
 
@@ -301,9 +296,7 @@ public class TelaVendaGraos extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 58, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,13 +362,12 @@ public class TelaVendaGraos extends javax.swing.JFrame {
             if(idProdutoAtual != -1){
                 Produto aux = pDAO.getProduto(idProdutoAtual);
                 
-                p1.setPreco(p1.getPreco() + aux.getPreco());
+                p1.setPreco((p1.getPreco()*p1.getQtde()) + aux.getPreco());
                 p1.setQtde(-p1.getQtde() + aux.getQtde());
                 
                 pDAO.update(idProdutoAtual, p1);
                 movDAO.create(mov1);
 
-                telaE.readJTable();
                 new TelaEstoque().setVisible(true);
                 this.dispose();
                 
