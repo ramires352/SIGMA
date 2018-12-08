@@ -77,7 +77,7 @@ create table manut_terreno(
 	qtde_defensivo double not null,
 	data date not null,
 	idTerreno int not null,
-	nomeTerreno varchar(45) not null
+	nomeTerreno varchar(45) not null,
 	primary key(idManut_terreno));
 
 create table vendas(
@@ -100,7 +100,7 @@ create table movimento(
 	preco_un double default 0,
 	login varchar(45) not null,
 	data date not null,
-	idTerreno int default 0,
+	idTerreno int default null,
 	primary key(idMov));
 
     
