@@ -16,9 +16,9 @@ import javax.swing.JOptionPane;
 public class ConnectionFactory {
     //BD freemysqlhosting
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://sql10.freemysqlhosting.net:3306/sql10266181";
-    private static final String USER = "sql10266181";
-    private static final String PASS = "bMxnReLND2";
+    private static final String URL = "jdbc:mysql://sql10.freemysqlhosting.net:3306/sql10268198";
+    private static final String USER = "sql10268198";
+    private static final String PASS = "FgsQyZDAY4";
     
     //BD Local
     /*private static final String DRIVER = "com.mysql.cj.jdbc.Driver";

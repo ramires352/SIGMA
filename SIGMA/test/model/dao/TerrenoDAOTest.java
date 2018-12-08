@@ -59,13 +59,16 @@ public class TerrenoDAOTest {
     /**
      * Test of readOne method, of class TerrenoDAO.
      */
+    //Raul
     @Test
     public void testReadOne() {
         System.out.println("readOne");
         //Cliente.setNome("teste");
+        Cliente.setNome("raul");
         assertEquals(1, tDAO.readOne(1).size());
     }
     
+    //Raul
     @Test
     public void testRead(){
         System.out.println("read");

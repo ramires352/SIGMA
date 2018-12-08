@@ -5,7 +5,6 @@
  */
 package model.dao;
 
-import java.util.List;
 import model.bean.Cliente;
 import model.bean.Produto;
 import org.junit.After;
@@ -44,9 +43,10 @@ public class ProdutoDAOTest {
     public void tearDown() {
     }
 
+    //Raul
     @Test
     public void testRead() {
-        Cliente.setNome("teste");
+        Cliente.setNome("raul");
         assertTrue(!pDAO.read().isEmpty());
     }
 
@@ -54,9 +54,10 @@ public class ProdutoDAOTest {
     /**
      * Test of readDefensivos method, of class ProdutoDAO.
      */
+    //Raul
     @Test
     public void testReadDefensivos() {
-        Cliente.setNome("teste");
+        Cliente.setNome("raul");
         for(Produto p: pDAO.readDefensivos()){
             assertEquals(p.getTipo(), "Defensivo");
         }
