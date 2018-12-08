@@ -1,10 +1,10 @@
 # Compiled class file
 *.class
 
-SIGMA/build/*
+#SIGMA/build/*
 
-SIGMA/nbproject/private/private.xml
-SIGMA/nbproject/private/private.properties
+#SIGMA/nbproject/private/private.xml
+#SIGMA/nbproject/private/private.properties
 
 # Log file
 *.log
@@ -16,7 +16,7 @@ SIGMA/nbproject/private/private.properties
 .mtj.tmp/
 
 # Package Files #
-*.jar
+#*.jar
 *.war
 *.nar
 *.ear
@@ -27,6 +27,6 @@ SIGMA/nbproject/private/private.properties
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-SIGMA/nbproject/private/private.xml
-SIGMA/nbproject/private/
-/SIGMA/dist/
+#SIGMA/nbproject/private/private.xml
+#SIGMA/nbproject/private/
+#/SIGMA/dist/
